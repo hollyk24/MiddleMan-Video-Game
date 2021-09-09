@@ -1,1 +1,7 @@
-champion doc
+Champion
+
+1. Brief Introduction
+2. Use Case Diagram with Scenario
+3. Data Flow Diagrams
+4. Acceptance Tests
+5. Timeline
