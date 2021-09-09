@@ -5,7 +5,7 @@ Company Name: The Middle Men
 
 Game Name: Them's fightin' words
 
-Gantt Chart: Link Here (to come)
+Gantt Chart: https://trello.com/b/OuYFhtXI/thems-fighting-words
 
 Team Leads: 
 
