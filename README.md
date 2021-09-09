@@ -1,17 +1,5 @@
-# MiddleMan-Video-Game
-![image](https://user-images.githubusercontent.com/89818862/132618043-4044b6e5-998f-4914-a8b8-c35c09ca3986.png)
+README
+Kaleb Johnson
+The Fighting Game
 
-Company Name: The Middle Men
-
-Game Name: Them's fightin' words
-
-Gantt Chart: https://vandalsuidaho-my.sharepoint.com/:x:/g/personal/hamm6866_vandals_uidaho_edu/EWAnJcilv1ZNqyGEIqhS0-oBE4Djam_7XfUVr_8bS5b7fg?e=4%3AXSjboM&at=9
-
-Team Leads: 
-
-       IT Manager (1)- Holly
-       Software Architect (2)- Lily
-       Quality Assurance Manager (3)- Heath
-       Project Manager (4)- Don
-       AI Specialist (5)- Kaleb
-       Version Control Manager (6)- Seth 
+This is the segment where the player fights against whatever NPC they initiated combat with. The game is based on standard 2D fighters, in the vein of Street Fighter 2. There are two active entities: the player and NPC. The player can move their character left and right, jump, and use three different attacks, each with different speeds and damage values. The NPC moves like the player, but depending on the character can have one to three attack moves. Each entity has a life total, displayed at the top of the screen. The life total is reduced when hit by an opponent's attack. When one entity's life reaches zero, the other wins the fighting game and the player is returned to the overworld.
