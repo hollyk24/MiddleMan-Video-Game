@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0badc35c34d224fadcc4bae6b4eee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: {fileID: 0}
-  pickup: {fileID: 0}
+  jump: {fileID: 6065530709225715060, guid: 142ccb782dca39b4598e24a66c0c2a16, type: 3}
+  pickup: {fileID: 909462298306532498, guid: 689ba32f193e5fe49ac759eb74720f8d, type: 3}
