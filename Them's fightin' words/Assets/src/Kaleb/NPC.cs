@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class NPC : Character
 {
-Character enemy;
+
     void Update() {
-        moveSelect;
+        if(enemy.hurtbox.transform.position.x > hurtbox.transform.position.x + 1) {
+          Move(true);
+        }
+        if(enemy.hurtbox.transform.position.x < hurtbox.transform.position.x - 1) {
+          Move(false);
+        }
     }
 
-    void MoveSelect(){
-        if(enemy.hurtbox.transform.x > hurtbox.transform.x && enemy.hurtbox.transform.x < hurtbox.transform.x + 1) {
-          position+=0.1;
-      }
-    }
 }

@@ -19,15 +19,15 @@ public class Player : Character
             Move(false);
         }
 
-        if(Input.GetButton("Attack"))
+        if(Input.GetButton("Fire1"))
         {
-            RigidBody2D enemyBody = Attack();
-            if(enemybody = enemy.hurtbox){
+            Character tempenemy = Attack();
+            if(enemy.combatState == "Hit"){
                 OnHit(enemy);
             }
         }
 
-        if(Input.GetButton("Block"))
+        if(Input.GetButton("Fire2"))
         {
             Block();
         }

@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Sprite))]
 public class Character : MonoBehaviour
 {
-    string combatState;
-    int health;
-    int speed;
-    Rigidbody2D hurtbox;
-    Sprite body;
-    Character enemy;
+    public string combatState;
+    public int health;
+    public int speed;
+    public Rigidbody2D hurtbox;
+    public Character enemy;
 
     void Start() {
         speed = 10; 
@@ -20,40 +18,42 @@ public class Character : MonoBehaviour
     }
 
 
-    Rigidbody2D Attack() {
+    public Character Attack() {
+        Debug.Log("Attacking");
         combatState = "Attack";
-        if(Mathf.Abs((float)enemy.hurtbox.transform.position.x - (float)hurtbox.transform.position.x) < 1.0f) {
+        if(Mathf.Abs((float)enemy.transform.position.x - (float)transform.position.x) < 1.0f) {
             if(transform.position.x > enemy.transform.position.x) {
-                enemy.transform.position -= new Vector3(1, 0);
+                enemy.transform.position = new Vector3(enemy.transform.position.x -1.0f, enemy.transform.position.y, enemy.transform.position.z);
             } else {
-                enemy.transform.position += new Vector3(1, 0);
+                enemy.transform.position = new Vector3(enemy.transform.position.x +1.0f, enemy.transform.position.y, enemy.transform.position.z);
             }
-            return enemy.hurtbox;
+            enemy.combatState = "Hit";
+            return enemy;
         }
-        return hurtbox;
+        return null;
     }
 
-    void Block() {
+    public void Block() {
         combatState = "Block";
     }
 
-    void Move(bool forward) {
+    public void Move(bool forward) {
         combatState = "Move";
         if(forward) {
-            hurtbox.velocity = new Vector2(0.01f*speed, hurtbox.velocity.y);
+            transform.position = new Vector3(0.01f*speed+transform.position.x, transform.position.y, transform.position.z);
         } else {
-            hurtbox.velocity = new Vector2(-0.01f*speed, hurtbox.velocity.y);
+            transform.position = new Vector3(transform.position.x-0.01f*speed, transform.position.y, transform.position.z);
         }
     }
 
-    void onHit(Character opponent) {
+    public void OnHit(Character opponent) {
         if(!opponent.combatState.Equals("Block")) {
             opponent.health-=10;
         } else {
-            if(transform.position.x > enemy.transform.position.x) {
-                enemy.transform.position -= new Vector3(2,0);
+            if(hurtbox.transform.position.x > enemy.hurtbox.transform.position.x) {
+                enemy.transform.position = new Vector3(enemy.transform.position.x -2.0f, enemy.transform.position.y, enemy.transform.position.z);
             } else {
-                enemy.transform.position += new Vector3(2, 0);
+                enemy.transform.position = new Vector3(enemy.transform.position.x +2.0f, enemy.transform.position.y, enemy.transform.position.z);
             }
         }
     }
