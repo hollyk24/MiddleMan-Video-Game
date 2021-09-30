@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class MainMenu : MonoBehaviour
+public class ReturnToMain : MonoBehaviour
 {
-    public void StartGame(){
+    private void OnTriggerEnter2D(Collider2D collision) {
         SceneManager.LoadScene("lilyTestScene");
-        Debug.Log("Starting Game");
     }
 }

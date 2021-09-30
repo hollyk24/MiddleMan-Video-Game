@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 /*
  * lily Mason
  * This class is to be added to any NPC that one has a conversation with
@@ -22,15 +23,20 @@ public class Conversation : MonoBehaviour {
 
     private Controls controls;
     private InputAction action;
+    private InputAction yes;
     #endregion
     #region UNITY
     private void Start() {
         //Temp need Gamemanager should be apart of main system
         controls = new Controls();
         action = controls.Player.Interact;
+        yes = controls.Conversation.Newaction;
 
         action.performed += EnableUI;
         action.Disable();
+
+        yes.performed += Fight;
+        yes.Disable();
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         popUp.SetActive(true);
@@ -40,6 +46,7 @@ public class Conversation : MonoBehaviour {
         popUp.SetActive(false);
         action.Disable();
         chatUI.SetActive(false);
+        yes.Disable();
     }
     #endregion
     #region
@@ -51,7 +58,12 @@ public class Conversation : MonoBehaviour {
             popUp.SetActive(false);
             text.text = dialog;
             chatUI.SetActive(true);
+            yes.Enable();
         }
+    }
+    public void Fight(InputAction.CallbackContext obj) {
+        OnTriggerExit2D(null);
+        SceneManager.LoadScene("fight");
     }
     #endregion
 }

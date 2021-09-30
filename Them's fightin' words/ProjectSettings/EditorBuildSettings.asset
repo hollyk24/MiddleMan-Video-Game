@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/MainMenu.unity
+    guid: cf49cf0d2bc3542a78ff33360e5e81d8
+  - enabled: 1
+    path: Assets/Scene/lilyTestScene.unity
+    guid: 6f5e21f4d8a39264bb1d41d01a4137ea
+  - enabled: 1
+    path: Assets/Scene/fight.unity
+    guid: d7b54d627dc59df42a311edcb5ef6856
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 182fab6531bb79e44818f6427019c3b2,
+      type: 2}
