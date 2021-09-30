@@ -20,40 +20,40 @@ public class Character : MonoBehaviour
     }
 
 
-    RigidBody2D Attack() {
+    Rigidbody2D Attack() {
         combatState = "Attack";
-        if(Mathf.abs((float)enemy.hurtbox.transform.x - (float)hurtbox.transform.x) < 1.0f) {
-            if(hurtbox.transform.x > enemy.hurtbox.transform.x) {
-                enemy.hurtbox.transform.x -= 1.0;
+        if(Mathf.Abs((float)enemy.hurtbox.transform.position.x - (float)hurtbox.transform.position.x) < 1.0f) {
+            if(transform.position.x > enemy.transform.position.x) {
+                enemy.transform.position -= new Vector3(1, 0);
             } else {
-                enemy.hurtbox.transform.x += 1.0;
+                enemy.transform.position += new Vector3(1, 0);
             }
             return enemy.hurtbox;
         }
         return hurtbox;
     }
 
-    Block() {
+    void Block() {
         combatState = "Block";
     }
 
-    Move(bool forward) {
+    void Move(bool forward) {
         combatState = "Move";
         if(forward) {
-            hurtbox.velocity = new Vector2(0.01*speed, body.velocity.y);
+            hurtbox.velocity = new Vector2(0.01f*speed, hurtbox.velocity.y);
         } else {
-            phurtbox.velocity = new Vector2(-0.01*speed, body.velocity.y);
+            hurtbox.velocity = new Vector2(-0.01f*speed, hurtbox.velocity.y);
         }
     }
 
-    onHit(Character opponent) {
+    void onHit(Character opponent) {
         if(!opponent.combatState.Equals("Block")) {
             opponent.health-=10;
         } else {
-            if(hurtbox.transform.x > enemy.hurtbox.transform.x) {
-                enemy.hurtbox.transform.x -= 2;
+            if(transform.position.x > enemy.transform.position.x) {
+                enemy.transform.position -= new Vector3(2,0);
             } else {
-                enemy.hurtbox.transform.x += 2;
+                enemy.transform.position += new Vector3(2, 0);
             }
         }
     }
