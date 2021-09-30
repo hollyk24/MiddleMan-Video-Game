@@ -198,6 +198,33 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Conversation"",
+            ""id"": ""0e1df50c-ecfc-4f9f-81fe-4aa0fc3a2d38"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""09226359-2c7e-4f77-9f4c-073bcc45e2b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""20146196-51c9-4a05-8f71-25f43c7f2d02"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -211,6 +238,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_moveDown = m_Player.FindAction("moveDown", throwIfNotFound: true);
         m_Player_moveRight = m_Player.FindAction("moveRight", throwIfNotFound: true);
         m_Player_moveLeft = m_Player.FindAction("moveLeft", throwIfNotFound: true);
+        // Conversation
+        m_Conversation = asset.FindActionMap("Conversation", throwIfNotFound: true);
+        m_Conversation_Newaction = m_Conversation.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,6 +367,39 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Conversation
+    private readonly InputActionMap m_Conversation;
+    private IConversationActions m_ConversationActionsCallbackInterface;
+    private readonly InputAction m_Conversation_Newaction;
+    public struct ConversationActions
+    {
+        private @Controls m_Wrapper;
+        public ConversationActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Conversation_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Conversation; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ConversationActions set) { return set.Get(); }
+        public void SetCallbacks(IConversationActions instance)
+        {
+            if (m_Wrapper.m_ConversationActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_ConversationActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public ConversationActions @Conversation => new ConversationActions(this);
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
@@ -346,5 +409,9 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMoveDown(InputAction.CallbackContext context);
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
+    }
+    public interface IConversationActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

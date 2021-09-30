@@ -7,14 +7,15 @@ public class AudioManager : MonoBehaviour
     //public AudioSource menuMusic;
     //public AudioSource worldMusic;
     //public AudioSource fightMusic;
-
-    public AudioSource jump;
-    public AudioSource pickup;
+    public AudioSource source;
+    public AudioClip jump;
+    public AudioClip pickup;
 
     //play button sound
     public void playJump()
     {
-        jump.Play();
+        source.clip = jump;
+        source.Play();
     }
 
 

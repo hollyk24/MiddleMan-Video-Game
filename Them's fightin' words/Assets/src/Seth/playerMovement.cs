@@ -10,7 +10,7 @@ public class playerMovement : MonoBehaviour
     public Vector3 startPosition;
     public Vector3 endPosition;
     public float movement;
-    private float speed = 5f;
+    public float speed = 5f;
     public bool inNPCRange = false;
     
     public void OnCollisionEnter(Collision collision){

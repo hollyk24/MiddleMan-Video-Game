@@ -185,6 +185,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Conversation",
+            "id": "0e1df50c-ecfc-4f9f-81fe-4aa0fc3a2d38",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "09226359-2c7e-4f77-9f4c-073bcc45e2b4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "20146196-51c9-4a05-8f71-25f43c7f2d02",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
