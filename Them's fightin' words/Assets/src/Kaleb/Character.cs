@@ -12,20 +12,19 @@ public class Character : MonoBehaviour
     public Character enemy;
 
     void Start() {
-        speed = 10; 
+        speed = 5; 
         health = 50;
         combatState = "Move";      
     }
 
 
     public Character Attack() {
-        Debug.Log("Attacking");
         combatState = "Attack";
         if(Mathf.Abs((float)enemy.transform.position.x - (float)transform.position.x) < 1.0f) {
             if(transform.position.x > enemy.transform.position.x) {
-                enemy.transform.position = new Vector3(enemy.transform.position.x -1.0f, enemy.transform.position.y, enemy.transform.position.z);
+                enemy.transform.position = new Vector3(enemy.transform.position.x -5.0f, enemy.transform.position.y, enemy.transform.position.z);
             } else {
-                enemy.transform.position = new Vector3(enemy.transform.position.x +1.0f, enemy.transform.position.y, enemy.transform.position.z);
+                enemy.transform.position = new Vector3(enemy.transform.position.x +5.0f, enemy.transform.position.y, enemy.transform.position.z);
             }
             enemy.combatState = "Hit";
             return enemy;

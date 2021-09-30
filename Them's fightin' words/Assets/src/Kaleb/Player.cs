@@ -19,15 +19,16 @@ public class Player : Character
             Move(false);
         }
 
-        if(Input.GetButton("Fire1"))
+        if(Input.GetAxis("Attack")>0)
         {
+            Debug.Log("Attacking(P)");
             Character tempenemy = Attack();
             if(enemy.combatState == "Hit"){
                 OnHit(enemy);
             }
         }
 
-        if(Input.GetButton("Fire2"))
+        if(Input.GetAxis("Block")>0)
         {
             Block();
         }
