@@ -10,50 +10,43 @@ using UnityEngine.SceneManagement;
  * 
  * Potential subclasses for more specfic conversation types? Shop keeper ect
  */
-public class Conversation : MonoBehaviour {
+public class Conversation : Interactable {
     #region VARS
     [Header("References")]
-    [Tooltip("The popup when the player is in range in order to tell them what button they should press")]
-    public GameObject popUp;
     public GameObject chatUI;
     
     [Header("Temp Vars")]
     public string dialog;
     public Text text;
 
-    private Controls controls;
-    private InputAction action;
     private InputAction yes;
     #endregion
     #region UNITY
-    private void Start() {
-        //Temp need Gamemanager should be apart of main system
-        controls = new Controls();
-        action = controls.Player.Interact;
-        yes = controls.Conversation.Newaction;
+    protected override void Start() {
+        base.Start();
+        interactAction.performed += EnableUI;
 
-        action.performed += EnableUI;
-        action.Disable();
 
+        //temp bind
+        yes = controls.Conversation.Op1;
         yes.performed += Fight;
         yes.Disable();
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        popUp.SetActive(true);
-        action.Enable();
-    }
-    private void OnTriggerExit2D(Collider2D collision) {
-        popUp.SetActive(false);
-        action.Disable();
+    protected override void OnTriggerExit2D(Collider2D collision) {
+        //Left bounding box disable chat UI
+        base.OnTriggerExit2D(collision);
         chatUI.SetActive(false);
         yes.Disable();
     }
     #endregion
     #region
     public void EnableUI(InputAction.CallbackContext obj) {
+        //Interact key pressed
+        //Disable UI since already open
         if (chatUI.activeInHierarchy) {
             OnTriggerExit2D(null);
         }
+        //Enable UI since its not open
         else {
             popUp.SetActive(false);
             text.text = dialog;

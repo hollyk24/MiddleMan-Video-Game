@@ -27,14 +27,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Movement"",
-                    ""type"": ""Button"",
-                    ""id"": ""a4efae19-9eee-4a5b-ac47-63b965918eb7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Run"",
                     ""type"": ""Button"",
                     ""id"": ""e6b580b2-8c99-4fe6-87f9-a31acea986e7"",
@@ -86,61 +78,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""8300e84f-33b3-4cd2-b70b-51f86c8447ba"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f28bd04f-e8a2-49c1-a530-a58482404aa9"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""0e04f885-8645-4faa-a059-d06848907808"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""f5cc3583-cbe0-4ed9-a008-787804e9c6ba"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""a9274d7a-9ed2-41a2-9736-c83d099cd0e5"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -204,9 +141,25 @@ public class @Controls : IInputActionCollection, IDisposable
             ""id"": ""0e1df50c-ecfc-4f9f-81fe-4aa0fc3a2d38"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Op1"",
                     ""type"": ""Button"",
-                    ""id"": ""09226359-2c7e-4f77-9f4c-073bcc45e2b4"",
+                    ""id"": ""35702262-dcc5-49d5-8b67-d5e928a2be86"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Op2"",
+                    ""type"": ""Button"",
+                    ""id"": ""b43ab227-7123-4685-8610-2357e1db4dac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Op3"",
+                    ""type"": ""Button"",
+                    ""id"": ""8aeca37b-2bbc-4984-9d54-09b9746009eb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -215,12 +168,34 @@ public class @Controls : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""20146196-51c9-4a05-8f71-25f43c7f2d02"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""222179cb-4670-4673-aed9-8df49a9c3f6c"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Op1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce8a0b91-0395-4f09-9601-ac14ac4084de"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Op2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aaccc6c2-3d8c-437d-8738-b5b582730eea"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Op3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -232,7 +207,6 @@ public class @Controls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_moveUp = m_Player.FindAction("moveUp", throwIfNotFound: true);
         m_Player_moveDown = m_Player.FindAction("moveDown", throwIfNotFound: true);
@@ -240,7 +214,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_moveLeft = m_Player.FindAction("moveLeft", throwIfNotFound: true);
         // Conversation
         m_Conversation = asset.FindActionMap("Conversation", throwIfNotFound: true);
-        m_Conversation_Newaction = m_Conversation.FindAction("New action", throwIfNotFound: true);
+        m_Conversation_Op1 = m_Conversation.FindAction("Op1", throwIfNotFound: true);
+        m_Conversation_Op2 = m_Conversation.FindAction("Op2", throwIfNotFound: true);
+        m_Conversation_Op3 = m_Conversation.FindAction("Op3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -291,7 +267,6 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_moveUp;
     private readonly InputAction m_Player_moveDown;
@@ -302,7 +277,6 @@ public class @Controls : IInputActionCollection, IDisposable
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @moveUp => m_Wrapper.m_Player_moveUp;
         public InputAction @moveDown => m_Wrapper.m_Player_moveDown;
@@ -320,9 +294,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
@@ -345,9 +316,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
@@ -371,12 +339,16 @@ public class @Controls : IInputActionCollection, IDisposable
     // Conversation
     private readonly InputActionMap m_Conversation;
     private IConversationActions m_ConversationActionsCallbackInterface;
-    private readonly InputAction m_Conversation_Newaction;
+    private readonly InputAction m_Conversation_Op1;
+    private readonly InputAction m_Conversation_Op2;
+    private readonly InputAction m_Conversation_Op3;
     public struct ConversationActions
     {
         private @Controls m_Wrapper;
         public ConversationActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Conversation_Newaction;
+        public InputAction @Op1 => m_Wrapper.m_Conversation_Op1;
+        public InputAction @Op2 => m_Wrapper.m_Conversation_Op2;
+        public InputAction @Op3 => m_Wrapper.m_Conversation_Op3;
         public InputActionMap Get() { return m_Wrapper.m_Conversation; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -386,16 +358,28 @@ public class @Controls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_ConversationActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNewaction;
+                @Op1.started -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp1;
+                @Op1.performed -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp1;
+                @Op1.canceled -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp1;
+                @Op2.started -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp2;
+                @Op2.performed -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp2;
+                @Op2.canceled -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp2;
+                @Op3.started -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp3;
+                @Op3.performed -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp3;
+                @Op3.canceled -= m_Wrapper.m_ConversationActionsCallbackInterface.OnOp3;
             }
             m_Wrapper.m_ConversationActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Op1.started += instance.OnOp1;
+                @Op1.performed += instance.OnOp1;
+                @Op1.canceled += instance.OnOp1;
+                @Op2.started += instance.OnOp2;
+                @Op2.performed += instance.OnOp2;
+                @Op2.canceled += instance.OnOp2;
+                @Op3.started += instance.OnOp3;
+                @Op3.performed += instance.OnOp3;
+                @Op3.canceled += instance.OnOp3;
             }
         }
     }
@@ -403,7 +387,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
-        void OnMovement(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnMoveUp(InputAction.CallbackContext context);
         void OnMoveDown(InputAction.CallbackContext context);
@@ -412,6 +395,8 @@ public class @Controls : IInputActionCollection, IDisposable
     }
     public interface IConversationActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnOp1(InputAction.CallbackContext context);
+        void OnOp2(InputAction.CallbackContext context);
+        void OnOp3(InputAction.CallbackContext context);
     }
 }
