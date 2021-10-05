@@ -17,6 +17,7 @@ public class Conversation : Interactable {
     public GameObject PLAYUI;
     public Text NPCTEXT, PLAYTEXT;
     private PlayerDialog playerDialog;
+    public TextAsset conversationJson;
 
     [Header("Vars")]
     public NPCDialog[] dialogs;
@@ -37,7 +38,7 @@ public class Conversation : Interactable {
         op1.performed += GetAngrier;
         op2.performed += GetAngrier;
         op3.performed += GetAngrier;
-        dialogs = GameManager.fm.ReadFile("No Files");
+        dialogs = GameManager.fm.ReadFile(conversationJson);
     }
     protected override void OnTriggerExit2D(Collider2D collision) {
         //Left bounding box disable chat UI
@@ -104,7 +105,7 @@ public class Conversation : Interactable {
                 break;
         }
         //Grab jump
-        dialogIndex += playerDialog.GetDelta(key);
+        dialogIndex += playerDialog.GetJumpDelta(key);
         //Grab anger level
         //Set next Text
         SetText(dialogIndex);

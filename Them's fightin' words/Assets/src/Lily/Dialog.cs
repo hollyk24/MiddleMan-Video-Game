@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Dialog {
     #region VARS
     //The text string of a dialog option
+    [SerializeField]
     protected string text = "String not set";
     #endregion
     #region METHODS
