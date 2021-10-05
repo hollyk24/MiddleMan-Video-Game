@@ -12,9 +12,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D))]
 public class Interactable : MonoBehaviour{
     #region VARS
-    [Header("References")]
+    [Header("Interactable References")]
     [Tooltip("The popup when the player is in range in order to tell them what button they should press")]
     public GameObject popUp;
+    protected bool inRange;
 
     [Tooltip("Link to the player controls through the GameManager")]
     protected Controls controls;
@@ -25,8 +26,9 @@ public class Interactable : MonoBehaviour{
         //There is some other way to do this And i dont know
         //My initial thought for the use that I need would be to have this created on the game manager and for Seth to not use the PlayerInput componet
         //and instead call the controls from the manager
-        controls = new Controls();
+        controls = GameManager.controls;
         interactAction = controls.Player.Interact;
+        interactAction.performed += Interacted;
         interactAction.Disable();
 
         //In child Starts.
@@ -42,12 +44,20 @@ public class Interactable : MonoBehaviour{
         //Entered Show Hint and enable key
         popUp.SetActive(true);
         interactAction.Enable();
+        inRange = true;
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision) {
         //Left remove hit and disable key
         popUp.SetActive(false);
         interactAction.Disable();
+        inRange = false;
+    }
+    #endregion
+    #region METHODS
+    public virtual void Interacted(InputAction.CallbackContext obj) {
+        if (!inRange) return;
+        popUp.SetActive(false);
     }
     #endregion
 }

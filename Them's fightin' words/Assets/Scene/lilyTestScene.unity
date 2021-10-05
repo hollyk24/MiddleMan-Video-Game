@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
@@ -353,11 +353,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090324, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
       propertyPath: text
       value: 
       objectReference: {fileID: 1549375664}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: NPCUI
+      value: 
+      objectReference: {fileID: 1622014968}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: PLAYUI
+      value: 
+      objectReference: {fileID: 1485405681}
     - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
       propertyPath: chatUI
@@ -368,6 +383,125 @@ PrefabInstance:
       propertyPath: dialog
       value: You know I really don't want to fight right now.
       objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: NPCTEXT
+      value: 
+      objectReference: {fileID: 1549375664}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: PLAYTEXT
+      value: 
+      objectReference: {fileID: 750217905}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fdf4dde6b558e724fbf326ad7b588fb0, type: 3}
+--- !u!1001 &359073484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090324, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_Name
+      value: NPC (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090324, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1549375664}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: NPCUI
+      value: 
+      objectReference: {fileID: 1622014968}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: PLAYUI
+      value: 
+      objectReference: {fileID: 1485405681}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: chatUI
+      value: 
+      objectReference: {fileID: 1622014968}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: dialog
+      value: Hey there friend! Do you want to fight me? Press [space] to fight.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: NPCTEXT
+      value: 
+      objectReference: {fileID: 1549375664}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: PLAYTEXT
+      value: 
+      objectReference: {fileID: 750217905}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdf4dde6b558e724fbf326ad7b588fb0, type: 3}
 --- !u!1 &524068933
@@ -453,7 +587,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695241898
 GameObject:
@@ -565,7 +699,7 @@ Transform:
   m_Children:
   - {fileID: 1889181899}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &695241902
 Rigidbody2D:
@@ -618,10 +752,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 373ea5ca-8ab0-437d-a87f-b10d5bdaa218
     m_ActionName: Player/Interact[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a4efae19-9eee-4a5b-ac47-63b965918eb7
-    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: e6b580b2-8c99-4fe6-87f9-a31acea986e7
@@ -688,8 +818,16 @@ MonoBehaviour:
     m_ActionName: Player/moveLeft[/Keyboard/a]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 09226359-2c7e-4f77-9f4c-073bcc45e2b4
-    m_ActionName: Conversation/New action[/Keyboard/space]
+    m_ActionId: 35702262-dcc5-49d5-8b67-d5e928a2be86
+    m_ActionName: Conversation/Op1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b43ab227-7123-4685-8610-2357e1db4dac
+    m_ActionName: Conversation/Op2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8aeca37b-2bbc-4984-9d54-09b9746009eb
+    m_ActionName: Conversation/Op3[/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -710,7 +848,7 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
   movement: 0
-  speed: 1
+  speed: 5
   inNPCRange: 0
 --- !u!1 &750217902
 GameObject:
@@ -886,6 +1024,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001867963}
   m_CullTransparentMesh: 0
+--- !u!1 &1022176429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1022176430}
+  - component: {fileID: 1022176431}
+  - component: {fileID: 1022176432}
+  m_Layer: 0
+  m_Name: MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1022176430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022176429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1022176431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022176429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88d9ebab6d1b0347955b52a33a815ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1022176432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022176429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b1ca99ef652334ba7b9f1da4118f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117408205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1432,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1889181896
 GameObject:
@@ -1437,7 +1631,7 @@ RectTransform:
   - {fileID: 1622014969}
   - {fileID: 1485405682}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1454,17 +1648,17 @@ PrefabInstance:
     - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.321
+      value: 0.515
       objectReference: {fileID: 0}
     - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.074
+      value: -0.183
       objectReference: {fileID: 0}
     - target: {fileID: 4467428368406090320, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
@@ -1518,6 +1712,16 @@ PrefabInstance:
       objectReference: {fileID: 1549375664}
     - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
         type: 3}
+      propertyPath: NPCUI
+      value: 
+      objectReference: {fileID: 1622014968}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: PLAYUI
+      value: 
+      objectReference: {fileID: 1485405681}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
       propertyPath: chatUI
       value: 
       objectReference: {fileID: 1622014968}
@@ -1526,5 +1730,15 @@ PrefabInstance:
       propertyPath: dialog
       value: Hey there friend! Do you want to fight me? Press [space] to fight.
       objectReference: {fileID: 0}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: NPCTEXT
+      value: 
+      objectReference: {fileID: 1549375664}
+    - target: {fileID: 4467428368406090325, guid: fdf4dde6b558e724fbf326ad7b588fb0,
+        type: 3}
+      propertyPath: PLAYTEXT
+      value: 
+      objectReference: {fileID: 750217905}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdf4dde6b558e724fbf326ad7b588fb0, type: 3}
