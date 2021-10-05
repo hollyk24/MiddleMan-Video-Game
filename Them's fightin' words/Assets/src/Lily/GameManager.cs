@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
     public static Controls controls;
-    public static DialogManager dm;
+    public static FileManager fm;
 
     private void Awake() {
         if (gm != null) gm = this;
         else Destroy(this);
 
         controls = new Controls();
-        dm = FindObjectOfType<DialogManager>();
+        fm = FindObjectOfType<FileManager>();
     }
 }

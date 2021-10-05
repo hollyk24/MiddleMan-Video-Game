@@ -37,7 +37,7 @@ public class Conversation : Interactable {
         op1.performed += GetAngrier;
         op2.performed += GetAngrier;
         op3.performed += GetAngrier;
-        dialogs = GameManager.dm.ReadFile("No Files");
+        dialogs = GameManager.fm.ReadFile("No Files");
     }
     protected override void OnTriggerExit2D(Collider2D collision) {
         //Left bounding box disable chat UI

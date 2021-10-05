@@ -8,6 +8,10 @@ using UnityEngine.InputSystem;
  * Unify visual indications for all interactable objects
  * Object must have a child object that has a display of what key
  * 
+ * 
+ * 
+ * In all overridedded functions call base.functionname(). You need to have this class's functionality even if you need more.
+ * 
  */
 [RequireComponent(typeof(Collider2D))]
 public class Interactable : MonoBehaviour{
@@ -22,23 +26,23 @@ public class Interactable : MonoBehaviour{
     protected InputAction interactAction;
     #endregion
     #region UNITY
+
+    /**
+     * Grab controls and setup what the Interact key does
+     * 
+     * 
+     */
     protected virtual void Start() {
-        //There is some other way to do this And i dont know
-        //My initial thought for the use that I need would be to have this created on the game manager and for Seth to not use the PlayerInput componet
-        //and instead call the controls from the manager
+        //All controls grab from the GameManager!
         controls = GameManager.controls;
+        //This key is specfically used for Interactables. This key does not need to be managed by any other class; even children
         interactAction = controls.Player.Interact;
         interactAction.performed += Interacted;
         interactAction.Disable();
-
-        //In child Starts.
-        //Call parent start
-        //Bind interact key to function
     }
 
     /**
      * When in bounding box display Key to interact with
-     * use base.OnTrigger.... to call parent function in the child ones.
      */
     protected virtual void OnTriggerEnter2D(Collider2D collision) {
         //Entered Show Hint and enable key
@@ -46,7 +50,9 @@ public class Interactable : MonoBehaviour{
         interactAction.Enable();
         inRange = true;
     }
-
+    /**
+     * When leaving bounding box stop displaying Key to interact with
+     */
     protected virtual void OnTriggerExit2D(Collider2D collision) {
         //Left remove hit and disable key
         popUp.SetActive(false);
@@ -55,6 +61,14 @@ public class Interactable : MonoBehaviour{
     }
     #endregion
     #region METHODS
+    /**
+     * This is the function that is called when the interact key is pressed.
+     * Any child's functionality with interacting will start here
+     * 
+     * 
+     * In ALL functions that are called by a keypress have an inRange check,
+     * or errors WILL happen as it will call on multiple instances of this, instead of just this one
+     */
     public virtual void Interacted(InputAction.CallbackContext obj) {
         if (!inRange) return;
         popUp.SetActive(false);

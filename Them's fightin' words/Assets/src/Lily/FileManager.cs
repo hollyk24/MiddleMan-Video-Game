@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogManager : MonoBehaviour{
+public class FileManager : MonoBehaviour{
     #region METHODS
     //read file to create Dialog Tree
     //Current Implementation is just to test other classes. Once they work than this will build trees.
