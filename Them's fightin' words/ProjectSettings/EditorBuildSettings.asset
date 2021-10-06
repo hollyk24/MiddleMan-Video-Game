@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/fight.unity
     guid: d7b54d627dc59df42a311edcb5ef6856
+  - enabled: 1
+    path: Assets/Scene/heathstresstest.unity
+    guid: d1714ce6779cf9547abc92900ea21694
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 182fab6531bb79e44818f6427019c3b2,
       type: 2}
