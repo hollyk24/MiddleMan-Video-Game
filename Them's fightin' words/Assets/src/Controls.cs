@@ -24,7 +24,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""373ea5ca-8ab0-437d-a87f-b10d5bdaa218"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Run"",
@@ -32,7 +32,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""e6b580b2-8c99-4fe6-87f9-a31acea986e7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""moveUp"",
@@ -72,7 +72,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""2efe4fbd-f7d5-4b9b-9b30-4f4bfa6a768a"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",

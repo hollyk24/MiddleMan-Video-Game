@@ -1,0 +1,36 @@
+{
+	"dialog": [
+    {
+      "text": "What is 2+2?",
+      "playerDialog": {
+        "text": "[1]0\n[2]5\n[3]4\n",
+        "deltaJump": [ 1, 2, 3 ],
+        "angerDelta": [ 1, 2, 3 ]
+      }
+    },
+		{
+			"text":"You are not even trying",
+			"playerDialog": {
+				"text":"[1] Try again",
+				"deltaJump":[-1,-1,-1],
+				"angerDelta":[0,0,0]
+			}
+		},
+		{
+			"text":"Close Guess!",
+			"playerDialog": {
+				"text":"[1] Try again",
+				"deltaJump":[-2,-2,-2],
+				"angerDelta":[0,0,0]
+			}
+		},
+		{
+			"text":"Correct! That is the right answer!",
+			"playerDialog": {
+				"text":"String not set",
+				"deltaJump":[],
+				"angerDelta":[]
+			}
+		}
+	]
+}
