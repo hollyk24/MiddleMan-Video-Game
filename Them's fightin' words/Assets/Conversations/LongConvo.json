@@ -1,0 +1,13 @@
+{
+  "dialog": [
+    {
+      "text": "",
+      "emotion": 0,
+      "playerDialog": {
+        "text": "",
+        "emotion": 0,
+        "deltaJump": [ 0, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    }
+}

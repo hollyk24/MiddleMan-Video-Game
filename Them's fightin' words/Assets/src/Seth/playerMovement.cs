@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviour
     public float movement;
     public float speed = 5f;
     public bool inNPCRange = false;
-    
+    Animator animator;
     public void OnCollisionEnter(Collision collision){
         Debug.Log(collision.gameObject.tag);
         if(collision.gameObject.tag == "NPC"){
@@ -28,15 +28,19 @@ public class playerMovement : MonoBehaviour
     }
 
     public void moveUp(){
+        animator.SetTrigger("Up");
         transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
     public void moveDown(){
+        animator.SetTrigger("Down");
         transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
     public void moveLeft(){
+        animator.SetTrigger("Left");
         transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
     public void moveRight(){
+        animator.SetTrigger("Right");
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
     public void interact(){
@@ -47,5 +51,6 @@ public class playerMovement : MonoBehaviour
 
     void Start(){
         // transform.position = new Vector3(0,0,0);
+        animator = GetComponent<Animator>();
     }
 }

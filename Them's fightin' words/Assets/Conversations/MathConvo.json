@@ -1,0 +1,104 @@
+{
+  "dialog": [
+    {
+      "text": "You need to be taught a lesson or two on math!!",
+      "emotion": 3,
+      "playerDialog": {
+        "text": "[1] Lets go then!",
+        "emotion": 0,
+        "deltaJump": [ 0, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    },
+    {
+      "text": "What is 2+2?",
+      "emotion": 0,
+      "playerDialog": {
+        "text": "[1]0\n[2]5\n[3]4",
+        "emotion": 0,
+        "deltaJump": [ 1, 2, 3 ],
+        "angerDelta": [ 5, 2, 0 ]
+      }
+    },
+    {
+      "text": "You are not even trying",
+      "emotion": 3,
+      "playerDialog": {
+        "text": "[1] Try again",
+        "emotion": 2,
+        "deltaJump": [ -1, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    },
+    {
+      "text": "Close Guess!",
+      "emotion": 3,
+      "playerDialog": {
+        "text": "[1] Try again",
+        "emotion": 2,
+        "deltaJump": [ -2, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    },
+    {
+      "text": "Correct! That is the right answer!",
+      "emotion": 1,
+      "playerDialog": {
+        "text": "[1]Can I do another one?\n[2]Goodbye!",
+        "emotion": 1,
+        "deltaJump": [ 2, 1, 0 ],
+        "angerDelta": [ -1, 0, 0 ]
+      }
+    },
+    {
+      "text": "Goodbye then friend!",
+      "emotion": 1,
+      "playerDialog": {
+        "text": "String not set",
+        "emotion": 0,
+        "deltaJump": [ 0, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    },
+    {
+      "text": "What is 6 / 2 * (1 + 2)?",
+      "emotion": 0,
+      "playerDialog": {
+        "text": "[1] Obviously 0\n[2] It's 9\n[3] 1 Million",
+        "emotion": 0,
+        "deltaJump": [ 1, 2, 3 ],
+        "angerDelta": [ 4, -2, -10 ]
+      }
+    },
+    {
+      "text": "Are you serious right now?",
+      "emotion": 3,
+      "playerDialog": {
+        "text": "[1] Try again",
+        "emotion": 2,
+        "deltaJump": [ -1, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    },
+    {
+      "text": "Very Good! I don't have any more questions right now.",
+      "emotion": 1,
+      "playerDialog": {
+        "text": "String not set",
+        "emotion": 0,
+        "deltaJump": [ 0, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    },
+    {
+      "text": "*laughs* You are very funny!",
+      "emotion": 1,
+      "playerDialog": {
+        "text": "[1] Try again",
+        "emotion": 1,
+        "deltaJump": [ -3, 0, 0 ],
+        "angerDelta": [ 0, 0, 0 ]
+      }
+    }
+  ]
+}

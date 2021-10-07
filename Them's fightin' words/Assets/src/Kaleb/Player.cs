@@ -4,7 +4,6 @@ using UnityEngine;
 
 //needs the buttons to be named
 public class Player : Character {
-    public AudioManager audioSource;
     void Update() {
         getInput();
     }
@@ -20,7 +19,6 @@ public class Player : Character {
         }
 
         if (Input.GetKey(KeyCode.E)) {
-            audioSource.playJump();
             Character tempenemy = Attack();
             if (enemy.combatState == "Hit") {
 

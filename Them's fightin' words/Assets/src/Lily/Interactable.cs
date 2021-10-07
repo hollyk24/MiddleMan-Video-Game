@@ -19,7 +19,6 @@ public class Interactable : MonoBehaviour{
     [Header("Interactable References")]
     [Tooltip("The popup when the player is in range in order to tell them what button they should press")]
     public GameObject popUp;
-    protected bool inRange;
 
     [Tooltip("Link to the player controls through the GameManager")]
     protected Controls controls;
@@ -34,10 +33,9 @@ public class Interactable : MonoBehaviour{
      */
     protected virtual void Start() {
         //All controls grab from the GameManager!
-        controls = GameManager.controls;
+        controls = GameManager.CONTROLS;
         //This key is specfically used for Interactables. This key does not need to be managed by any other class; even children
         interactAction = controls.Player.Interact;
-        interactAction.performed += Interacted;
         interactAction.Disable();
     }
 
@@ -46,18 +44,18 @@ public class Interactable : MonoBehaviour{
      */
     protected virtual void OnTriggerEnter2D(Collider2D collision) {
         //Entered Show Hint and enable key
+        interactAction.performed += Interacted;
         popUp.SetActive(true);
         interactAction.Enable();
-        inRange = true;
     }
     /**
      * When leaving bounding box stop displaying Key to interact with
      */
     protected virtual void OnTriggerExit2D(Collider2D collision) {
         //Left remove hit and disable key
+        interactAction.performed -= Interacted;
         popUp.SetActive(false);
         interactAction.Disable();
-        inRange = false;
     }
     #endregion
     #region METHODS
@@ -70,7 +68,6 @@ public class Interactable : MonoBehaviour{
      * or errors WILL happen as it will call on multiple instances of this, instead of just this one
      */
     public virtual void Interacted(InputAction.CallbackContext obj) {
-        if (!inRange) return;
         popUp.SetActive(false);
     }
     #endregion

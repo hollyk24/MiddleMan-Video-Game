@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * This stores references to all singleton classes in order to make them easier to accsess
@@ -9,15 +10,29 @@ using UnityEngine;
  */
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gm;
-    public static Controls controls;
-    public static FileManager fm;
+    //Classes
+    public static GameManager GM;
+    public static Controls CONTROLS;
+    public static FileManager FM;
+
+    //Objects
+    public static GameObject PLAYER;
+    public static GameObject NPCUI;
+    public static GameObject PLAYUI;
+    public static Slider AngerBar;
 
     private void Awake() {
-        if (gm != null) gm = this;
+        if (GM != null) GM = this;
         else Destroy(this);
 
-        controls = new Controls();
-        fm = FindObjectOfType<FileManager>();
+        CONTROLS = new Controls();
+        FM = FindObjectOfType<FileManager>();
+
+        PLAYER = FindObjectOfType<playerMovement>().gameObject;
+        NPCUI = FindObjectOfType<Canvas>().transform.Find("NPCChat").gameObject;
+        PLAYUI = FindObjectOfType<Canvas>().transform.Find("PlayerChat").gameObject;
+        AngerBar = FindObjectOfType<Canvas>().transform.Find("AngerMeter").GetComponent<Slider>();
     }
+
+
 }
