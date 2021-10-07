@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: -4819683984182334148
     second: ChatBoxRight
+  - first:
+      213: 5421825840818285738
+    second: InteractBox
+  - first:
+      213: -8941521290796241779
+    second: Little Interact
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 9, y: 9, z: 8, w: 7}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +107,7 @@ TextureImporter:
         width: 30
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 9, y: 7, z: 5, w: 5}
       outline: []
       physicsShape: []
@@ -122,7 +128,7 @@ TextureImporter:
         width: 30
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 5, y: 7, z: 9, w: 5}
       outline: []
       physicsShape: []
@@ -130,6 +136,48 @@ TextureImporter:
       bones: []
       spriteID: c3d2c21c3fa0d1db0800000000000000
       internalID: -4819683984182334148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InteractBox
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 2
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aace10c40e13e3b40800000000000000
+      internalID: 5421825840818285738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Interact
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 9
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8c6f7e92c559e380800000000000000
+      internalID: -8941521290796241779
       vertices: []
       indices: 
       edges: []

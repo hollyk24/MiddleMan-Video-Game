@@ -17,7 +17,12 @@ public class MainMenu : MonoBehaviour
     }
 
     public void SettingGame(){
-        //SceneManager.LoadScene("settingsScene");
+        SceneManager.LoadScene("SettingsMenu");
         Debug.Log("Settings");
+    }
+
+    public void InstructionsGame(){
+        //SceneManager.LoadScene("InstructionsMenu");
+        Debug.Log("Instructions");
     }
 }

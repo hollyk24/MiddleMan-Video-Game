@@ -5,18 +5,43 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
+    #region VARS
+
     public string combatState;
-    public int health;
+    public int health = 50;
     public int speed;
     public Rigidbody2D hurtbox;
     public Character enemy;
 
+    #endregion
+    #region UNITY
     void Start() {
         speed = 5; 
         health = 50;
         combatState = "Move";      
     }
 
+    #endregion
+    #region METHODS
+    public Character(int hp, int spd, Character En) {
+        speed = spd; 
+        health = hp;
+        combatState = "Move";
+        enemy = En;
+    }
+
+    public Character(Character En) {
+        speed = 5; 
+        health = 50;
+        combatState = "Move";
+        enemy = En;
+    }
+
+    public Character() {
+        speed = 5; 
+        health = 50;
+        combatState = "Move";
+    }
 
     public Character Attack() {
         combatState = "Attack";
@@ -56,5 +81,5 @@ public class Character : MonoBehaviour
             }
         }
     }
-
+    #endregion
 }
