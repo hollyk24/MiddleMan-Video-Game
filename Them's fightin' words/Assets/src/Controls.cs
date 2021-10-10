@@ -32,7 +32,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""e6b580b2-8c99-4fe6-87f9-a31acea986e7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""moveUp"",
@@ -40,7 +40,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""6fdc7beb-eecd-41d2-bb88-be13e61e6340"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""moveDown"",
@@ -48,7 +48,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""a6286feb-1e29-41f7-b24a-c36d36f9f7b3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""moveRight"",
@@ -56,7 +56,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""c501dd83-67ff-460d-baf3-7e38093c8918"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""moveLeft"",
