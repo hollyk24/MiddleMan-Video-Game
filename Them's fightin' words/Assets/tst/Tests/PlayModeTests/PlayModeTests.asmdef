@@ -1,9 +1,11 @@
 {
     "name": "PlayModeTests",
     "references": [
+        "SourceCode",
+        "Unity.InputSystem",
+        "Unity.InputSystem.TestFramework",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "SourceCode"
+        "UnityEditor.TestRunner"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

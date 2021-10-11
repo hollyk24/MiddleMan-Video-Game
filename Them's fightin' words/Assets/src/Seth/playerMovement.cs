@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
-    private const bool V = false;
     public float speed = 1f;
-    public float speedMultiplier = 1;
+    private float speedMultiplier = 1;
     private Controls controls;
     private Transform target;
     private bool movementLock = false;
+    private bool autoMoveLock = false;
 
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
@@ -34,34 +34,32 @@ public class playerMovement : MonoBehaviour
 
     public void moveUp(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock != true){
-            // StopAllCoroutines();
+        if (context.started == true && movementLock == false)
+        {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
         }
-        // Debug.Log(context);
-        // Debug.Log("Moving Up");
     }
     public void moveDown(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock != true){
-            // StopAllCoroutines();
+        if (context.started == true && movementLock == false)
+        {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
         }
     }
     public void moveLeft(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock != true){
-            // StopAllCoroutines();
+        if (context.started == true && movementLock == false)
+        {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
         }
     }
     public void moveRight(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock != true){
-            // StopAllCoroutines();
+        if (context.started == true && movementLock == false)
+        {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
         }
@@ -82,5 +80,58 @@ public class playerMovement : MonoBehaviour
             speedMultiplier = 2;
         else
             speedMultiplier = 1;
+        autoMoveLoop();
+    }
+    public void setSpeed(float s){
+        speedMultiplier = s;
+    }
+    // For Testing
+    public void autoMoveLoop(){
+        if(autoMoveLock == false){
+            setSpeed(10);
+            autoMoveLock = true;
+            InvokeRepeating("autoMove", 0.2f, 0.2f);
+        } else {
+            setSpeed(1);
+            CancelInvoke("autoMove");
+            autoMoveLock = false;
+        }
+    }
+    public void autoMove()
+    {
+        int rand = Random.Range(0, 3);
+        switch (rand)
+        {
+            case 0:
+                if (movementLock == false)
+                {
+                    movementLock = true;
+                    StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
+                }
+                break;
+            case 1:
+                if (movementLock == false)
+                {
+                    movementLock = true;
+                    StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
+                }
+                break;
+            case 2:
+                if (movementLock == false)
+                {
+                    movementLock = true;
+                    StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
+                }
+                break;
+            case 3:
+                if (movementLock == false)
+                {
+                    movementLock = true;
+                    StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
