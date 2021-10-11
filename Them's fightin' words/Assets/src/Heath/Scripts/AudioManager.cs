@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager
 {
-    //public AudioSource menuMusic;
-    //public AudioSource worldMusic;
-    //public AudioSource fightMusic;
-    public AudioSource source;
-    public AudioClip jump;
-    public AudioClip pickup;
 
-    //play button sound
-    public void playJump()
+    AudioSource audioSource;
+
+    public void play(AudioClip audio)
     {
-        source.clip = jump;
-        source.Play();
+        audioSource.PlayOneShot(audio);
     }
 
-
-    //play pickup sound
-   /* public void playPickup()
+    public void loop(AudioClip audio, bool condition)
     {
-        pickup.Play();
-    }*/
+        while(condition)
+        {
+            audioSource.PlayOneShot(audio);
+        }
 
+    }
 }

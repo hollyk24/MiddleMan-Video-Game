@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2778044298244610814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2778044298244610808}
+  - component: {fileID: 957365179561725798}
+  m_Layer: 0
+  m_Name: AudioLibrary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2778044298244610808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778044298244610814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &957365179561725798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778044298244610814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0badc35c34d224fadcc4bae6b4eee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Menu1: {fileID: 8300000, guid: c095b6fac85b1f54a8d5d957a2e85a3a, type: 3}
+  Menu2: {fileID: 8300000, guid: 99d2e4a6dd243c74c8fac978c0296bc4, type: 3}
+  Fight1: {fileID: 8300000, guid: dc394f92f4e51e24dbd7e439dd100697, type: 3}
+  Fight2: {fileID: 8300000, guid: 95007f48558329044a1699e6660177f1, type: 3}
+  World1: {fileID: 8300000, guid: bd9f425c3543b8041b73c744f2084637, type: 3}
+  World2: {fileID: 8300000, guid: ff4c59d9159e67143b6c846fca20e6b4, type: 3}
+  World3: {fileID: 8300000, guid: 5418bce8c74c64e4b8e09737318313aa, type: 3}
+  World4: {fileID: 8300000, guid: 5858171e497385949b9e85ea5286fd8b, type: 3}
+  World5: {fileID: 8300000, guid: c5b75db8519e289478e4b7bebf332ac7, type: 3}
+  Move: {fileID: 8300000, guid: 067b1130b3f3155419394def88c9b3fe, type: 3}
+  Jump: {fileID: 8300000, guid: 0b0161d91cd06c84bacbaba423942c80, type: 3}
+  Pickup: {fileID: 8300000, guid: 4000d6a97ecbf294b81281b895e2c958, type: 3}
+  Select: {fileID: 8300000, guid: b332f94e3981c31499e1c18cdd60e110, type: 3}
+  Die: {fileID: 8300000, guid: 6371ece5f62cdb440b51920da7b6a1ff, type: 3}
