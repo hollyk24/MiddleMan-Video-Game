@@ -12,6 +12,12 @@ public class lilyTests
     }
 
     [UnityTest]
+    /**
+     * 
+     * Spawn NPCs till game too slow lol
+     * 
+     * 
+     */
     public IEnumerator NPCStressTest() {
         SceneManager.LoadScene("lilyTestScene");
         yield return new WaitForSeconds(1);
@@ -30,6 +36,11 @@ public class lilyTests
     }
 
     [UnityTest]
+    /**
+     * This test makes sure NPCs dont have an overlapping interact region
+     * 
+     * 
+     */
     public IEnumerator NPCsFarEnoughApartBoundaryTest() {
         SceneManager.LoadScene("lilyTestScene");
         yield return new WaitForSeconds(1);
@@ -48,5 +59,11 @@ public class lilyTests
             }
         }
         Assert.IsTrue(true);
+    }
+
+    [UnityTest]
+    public IEnumerator DialogBoundaryTest() {
+        //GameManager.FM.ReadFile(" ");
+        yield return null;
     }
 }
