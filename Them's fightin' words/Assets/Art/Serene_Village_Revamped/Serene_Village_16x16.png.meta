@@ -322,10 +322,10 @@ TextureImporter:
     second: raised_b_0
   - first:
       213: -7328150628009255447
-    second: Serene_Village_16x16_144
+    second: raised_stair_left
   - first:
       213: 95934258171377226
-    second: Serene_Village_16x16_145
+    second: raised_stair_right
   - first:
       213: 4386199330951314762
     second: raised_b_1
@@ -2787,7 +2787,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Serene_Village_16x16_144
+      name: raised_stair_left
       rect:
         serializedVersion: 2
         x: 32
@@ -2808,7 +2808,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Serene_Village_16x16_145
+      name: raised_stair_right
       rect:
         serializedVersion: 2
         x: 48
