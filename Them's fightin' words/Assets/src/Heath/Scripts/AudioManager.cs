@@ -8,7 +8,10 @@ public static class AudioManager
     {
         GameObject audio = new GameObject();
         AudioSource audioSource = audio.AddComponent<AudioSource>();
-        audioSource.PlayOneShot(audioclip);
+        //audioSource.PlayOneShot(audioclip);
+        audioSource.clip = audioclip;
+        audioSource.Play();
+        Object.Destroy(audio, audioSource.clip.length);
     }
 
     public static void Loop(AudioClip audioclip)
