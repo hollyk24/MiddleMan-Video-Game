@@ -35,7 +35,7 @@ namespace Tests
             player.GetComponent<playerMovement>().autoMoveLoop();
             yield return new WaitForSeconds(1);
             Vector3 pos = player.transform.position;
-            Assert.IsTrue(Mathf.Approximately(pos.x - Mathf.Round(pos.x), 0), pos.x.ToString()); // Check that location is a whole number.
+            Assert.IsTrue(Mathf.Approximately(pos.x - Mathf.Round(pos.x), 0.5f), pos.x.ToString()); // Check that location is a whole number.
             Assert.IsTrue(Mathf.Approximately(pos.y - Mathf.Round(pos.y), 0), pos.y.ToString());
             yield return null;
         }
@@ -53,10 +53,13 @@ namespace Tests
             // yield return new WaitForSeconds(5);
             float startTime = Time.time;
             Vector2 movementError = new Vector2(0,0);
-            for(int i = 0; i < 1000; i++){
+
+            // Unsure if this loop is correct
+            while(Time.time < startTime + 5){
                 rb = player.GetComponent<Rigidbody2D>();
                 if (rb.velocity.x * rb.velocity.y != 0)
                 {
+                    // If the product of the velocities is ever not equal to 0, the player moved diagonally.
                     movementError = new Vector2(rb.velocity.x, rb.velocity.y);
                     movedDiagonally = true;
                 }

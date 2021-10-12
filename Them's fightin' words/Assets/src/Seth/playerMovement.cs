@@ -18,6 +18,7 @@ public class playerMovement : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        // tileMap = GetComponent<TileMaps>();
         // Debug.Log("In Start function");
         controls = GameManager.CONTROLS;
 
@@ -89,6 +90,7 @@ public class playerMovement : MonoBehaviour
         animator.SetBool("Walking",true);
         while (transform.position != end)
         {
+            // if(tileMap.)
             transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
             yield return null;
         }
