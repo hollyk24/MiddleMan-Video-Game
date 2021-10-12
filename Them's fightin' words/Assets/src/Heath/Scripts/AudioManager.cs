@@ -12,12 +12,10 @@ public static class AudioManager
         audioSource.PlayOneShot(audioclip);
     }
 
-    public static void loop(AudioClip audioclip, bool condition)
+    public static void Loop(AudioClip audioclip)
     {
-        while(condition)
-        {
-            audioSource.PlayOneShot(audioclip);
-        }
-
+        audioSource.clip = audioclip;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 }

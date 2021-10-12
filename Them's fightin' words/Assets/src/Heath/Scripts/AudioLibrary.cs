@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioLibrary : MonoBehaviour
 {
-    private static AudioLibrary libraryObject = null;
+    private static AudioLibrary libraryObject;
     private static readonly object instanceLock = new object();
     public static AudioLibrary Library
     {
