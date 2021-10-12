@@ -67,6 +67,7 @@ public class playerMovement : MonoBehaviour
 
     public IEnumerator movePlayerTowards(Vector3 end)
     {
+        AudioManager.Play(AudioLibrary.Library.Move);
         while (transform.position != end)
         {
             transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
@@ -99,6 +100,7 @@ public class playerMovement : MonoBehaviour
     }
     public void autoMove()
     {
+        AudioManager.Play(AudioLibrary.Library.Move);
         int rand = Random.Range(0, 3);
         switch (rand)
         {
