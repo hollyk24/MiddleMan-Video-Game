@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using NUnit.Framework;
+using UnityEngine.Tilemaps;
 public class lilyTests 
 {
     //[SetUp]
@@ -62,8 +63,17 @@ public class lilyTests
     }
 
     [UnityTest]
-    public IEnumerator DialogBoundaryTest() {
-        //GameManager.FM.ReadFile(" ");
-        yield return null;
+    public IEnumerator NPCPositionBoundaryTest() {
+        SceneManager.LoadScene("lilyTestScene");
+        yield return new WaitForSeconds(1);
+
+        //get list
+        var NPC = GameObject.FindGameObjectsWithTag("NPC");
+        var Tiles = GameObject.FindObjectOfType<Tilemap>();
+        
+        foreach (var n in NPC) {
+            Vector3 pos = n.transform.position;
+            Assert.IsTrue(Tiles.GetCellCenterWorld(Tiles.WorldToCell(pos)) != null); 
+        }
     }
 }
