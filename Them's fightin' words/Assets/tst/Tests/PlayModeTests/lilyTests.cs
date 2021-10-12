@@ -14,7 +14,7 @@ public class lilyTests
     [UnityTest]
     public IEnumerator NPCStressTest() {
         SceneManager.LoadScene("lilyTestScene");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         var NPC = GameObject.FindGameObjectWithTag("NPC");
         int count = 0;
@@ -23,6 +23,30 @@ public class lilyTests
             count++;
             yield return null;
         }
-        Debug.LogAssertion("NPCs spawned by stress test: " + count);
+        Debug.Log("NPCs spawned by stress test: " + count);
+        LogAssert.Expect(LogType.Log, "NPCs spawned by stress test: " + count);
+        Assert.IsTrue(true);
+        
+    }
+
+    [UnityTest]
+    public IEnumerator NPCsFarEnoughApartBoundaryTest() {
+        SceneManager.LoadScene("lilyTestScene");
+        yield return new WaitForSeconds(1);
+
+        //get list
+        var NPC = GameObject.FindGameObjectsWithTag("NPC");
+        if (NPC.Length < 2) Assert.IsTrue(true);
+        else {
+            //check that no two overlap
+            for(int i = 0; i < NPC.Length-1; i++) {
+                for(int j = i+1; j < NPC.Length; j++) {
+                    var box = NPC[i].GetComponent<Collider2D>().bounds;
+                    var box2 = NPC[j].GetComponent<Collider2D>().bounds;
+                    if (box.Intersects(box2)) Assert.IsTrue(false);
+                }
+            }
+        }
+        Assert.IsTrue(true);
     }
 }

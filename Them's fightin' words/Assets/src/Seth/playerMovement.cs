@@ -12,10 +12,12 @@ public class playerMovement : MonoBehaviour
     private bool movementLock = false;
     private bool autoMoveLock = false;
 
+    Animator animator;
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         // Debug.Log("In Start function");
         controls = GameManager.CONTROLS;
 
@@ -42,6 +44,7 @@ public class playerMovement : MonoBehaviour
     {
         if (context.performed == true && movementLock == false)
         {
+            animator.SetTrigger("up");
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
         }
@@ -50,6 +53,7 @@ public class playerMovement : MonoBehaviour
     {
         if (context.performed == true && movementLock == false)
         {
+            animator.SetTrigger("down");
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
         }
@@ -58,6 +62,7 @@ public class playerMovement : MonoBehaviour
     {
         if (context.performed == true && movementLock == false)
         {
+            animator.SetTrigger("left");
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
         }
@@ -66,6 +71,7 @@ public class playerMovement : MonoBehaviour
     {
         if (context.performed == true && movementLock == false)
         {
+            animator.SetTrigger("right");
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
         }
@@ -74,12 +80,14 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
+        animator.SetBool("Walking",true);
         while (transform.position != end)
         {
             transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
             yield return null;
         }
         movementLock = false;
+        animator.SetBool("Walking", false);
     }
     public void runToggle(InputAction.CallbackContext context)
     {
