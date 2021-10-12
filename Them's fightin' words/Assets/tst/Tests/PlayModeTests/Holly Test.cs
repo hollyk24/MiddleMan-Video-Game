@@ -1,4 +1,4 @@
-﻿
+
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -45,16 +45,75 @@ namespace Tests{
             // Use yield to skip a frame.
             SceneManager.LoadScene("SettingsMenu");
             yield return new WaitForSeconds(3);
-            GameObject username = GameObject.Find("inputField");
-
-            Assert.IsNotNull(username, "isnull");
+            //GameObject username = GameObject.Find("textDisplay");
+            var textbox = GameObject.Find("textDisplay").GetComponent("Text");
+            yield return new WaitForSeconds(1);
+            textbox.ToString();
+            //Debug.log(textbox);
+            Assert.AreNotEqual(textbox, "usernameEx");
 
 
             
 
             yield return null;
         }
-    }
+         
+        [UnityTest]
+        public IEnumerator SettingStressTest()
+        {
+            SceneManager.LoadScene("MainMenu");
+            yield return new WaitForSeconds(2);
+        
+            var playButton = GameObject.Find("StartButton");
+            int buttonCount = 1;
+            float approxFPS;
+            while(true){
+                buttonCount++;
+                //playButton.cloneThisObject();
+                GameObject.Instantiate(playButton);
+                yield return new WaitForSeconds(0.2f);
+                approxFPS = 1/Time.deltaTime;
+                Assert.IsTrue(approxFPS > 30, buttonCount.ToString());
+            }
+
+/*
+            bool loadingStarted = false;
+            private float timer = 10f;
+            private float timer2 = 0f;
+            int changecount = 0;
+        
+            
+
+            while((int)(1f / Time.unscaledDeltaTime) > 30){
+                timer2 = timer;
+                 timer -= Time.deltaTime;
+                 if(timer <= 0f){
+                     SceneManager.LoadScene("SettingsMenu");
+                 }
+                timer2 = timer2 - 1f;
+                timer = timer2;
+                timer -= Timer.deltaTime;
+                if(timer <= 0f){
+                    SceneManager.LoadScene("MainMenu");
+                }
+                timer2 = timer2 - 1f;
+                timer = timer2;
+
+
+            }
+
+            timeElapsed += Time.deltaTime;
+
+            if(timeElapsed > delayBeforeLoading)
+            {
+                SceneManager.LoadScene("SettingsMenu");
+            }
+ */           
+        }
+        
+
+   
+ }
 }
 
 

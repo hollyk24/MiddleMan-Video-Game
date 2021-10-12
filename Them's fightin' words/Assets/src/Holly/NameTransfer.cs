@@ -22,6 +22,7 @@ public class NameTransfer : MonoBehaviour
             Debug.Log("input is empty");
             theName = textInInput;
             Debug.Log(theName);
+            textDisplay.GetComponent<Text>().text = theName;
         }
 
         else if(ReceivedString.All(char.IsLetterOrDigit)){

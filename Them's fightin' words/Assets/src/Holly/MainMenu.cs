@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame(){
         SceneManager.LoadScene("lilyTestScene");
         AudioManager.Play(AudioLibrary.Library.Select);
-        Debug.Log("Starting Game");
+        //Debug.Log("Starting Game");
     }
 
     public void QuitGame(){
@@ -25,12 +25,12 @@ public class MainMenu : MonoBehaviour
     public void SettingGame(){
         SceneManager.LoadScene("SettingsMenu");
         AudioManager.Play(AudioLibrary.Library.Select);
-        Debug.Log("Settings");
+        //Debug.Log("Settings");
     }
 
     public void InstructionsGame(){
         //SceneManager.LoadScene("InstructionsMenu");
-        Debug.Log("Instructions");
+        //Debug.Log("Instructions");
     }
     void Update(){
         if(Input.GetKeyDown(KeyCode.P)){
