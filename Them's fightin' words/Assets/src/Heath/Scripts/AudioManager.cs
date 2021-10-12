@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager
+public static class AudioManager
 {
+    static GameObject audio = new GameObject();
+    static AudioSource audioSource = audio.AddComponent<AudioSource>();
 
-    AudioSource audioSource;
-
-    public void play(AudioClip audio)
+    public static void Play(AudioClip audioclip)
     {
-        audioSource.PlayOneShot(audio);
+        audioSource.PlayOneShot(audioclip);
     }
 
-    public void loop(AudioClip audio, bool condition)
+    public static void loop(AudioClip audioclip, bool condition)
     {
         while(condition)
         {
-            audioSource.PlayOneShot(audio);
+            audioSource.PlayOneShot(audioclip);
         }
 
     }

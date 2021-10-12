@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class AudioLibrary : MonoBehaviour
 {
-   /* private AudioSource audioSource;
-
-    //embedded class
-    public audioSamples[] library;
-
-    [System.Serializable]
-    public class audioSamples
+    private static AudioLibrary libraryObject = null;
+    private static readonly object instanceLock = new object();
+    public static AudioLibrary Library
     {
-        public string name;
-        public AudioClip audioClip;
-    }*/
-
+        get{
+            lock (instanceLock)
+            {
+                if (libraryObject == null)
+                {
+                    libraryObject = Instantiate(Resources.Load<AudioLibrary>("AudioLibrary"));
+                }
+                return libraryObject;
+            }
+        }
+    }
+     
 
     //Music Library
     public AudioClip Menu1;
@@ -35,10 +39,4 @@ public class AudioLibrary : MonoBehaviour
     public AudioClip Select;
     public AudioClip Die;
 
-
-    /*
-    void playMusic(AudioClip audio)
-    {
-        audioSource.PlayOneShot(audio);
-    } */
 }
