@@ -14175,7 +14175,7 @@ PrefabInstance:
     - target: {fileID: 8529790335868758816, guid: ab89634953f9f0c43b18a1c3164d73b4,
         type: 3}
       propertyPath: m_Name
-      value: Walkable_Path
+      value: Walkable_Path_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab89634953f9f0c43b18a1c3164d73b4, type: 3}
