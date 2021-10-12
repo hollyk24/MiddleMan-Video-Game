@@ -81,7 +81,7 @@ public class playerMovement : MonoBehaviour
             speedMultiplier = 2;
         else
             speedMultiplier = 1;
-        autoMoveLoop();
+        // autoMoveLoop();
     }
     public void setSpeed(float s){
         speedMultiplier = s;
