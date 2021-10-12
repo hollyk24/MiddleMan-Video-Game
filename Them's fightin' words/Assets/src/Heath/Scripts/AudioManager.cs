@@ -4,16 +4,17 @@ using UnityEngine;
 
 public static class AudioManager
 {
-    static GameObject audio = new GameObject();
-    static AudioSource audioSource = audio.AddComponent<AudioSource>();
-
     public static void Play(AudioClip audioclip)
     {
+        GameObject audio = new GameObject();
+        AudioSource audioSource = audio.AddComponent<AudioSource>();
         audioSource.PlayOneShot(audioclip);
     }
 
     public static void Loop(AudioClip audioclip)
     {
+        GameObject audio = new GameObject();
+        AudioSource audioSource = audio.AddComponent<AudioSource>();
         audioSource.clip = audioclip;
         audioSource.loop = true;
         audioSource.Play();
