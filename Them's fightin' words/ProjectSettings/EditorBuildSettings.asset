@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/heathstresstest.unity
     guid: d1714ce6779cf9547abc92900ea21694
+  - enabled: 1
+    path: Assets/Scene/SettingsMenu.unity
+    guid: 664900fb766db498db08b8bb67206650
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 182fab6531bb79e44818f6427019c3b2,
       type: 2}

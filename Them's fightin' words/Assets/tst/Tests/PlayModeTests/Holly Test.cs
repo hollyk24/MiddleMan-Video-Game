@@ -25,7 +25,7 @@ namespace Tests{
 
         [UnityTest]
         public IEnumerator ButtonLocationTest(){
-            SceneManager.LoadScene("MainMenu");
+            //SceneManager.LoadScene("MainMenu");
             yield return new WaitForSeconds(2);
             GameObject playButton = GameObject.Find("StartButton");
             Vector3 buttonPos = GameObject.Find("StartButton").transform.position;
@@ -39,10 +39,19 @@ namespace Tests{
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator HollyTestsWithEnumeratorPasses()
+        public IEnumerator UsernameLength()
         {
             // Use the Assert class to test conditions.
             // Use yield to skip a frame.
+            SceneManager.LoadScene("SettingsMenu");
+            yield return new WaitForSeconds(3);
+            GameObject username = GameObject.Find("inputField");
+
+            Assert.IsNotNull(username, "isnull");
+
+
+            
+
             yield return null;
         }
     }
