@@ -10,22 +10,24 @@ namespace Tests
     public class SethTests
     {
         [SetUp]
-        public void loadScene(){
+        public void loadScene()
+        {
             SceneManager.LoadScene("lilyTestScene");
         }
         // A Test behaves as an ordinary method
         // [Test]
         // public void SethTestsSimplePasses()
         // {
-            // Use the Assert class to test conditions
+        // Use the Assert class to test conditions
         // }
-        
+
         [UnityTest]
-        public IEnumerator PlayerLocationTest(){
+        public IEnumerator PlayerLocationTest()
+        {
             SceneManager.LoadScene("lilyTestScene");
             yield return new WaitForSeconds(2);
             GameObject player = GameObject.Find("PLAYER");
-            
+
             // GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<playerMovement>().autoMoveLoop();
             // player.speedMultiplier = 10;
@@ -38,14 +40,54 @@ namespace Tests
             yield return null;
         }
 
+        [UnityTest]
+        public IEnumerator PlayerDiagonalTest()
+        {
+            SceneManager.LoadScene("lilyTestScene");
+            yield return new WaitForSeconds(2);
+            GameObject player = GameObject.Find("PLAYER");
+            Rigidbody2D rb;
+            bool movedDiagonally = false;
+            // player.speedMultiplier = 10;
+            player.GetComponent<playerMovement>().autoMoveLoop();
+            // yield return new WaitForSeconds(5);
+            float startTime = Time.time;
+            Vector2 movementError = new Vector2(0,0);
+            for(int i = 0; i < 1000; i++){
+                rb = player.GetComponent<Rigidbody2D>();
+                if (rb.velocity.x * rb.velocity.y != 0)
+                {
+                    movementError = new Vector2(rb.velocity.x, rb.velocity.y);
+                    movedDiagonally = true;
+                }
+                yield return new WaitForSeconds(0.01f);
+            }
+            player.GetComponent<playerMovement>().autoMoveLoop();
+            yield return new WaitForSeconds(1);
+            Assert.IsFalse(movedDiagonally, movementError.ToString());
+            yield return null;
+        }
+
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
+
         [UnityTest]
-        public IEnumerator SethTestsWithEnumeratorPasses()
+        public IEnumerator PlayerCountStressTest()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
+            SceneManager.LoadScene("lilyTestScene");
+            yield return new WaitForSeconds(2);
+            GameObject player = GameObject.Find("PLAYER");
+            player.GetComponent<playerMovement>().autoMoveLoop();
+            int playerCount = 1;
+            float approxFPS;
+            while(true){
+                playerCount++;
+                player.GetComponent<playerMovement>().cloneThisObject();
+                yield return new WaitForSeconds(0.2f);
+                approxFPS = 1/Time.deltaTime;
+                Assert.IsTrue(approxFPS > 30, playerCount.ToString());
+            }
+            // yield return new WaitForSeconds(5);
         }
     }
 }

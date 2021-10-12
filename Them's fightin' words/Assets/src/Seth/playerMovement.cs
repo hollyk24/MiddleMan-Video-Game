@@ -84,21 +84,32 @@ public class playerMovement : MonoBehaviour
     public void runToggle(InputAction.CallbackContext context)
     {
         if (speedMultiplier == 1)
-            speedMultiplier = 2;
+            speedMultiplier = 3;
         else
             speedMultiplier = 1;
         // autoMoveLoop();
+        // Instantiate(this);
     }
-    public void setSpeed(float s){
+
+    public void cloneThisObject()
+    {
+        Instantiate(this);
+    }
+    public void setSpeed(float s)
+    {
         speedMultiplier = s;
     }
     // For Testing
-    public void autoMoveLoop(){
-        if(autoMoveLock == false){
-            setSpeed(10);
+    public void autoMoveLoop()
+    {
+        if (autoMoveLock == false)
+        {
+            setSpeed(1);
             autoMoveLock = true;
             InvokeRepeating("autoMove", 0.2f, 0.2f);
-        } else {
+        }
+        else
+        {
             setSpeed(1);
             CancelInvoke("autoMove");
             autoMoveLock = false;
@@ -106,40 +117,29 @@ public class playerMovement : MonoBehaviour
     }
     public void autoMove()
     {
-        AudioManager.Play(AudioLibrary.Library.Move);
-        int rand = Random.Range(0, 3);
-        switch (rand)
+        if (movementLock == false)
         {
-            case 0:
-                if (movementLock == false)
-                {
-                    movementLock = true;
+            movementLock = true;
+            AudioManager.Play(AudioLibrary.Library.Move);
+            int rand = Random.Range(0, 4);
+            Debug.Log(rand);
+            switch (rand)
+            {
+                case 0:
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
-                }
-                break;
-            case 1:
-                if (movementLock == false)
-                {
-                    movementLock = true;
+                    break;
+                case 1:
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
-                }
-                break;
-            case 2:
-                if (movementLock == false)
-                {
-                    movementLock = true;
+                    break;
+                case 2:
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
-                }
-                break;
-            case 3:
-                if (movementLock == false)
-                {
-                    movementLock = true;
+                    break;
+                case 3:
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
-                }
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
