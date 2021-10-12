@@ -30,11 +30,17 @@ public class playerMovement : MonoBehaviour
         LeftInput.performed += moveLeft;
         RightInput.performed += moveRight;
         runToggleInput.performed += runToggle;
+
+        UpInput.Enable();
+        DownInput.Enable();
+        LeftInput.Enable();
+        RightInput.Enable();
+        runToggleInput.Enable();
     }
 
     public void moveUp(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock == false)
+        if (context.performed == true && movementLock == false)
         {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
@@ -42,7 +48,7 @@ public class playerMovement : MonoBehaviour
     }
     public void moveDown(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock == false)
+        if (context.performed == true && movementLock == false)
         {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
@@ -50,7 +56,7 @@ public class playerMovement : MonoBehaviour
     }
     public void moveLeft(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock == false)
+        if (context.performed == true && movementLock == false)
         {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
@@ -58,7 +64,7 @@ public class playerMovement : MonoBehaviour
     }
     public void moveRight(InputAction.CallbackContext context)
     {
-        if (context.started == true && movementLock == false)
+        if (context.performed == true && movementLock == false)
         {
             movementLock = true;
             StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
