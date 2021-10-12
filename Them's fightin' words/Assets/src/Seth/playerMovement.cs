@@ -39,7 +39,13 @@ public class playerMovement : MonoBehaviour
         RightInput.Enable();
         runToggleInput.Enable();
     }
-
+    private void OnDestroy() {
+        UpInput.performed -= moveUp;
+        DownInput.performed -= moveDown;
+        LeftInput.performed -= moveLeft;
+        RightInput.performed -= moveRight;
+        runToggleInput.performed -= runToggle;
+    }
     public void moveUp(InputAction.CallbackContext context)
     {
         if (context.performed == true && movementLock == false)
