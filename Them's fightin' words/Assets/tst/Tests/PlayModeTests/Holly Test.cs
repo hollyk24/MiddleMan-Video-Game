@@ -66,15 +66,17 @@ namespace Tests{
         
             var playButton = GameObject.Find("StartButton");
             int buttonCount = 1;
-            float approxFPS;
-            while(true){
-                buttonCount++;
-                //playButton.cloneThisObject();
-                GameObject.Instantiate(playButton);
-                yield return new WaitForSeconds(0.2f);
-                approxFPS = 1/Time.deltaTime;
-                Assert.IsTrue(approxFPS > 30, buttonCount.ToString());
+
+            while((int)(1f / Time.unscaledDeltaTime) > 30){
+                 GameObject.Instantiate(playButton);
+                 buttonCount++;
+                 yield return null;
             }
+            Debug.Log("Buttons Spawned by stress test: " + buttonCount);
+            LogAssert.Expect(LogType.Log, "Buttons Spawned by stress test: " + buttonCount);
+            Assert.IsTrue(true);
+
+         
 
 /*
             bool loadingStarted = false;

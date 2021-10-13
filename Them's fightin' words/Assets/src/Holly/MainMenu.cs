@@ -32,6 +32,9 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene("InstructionsMenu");
         //Debug.Log("Instructions");
     }
+
+
+
     void Update(){
         if(Input.GetKeyDown(KeyCode.P)){
             SceneManager.LoadScene("lilyTestScene");
@@ -47,6 +50,8 @@ public class MainMenu : MonoBehaviour
             SceneManager.LoadScene("SettingsMenu");
         }
     }
+
+    
 
 
 }
