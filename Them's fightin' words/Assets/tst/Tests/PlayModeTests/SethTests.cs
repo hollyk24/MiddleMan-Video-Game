@@ -9,11 +9,11 @@ namespace Tests
 {
     public class SethTests
     {
-        [SetUp]
-        public void loadScene()
-        {
-            SceneManager.LoadScene("lilyTestScene");
-        }
+        // [SetUp]
+        // public void loadScene()
+        // {
+        //     SceneManager.LoadScene("lilyTestScene");
+        // }
         // A Test behaves as an ordinary method
         // [Test]
         // public void SethTestsSimplePasses()
@@ -22,7 +22,7 @@ namespace Tests
         // }
 
         [UnityTest]
-        public IEnumerator PlayerLocationTest()
+        public IEnumerator PlayerIsCenteredOnTile()
         {
             SceneManager.LoadScene("lilyTestScene");
             yield return new WaitForSeconds(2);
@@ -31,17 +31,17 @@ namespace Tests
             // GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<playerMovement>().autoMoveLoop();
             // player.speedMultiplier = 10;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             player.GetComponent<playerMovement>().autoMoveLoop();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             Vector3 pos = player.transform.position;
-            Assert.IsTrue(Mathf.Approximately(pos.x - Mathf.Round(pos.x), 0.5f), pos.x.ToString()); // Check that location is a whole number.
+            Assert.IsTrue(Mathf.Approximately((10*pos.x) - Mathf.Round((10*pos.x)), 0), pos.x.ToString()); // Check that location is a whole number.
             Assert.IsTrue(Mathf.Approximately(pos.y - Mathf.Round(pos.y), 0), pos.y.ToString());
             yield return null;
         }
 
         [UnityTest]
-        public IEnumerator PlayerDiagonalTest()
+        public IEnumerator PlayerMovesDiagonally()
         {
             SceneManager.LoadScene("lilyTestScene");
             yield return new WaitForSeconds(2);

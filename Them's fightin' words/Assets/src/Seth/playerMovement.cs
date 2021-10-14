@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
@@ -9,16 +10,19 @@ public class playerMovement : MonoBehaviour
     private float speedMultiplier = 1;
     private Controls controls;
     private Transform target;
+
     private bool movementLock = false;
     private bool autoMoveLock = false;
 
     Animator animator;
+    LocTests walkableCheck;
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
     private void Start()
     {
         animator = GetComponent<Animator>();
-        // tileMap = GetComponent<TileMaps>();
+        walkableCheck = GetComponent<LocTests>();
+        // walkMap = GetComponent<Walkmap>().Tilemap;
         // Debug.Log("In Start function");
         controls = GameManager.CONTROLS;
 
@@ -87,15 +91,16 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
-        animator.SetBool("Walking",true);
-        while (transform.position != end)
-        {
-            // if(tileMap.)
-            transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
-            yield return null;
+        if(walkableCheck.checkWalkable(end)){
+            animator.SetBool("Walking",true);
+            while (transform.position != end)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
+                yield return null;
+            }
+            animator.SetBool("Walking", false);
         }
         movementLock = false;
-        animator.SetBool("Walking", false);
     }
     public void runToggle(InputAction.CallbackContext context)
     {
@@ -103,7 +108,7 @@ public class playerMovement : MonoBehaviour
             speedMultiplier = 3;
         else
             speedMultiplier = 1;
-        // autoMoveLoop();
+        autoMoveLoop();
         // Instantiate(this);
     }
 
@@ -136,9 +141,12 @@ public class playerMovement : MonoBehaviour
         if (movementLock == false)
         {
             movementLock = true;
+            animator.SetBool("Walking",true);
             AudioManager.Play(AudioLibrary.Library.Move);
             int rand = Random.Range(0, 4);
-            Debug.Log(rand);
+            // Debug.Log("Actual " + 10*transform.position.x);
+            // Debug.Log("Round " + Mathf.Round(10*transform.position.x));
+            Debug.Log("Centered on tile: "+ Mathf.Approximately((10*transform.position.x)-Mathf.Round(10*transform.position.x),0));
             switch (rand)
             {
                 case 0:
@@ -156,6 +164,7 @@ public class playerMovement : MonoBehaviour
                 default:
                     break;
             }
+            animator.SetBool("Walking", false);
         }
     }
 }
