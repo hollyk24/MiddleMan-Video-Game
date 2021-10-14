@@ -50,7 +50,7 @@ namespace Tests{
             yield return new WaitForSeconds(1);
             textbox.ToString();
             //Debug.log(textbox);
-            Assert.AreNotEqual(textbox, "usernameEx");
+            Assert.AreEqual(textbox, "usernameEx");
 
 
             
@@ -59,58 +59,33 @@ namespace Tests{
         }
          
         [UnityTest]
-        public IEnumerator SettingStressTest()
+        public IEnumerator SwitchStressTest()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MainMenu");     //load main menu
             yield return new WaitForSeconds(2);
         
-            var playButton = GameObject.Find("StartButton");
-            int buttonCount = 1;
+        
+            int Count = 1;                          //Variables to track the number of switches
+            float waitTime = 1;                     //Time spent waiting during WaitForSeconds
+            
 
-            while((int)(1f / Time.unscaledDeltaTime) > 30){
-                 GameObject.Instantiate(playButton);
-                 buttonCount++;
+            while((int)(1f / Time.unscaledDeltaTime) > 30){     //Loop until the not acceptable frame rate
+                SceneManager.LoadScene("SettingsMenu");         //Load the Settings menu
+                yield return new WaitForSeconds(waitTime);      //Wait the set time
+                SceneManager.LoadScene("MainMenu");             //Switch back to main menu
+                 Count++;                                       //Increase the count for the switch
                  yield return null;
+                 waitTime = waitTime/10;                        //Decrease the time by dividing by 10
             }
-            Debug.Log("Buttons Spawned by stress test: " + buttonCount);
-            LogAssert.Expect(LogType.Log, "Buttons Spawned by stress test: " + buttonCount);
+            
+            Debug.Log("Number of switches was: " + Count);      //Print out number of switches once it exits the looop / break point
+            Debug.Log("Wait time was:" + waitTime);             //Print out the wait time value 
+            LogAssert.Expect(LogType.Log, "Number of switches was: " + Count);
             Assert.IsTrue(true);
 
          
 
-/*
-            bool loadingStarted = false;
-            private float timer = 10f;
-            private float timer2 = 0f;
-            int changecount = 0;
-        
-            
-
-            while((int)(1f / Time.unscaledDeltaTime) > 30){
-                timer2 = timer;
-                 timer -= Time.deltaTime;
-                 if(timer <= 0f){
-                     SceneManager.LoadScene("SettingsMenu");
-                 }
-                timer2 = timer2 - 1f;
-                timer = timer2;
-                timer -= Timer.deltaTime;
-                if(timer <= 0f){
-                    SceneManager.LoadScene("MainMenu");
-                }
-                timer2 = timer2 - 1f;
-                timer = timer2;
-
-
-            }
-
-            timeElapsed += Time.deltaTime;
-
-            if(timeElapsed > delayBeforeLoading)
-            {
-                SceneManager.LoadScene("SettingsMenu");
-            }
- */           
+          
         }
         
 
