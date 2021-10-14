@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LocTests : MonoBehaviour
 {
-    public bool checkWalkable(Vector3 tilePos)
+    public bool checkWalkable(Vector2 tilePos)
     {
-        Collider[] colliders;
-        colliders = Physics.OverlapSphere(tilePos, 0.1f, 8);
-        if(colliders.Length > 0)
+        Collider2D collider;
+        collider = Physics2D.OverlapCircle(tilePos, 0.1f);
+        //Debug.Log(collider);
+        if(collider != null)
         {
             return true;
         }
