@@ -10,29 +10,46 @@ namespace Tests
 {
     public class HeathTests
     {
-
-        [SetUp]
-        public void loadScene()
+        
+        // A Test behaves as an ordinary method
+        [UnityTest]
+        public IEnumerator WorldMusicCheck()
         {
             SceneManager.LoadScene("lilyTestScene");
+            yield return new WaitForSeconds(2f);
+            //This code below gets the audio currently playing in the scene
+            AudioSource actual = GameObject.Find("MusicObject").GetComponent<AudioSource>();
+            Assert.AreEqual(AudioLibrary.Library.World1, actual.clip);
         }
+
         // A Test behaves as an ordinary method
-        [Test]
-        public void AudioListenerActive()
+        [UnityTest]
+        public IEnumerator MenuMusicCheck()
         {
-            // Use the Assert class to test conditions
-            //assert there is an audiolistener in the scene
-            //Assert.
+            SceneManager.LoadScene("MainMenu");
+            yield return new WaitForSeconds(2f);
+            //This code below gets the audio currently playing in the scene
+            AudioSource actual = GameObject.Find("MusicObject").GetComponent<AudioSource>();
+            Assert.AreEqual(AudioLibrary.Library.Menu1, actual.clip);
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
-        public IEnumerator HeathTestsWithEnumeratorPasses()
+        public IEnumerator MusicLoopStress()
         {
-            // Use the Assert class to test conditions.
-            // Use yield to skip a frame.
-            yield return null;
+            yield return new WaitForSeconds(1f);
+            GameObject actual = GameObject.Find("MusicObject");     //find AudioObject
+
+            int i = 0;
+            while (i <= 50)
+            {
+                AudioManager.Loop(AudioLibrary.Library.World1);
+                yield return new WaitForSeconds(0.1f);
+                Debug.Log("Number of Audio Objects: " + i);
+                i++;
+            }
+
         }
     }
 }

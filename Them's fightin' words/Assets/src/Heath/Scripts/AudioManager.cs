@@ -6,7 +6,7 @@ public static class AudioManager
 {
     public static void Play(AudioClip audioclip)
     {
-        GameObject audio = new GameObject();
+        GameObject audio = new GameObject("SoundObject");
         AudioSource audioSource = audio.AddComponent<AudioSource>();
         //audioSource.PlayOneShot(audioclip);
         audioSource.clip = audioclip;
@@ -16,7 +16,7 @@ public static class AudioManager
 
     public static void Loop(AudioClip audioclip)
     {
-        GameObject audio = new GameObject();
+        GameObject audio = new GameObject("MusicObject");
         AudioSource audioSource = audio.AddComponent<AudioSource>();
         audioSource.clip = audioclip;
         audioSource.loop = true;
