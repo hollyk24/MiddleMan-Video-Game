@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
@@ -9,16 +10,19 @@ public class playerMovement : MonoBehaviour
     private float speedMultiplier = 1;
     private Controls controls;
     private Transform target;
+
     private bool movementLock = false;
     private bool autoMoveLock = false;
 
     Animator animator;
+    LocTests tileChecks;
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
     private void Start()
     {
         animator = GetComponent<Animator>();
-        // tileMap = GetComponent<TileMaps>();
+        tileChecks = GetComponent<LocTests>();
+        // walkMap = GetComponent<Walkmap>().Tilemap;
         // Debug.Log("In Start function");
         controls = GameManager.CONTROLS;
 
@@ -87,28 +91,32 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
-        animator.SetBool("Walking",true);
-        while (transform.position != end)
-        {
-            // if(tileMap.)
-            transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
-            yield return null;
+        if(tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0))){
+            animator.SetBool("Walking",true);
+            while (transform.position != end)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
+                yield return null;
+            }
+            animator.SetBool("Walking", false);
         }
         movementLock = false;
-        animator.SetBool("Walking", false);
     }
+
     public void runToggle(InputAction.CallbackContext context)
     {
         if (speedMultiplier == 1)
             speedMultiplier = 3;
         else
             speedMultiplier = 1;
-        // autoMoveLoop();
+        setSpeed(1f);
+        autoMoveLoop();
         // Instantiate(this);
     }
 
     public void cloneThisObject()
     {
+        transform.DetachChildren();
         Instantiate(this);
     }
     public void setSpeed(float s)
@@ -122,7 +130,7 @@ public class playerMovement : MonoBehaviour
         {
             setSpeed(1);
             autoMoveLock = true;
-            InvokeRepeating("autoMove", 0.2f, 0.2f);
+            InvokeRepeating("autoMove", 0.000011f, 0.000011f);
         }
         else
         {
@@ -131,31 +139,48 @@ public class playerMovement : MonoBehaviour
             autoMoveLock = false;
         }
     }
+    public void autoMoveSetSpeed(float sm){
+        speedMultiplier = sm;
+        autoMove();
+    }
+
     public void autoMove()
     {
         if (movementLock == false)
         {
             movementLock = true;
+            animator.SetBool("Walking",true);
             AudioManager.Play(AudioLibrary.Library.Move);
             int rand = Random.Range(0, 4);
-            Debug.Log(rand);
+            // Debug.Log("Actual " + 10*transform.position.x);
+            // Debug.Log("Round " + Mathf.Round(10*transform.position.x));
+            // Debug.Log("Centered on tile: "+ Mathf.Approximately((10*transform.position.x)-Mathf.Round(10*transform.position.x),0));
             switch (rand)
             {
                 case 0:
+                    animator.SetTrigger("up");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
                     break;
                 case 1:
+                    animator.SetTrigger("down");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
                     break;
                 case 2:
+                    animator.SetTrigger("right");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
                     break;
                 case 3:
+                    animator.SetTrigger("left");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
                     break;
                 default:
                     break;
             }
+            animator.SetBool("Walking", false);
         }
+    }
+    
+    public void debugOut(string s){
+        Debug.Log(s);
     }
 }

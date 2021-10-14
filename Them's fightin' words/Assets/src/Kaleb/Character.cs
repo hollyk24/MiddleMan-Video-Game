@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
 
     public string combatState;
     public int health = 50;
-    public int speed;
+    public float speed;
     public Rigidbody2D hurtbox;
     public Character enemy;
 
@@ -64,9 +64,9 @@ public class Character : MonoBehaviour
     public void Move(bool forward) {
         combatState = "Move";
         if(forward) {
-            transform.position = new Vector3(0.01f*speed+transform.position.x, transform.position.y, transform.position.z);
+            hurtbox.velocity = new Vector2(speed, 0);
         } else {
-            transform.position = new Vector3(transform.position.x-0.01f*speed, transform.position.y, transform.position.z);
+            hurtbox.velocity = new Vector2(-speed, 0);
         }
     }
 

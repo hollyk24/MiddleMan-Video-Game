@@ -36,28 +36,48 @@ namespace Tests{
 
         }
 
+        [UnityTest]
+        public IEnumerator TextLocationTest(){
+            yield return new WaitForSeconds(2);
+            GameObject Text = GameObject.Find("Title");
+            Vector3 TextPos = GameObject.Find("Title").transform.position;
+
+            Assert.IsTrue((TextPos.x >= -730 && TextPos.x <= 730), TextPos.x.ToString());
+            Assert.IsTrue((TextPos.y <= 400 && TextPos.y >= -400), TextPos.y.ToString());
+            yield return null;
+        }
+/*
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
         [UnityTest]
         public IEnumerator UsernameLength()
         {
+
+            GameObject tb; 
             // Use the Assert class to test conditions.
             // Use yield to skip a frame.
             SceneManager.LoadScene("SettingsMenu");
             yield return new WaitForSeconds(3);
             //GameObject username = GameObject.Find("textDisplay");
-            var textbox = GameObject.Find("textDisplay").GetComponent("Text");
+            //var textbox = GameObject.Find("TextInInput").GetComponent<TextEditor>().text;
+            //var textbox = GetComponent<Text>("textDisplay");
+            tb = GameObject.Find("inputField");
+            string textbox = tb.GetComponent<NameTransfer>().theName;
             yield return new WaitForSeconds(1);
-            textbox.ToString();
+            if(!string.IsNullOrEmpty(textbox)){
+            Debug.Log("input is not empty");
+            }
+            //textbox.ToString();
             //Debug.log(textbox);
-            Assert.AreEqual(textbox, "usernameEx");
+            //Assert.AreNotEqual(textbox, "usernameEx");
 
 
             
 
             yield return null;
         }
-         
+        */ 
+
         [UnityTest]
         public IEnumerator SwitchStressTest()
         {

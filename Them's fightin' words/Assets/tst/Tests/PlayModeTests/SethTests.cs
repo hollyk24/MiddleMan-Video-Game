@@ -9,88 +9,93 @@ namespace Tests
 {
     public class SethTests
     {
-        [SetUp]
-        public void loadScene()
-        {
-            SceneManager.LoadScene("lilyTestScene");
-        }
-        // A Test behaves as an ordinary method
-        // [Test]
-        // public void SethTestsSimplePasses()
-        // {
-        // Use the Assert class to test conditions
-        // }
-
         [UnityTest]
-        public IEnumerator PlayerLocationTest()
+        public IEnumerator PlayerIsCenteredOnTile()
         {
+            // Load Scene
             SceneManager.LoadScene("lilyTestScene");
-            yield return new WaitForSeconds(2);
-            GameObject player = GameObject.Find("PLAYER");
+            yield return new WaitForSeconds(2); // Give scene time to load
 
-            // GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<playerMovement>().autoMoveLoop();
-            // player.speedMultiplier = 10;
-            yield return new WaitForSeconds(5);
-            player.GetComponent<playerMovement>().autoMoveLoop();
-            yield return new WaitForSeconds(1);
-            Vector3 pos = player.transform.position;
-            Assert.IsTrue(Mathf.Approximately(pos.x - Mathf.Round(pos.x), 0.5f), pos.x.ToString()); // Check that location is a whole number.
-            Assert.IsTrue(Mathf.Approximately(pos.y - Mathf.Round(pos.y), 0), pos.y.ToString());
+            // Find PLAYER object
+            GameObject player = GameObject.Find("PLAYER");
+            
+            // Move the player around randomly, and each time
+            //   check that they are centered on a tile
+            for(int i = 0; i < 800; i++){
+                // Move player once super fast
+                player.GetComponent<playerMovement>().autoMoveSetSpeed(1000000000f);
+                // Get their new position
+                Vector3 pos = player.transform.position;
+                // Make sure that's a valid position
+                Assert.IsTrue(Mathf.Approximately((10*pos.x) - Mathf.Round((10*pos.x)), 0), pos.x.ToString()); // Check that location is a whole number.
+                Assert.IsTrue(Mathf.Approximately(pos.y - Mathf.Round(pos.y), 0), pos.y.ToString());
+                // Wait a tad so you don't crash the PC
+                yield return new WaitForSeconds(0.000011f);
+            }
             yield return null;
         }
 
         [UnityTest]
-        public IEnumerator PlayerDiagonalTest()
+        public IEnumerator PlayerMovedDiagonally()
         {
+            // Disclaimer: not entirely sure this code is working how I want it to
+            
+            // Our game is on a grid, so the player should only
+            //   move horizontally or vertically, never diagonally.
+
+            // Load Scene
             SceneManager.LoadScene("lilyTestScene");
             yield return new WaitForSeconds(2);
+
+            // Find PLAYER
             GameObject player = GameObject.Find("PLAYER");
             Rigidbody2D rb;
-            bool movedDiagonally = false;
-            // player.speedMultiplier = 10;
+            bool movedDiagonally = false; // To keep track of any diagonal movement
+            
+            // Make the player start moving randomly around the map
             player.GetComponent<playerMovement>().autoMoveLoop();
-            // yield return new WaitForSeconds(5);
-            float startTime = Time.time;
-            Vector2 movementError = new Vector2(0,0);
-
-            // Unsure if this loop is correct
-            while(Time.time < startTime + 5){
+            for(int i = 0; i < 800; i++){
                 rb = player.GetComponent<Rigidbody2D>();
+
+                // Check if product of X & Y velocity is ever != 0
+                // (either X or Y should always be 0, so their product should also be 0)
                 if (rb.velocity.x * rb.velocity.y != 0)
                 {
-                    // If the product of the velocities is ever not equal to 0, the player moved diagonally.
-                    movementError = new Vector2(rb.velocity.x, rb.velocity.y);
                     movedDiagonally = true;
+                    Assert.IsTrue(movedDiagonally);
                 }
-                yield return new WaitForSeconds(0.01f);
+                // Wait so we don't crash Unity
+                yield return new WaitForSeconds(0.000011f);
             }
-            player.GetComponent<playerMovement>().autoMoveLoop();
-            yield return new WaitForSeconds(1);
-            Assert.IsFalse(movedDiagonally, movementError.ToString());
             yield return null;
         }
-
-        // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-        // `yield return null;` to skip a frame.
 
         [UnityTest]
         public IEnumerator PlayerCountStressTest()
         {
+            // Load the scene
             SceneManager.LoadScene("lilyTestScene");
+            // Wait for scene to load
             yield return new WaitForSeconds(2);
+            // Find player object
             GameObject player = GameObject.Find("PLAYER");
+
+            // Run autoMoveLoop for fun
             player.GetComponent<playerMovement>().autoMoveLoop();
-            int playerCount = 1;
-            float approxFPS;
-            while(true){
-                playerCount++;
-                player.GetComponent<playerMovement>().cloneThisObject();
-                yield return new WaitForSeconds(0.2f);
-                approxFPS = 1/Time.deltaTime;
-                Assert.IsTrue(approxFPS > 30, playerCount.ToString());
-            }
-            // yield return new WaitForSeconds(5);
+            // And make it superfast
+            player.GetComponent<playerMovement>().setSpeed(100000f);
+            int playerCount = 1; // We start with 1 player
+            float approxFPS; // To keep track of FPS (approximately)
+            do{
+                player.GetComponent<playerMovement>().cloneThisObject(); // Clone player object
+                playerCount++; // Increase count
+                approxFPS = 1/Time.deltaTime; // Get approximate FPS
+                yield return new WaitForSeconds(0.005f); // Wait so we don't crash the PC
+            }while(approxFPS > 30); // Loop until FPS is less than 30
+
+            // Log the number of players it took to lower the FPS below 30
+            player.GetComponent<playerMovement>().debugOut(playerCount.ToString());
+            yield return null;
         }
     }
 }
