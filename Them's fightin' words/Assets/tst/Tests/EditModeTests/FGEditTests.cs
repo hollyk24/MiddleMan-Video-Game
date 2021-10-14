@@ -29,10 +29,10 @@ namespace Tests
             Character TestChar = ObjectFactory.AddComponent<Character>(TestBox);
             Vector3 storage = new Vector3(TestChar.transform.position.x, TestChar.transform.position.y, TestChar.transform.position.z);
             TestChar.Move(true);
-            Assert.AreEqual(new Vector3(storage.x+TestChar.speed*0.01f, storage.y, storage.z), TestChar.transform.position, "Moved Forward: + " + TestChar.speed*0.01f);
+            Assert.AreEqual(new Vector3(storage.x+TestChar.speed*0.01f, storage.y, storage.z), TestChar.transform.position, "Moved Forward Failure: + " + 5*0.01f);
             TestChar.Move(false);
             TestChar.Move(false);
-            Assert.AreEqual(new Vector3(storage.x-0.05f, storage.y, storage.z), TestChar.transform.position, "Moved Backward: 0.05f");
+            Assert.AreEqual(new Vector3(storage.x-0.05f, storage.y, storage.z), TestChar.transform.position, "Moved Backward Failure: 0.05f");
             Object.DestroyImmediate(TestBox);
         }
 
@@ -48,7 +48,8 @@ namespace Tests
                     StressChars[i] = ObjectFactory.AddComponent<Character>(StressBoxes[i]);
                     Vector3 storage = new Vector3(StressChars[i].transform.position.x, StressChars[i].transform.position.y, StressChars[i].transform.position.z);
                     StressChars[i].Move(true);
-                    Assert.AreEqual(new Vector3(storage.x+StressChars[i].speed*0.01f, storage.y, storage.z), StressChars[i].transform.position, k + "# runs: Mass Move Forward" + i + ": " + StressChars[i].speed*0.01f);
+                    Assert.AreEqual(new Vector3(storage.x+StressChars[i].speed*0.01f, storage.y, storage.z), StressChars[i].transform.position, k + "# runs: Mass Move Forward" + i + ": " + 5*0.01f);
+                    //Assert.IsTrue((Time.frameCount / Time.time)>45, "FrameRate dipped at " + k + "players."); Stick this in update() for a play test
                 }
                 
                 for(int i = 0; i < k; i++) {
