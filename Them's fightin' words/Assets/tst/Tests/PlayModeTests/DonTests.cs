@@ -23,7 +23,7 @@ namespace Tests
             //Vector3 NPCLoc = GameObject.Find("NPC MATH").GetComponent<Transform>().position;
             //Vector3 ColLoc = new Vector3(NPCLoc.x, NPCLoc.y - 0.5, NPCLoc.z);
             //Walkmap.GetCellCenterWorld(Walkmap.WorldToCell())
-            //GameObject actual = GameObject.Find("Walkable_Path_1");
+            //GameObject actual = GameObject.Find("Walkable_Path");
             //Assert.IsInstanceOf(WalkableTile, actual);
         }
 
