@@ -91,7 +91,7 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
-        if(tileChecks.checkWalkable(end)){
+        if(tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0))){
             animator.SetBool("Walking",true);
             while (transform.position != end)
             {
