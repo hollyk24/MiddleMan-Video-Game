@@ -15,13 +15,13 @@ public class playerMovement : MonoBehaviour
     private bool autoMoveLock = false;
 
     Animator animator;
-    LocTests walkableCheck;
+    LocTests tileChecks;
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
     private void Start()
     {
         animator = GetComponent<Animator>();
-        walkableCheck = GetComponent<LocTests>();
+        tileChecks = GetComponent<LocTests>();
         // walkMap = GetComponent<Walkmap>().Tilemap;
         // Debug.Log("In Start function");
         controls = GameManager.CONTROLS;
@@ -91,7 +91,7 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
-        if(walkableCheck.checkWalkable(end)){
+        if(tileChecks.checkWalkable(end)){
             animator.SetBool("Walking",true);
             while (transform.position != end)
             {
