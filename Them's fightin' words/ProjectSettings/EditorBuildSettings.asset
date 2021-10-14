@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/SettingsMenu.unity
     guid: 664900fb766db498db08b8bb67206650
+  - enabled: 1
+    path: Assets/Scene/CollisionTestScene.unity
+    guid: 81f75cd1c10f4cb4bade844d6a5d2f3d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 182fab6531bb79e44818f6427019c3b2,
       type: 2}
