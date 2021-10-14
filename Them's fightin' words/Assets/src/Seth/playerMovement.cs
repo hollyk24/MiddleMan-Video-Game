@@ -116,6 +116,7 @@ public class playerMovement : MonoBehaviour
 
     public void cloneThisObject()
     {
+        transform.DetachChildren();
         Instantiate(this);
     }
     public void setSpeed(float s)
@@ -177,5 +178,9 @@ public class playerMovement : MonoBehaviour
             }
             animator.SetBool("Walking", false);
         }
+    }
+    
+    public void debugOut(string s){
+        Debug.Log(s);
     }
 }
