@@ -102,12 +102,14 @@ public class playerMovement : MonoBehaviour
         }
         movementLock = false;
     }
+
     public void runToggle(InputAction.CallbackContext context)
     {
         if (speedMultiplier == 1)
             speedMultiplier = 3;
         else
             speedMultiplier = 1;
+        setSpeed(1f);
         autoMoveLoop();
         // Instantiate(this);
     }
@@ -127,7 +129,7 @@ public class playerMovement : MonoBehaviour
         {
             setSpeed(1);
             autoMoveLock = true;
-            InvokeRepeating("autoMove", 0.2f, 0.2f);
+            InvokeRepeating("autoMove", 0.000011f, 0.000011f);
         }
         else
         {
@@ -136,6 +138,11 @@ public class playerMovement : MonoBehaviour
             autoMoveLock = false;
         }
     }
+    public void autoMoveSetSpeed(float sm){
+        speedMultiplier = sm;
+        autoMove();
+    }
+
     public void autoMove()
     {
         if (movementLock == false)
@@ -146,19 +153,23 @@ public class playerMovement : MonoBehaviour
             int rand = Random.Range(0, 4);
             // Debug.Log("Actual " + 10*transform.position.x);
             // Debug.Log("Round " + Mathf.Round(10*transform.position.x));
-            Debug.Log("Centered on tile: "+ Mathf.Approximately((10*transform.position.x)-Mathf.Round(10*transform.position.x),0));
+            // Debug.Log("Centered on tile: "+ Mathf.Approximately((10*transform.position.x)-Mathf.Round(10*transform.position.x),0));
             switch (rand)
             {
                 case 0:
+                    animator.SetTrigger("up");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
                     break;
                 case 1:
+                    animator.SetTrigger("down");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
                     break;
                 case 2:
+                    animator.SetTrigger("right");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
                     break;
                 case 3:
+                    animator.SetTrigger("left");
                     StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
                     break;
                 default:
