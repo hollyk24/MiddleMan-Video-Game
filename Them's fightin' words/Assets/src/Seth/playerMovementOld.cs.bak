@@ -17,21 +17,7 @@ public class playerMovement : MonoBehaviour
     Animator animator;
     LocTests tileChecks;
 
-    Vector3 dir = Vector3.zero;
-    //
-
-        // Make it move X meters per second instead of X meters per frame...
-        // dir *= Time.deltaTime;
-
-        // Move object
-        // transform.Translate(dir * speed);
-    //
-
-
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
-    void Awake(){
-        StartCoroutine(motionControls());
-    }
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -58,17 +44,6 @@ public class playerMovement : MonoBehaviour
         RightInput.Enable();
         runToggleInput.Enable();
     }
-
-    void FixedUpdate(){
-        dir.x = Input.acceleration.x;
-        dir.y = Input.acceleration.y;
-        // Debug.Log(dir.x.ToString());
-
-        // clamp acceleration vector to the unit sphere
-        if (dir.sqrMagnitude > 1)
-            dir.Normalize();
-    }
-
     private void OnDestroy() {
         UpInput.performed -= moveUp;
         DownInput.performed -= moveDown;
@@ -207,24 +182,5 @@ public class playerMovement : MonoBehaviour
     
     public void debugOut(string s){
         Debug.Log(s);
-    }
-
-    IEnumerator motionControls(){
-        while(true){
-            Debug.Log(movementLock == true ? 1 : 0);
-            yield return new WaitForSeconds(0.75f);
-            if(movementLock == false){
-                // Debug.Log(dir.x);
-                movementLock = true;
-                if(dir.x > 0){
-                    animator.SetTrigger("right");
-                    Debug.Log("dir.x is greater than 0");
-                    StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
-                }
-                else{
-                    Debug.Log("X is less than 0");
-                }
-            }
-        }
     }
 }
