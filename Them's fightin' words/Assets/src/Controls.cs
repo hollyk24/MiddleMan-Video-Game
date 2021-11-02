@@ -65,6 +65,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""TouchPress"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8982181-1eae-4ec1-a1b9-1b14787a9072"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -83,17 +91,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""94973c18-9963-4953-88b4-a58ff0673ae6"",
                     ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9113413a-585c-42db-8d27-1ff990bb8117"",
-                    ""path"": ""<Touchscreen>/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -136,30 +133,8 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""caaffa6e-782c-41a2-8980-02b34d3f68c2"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""moveUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""23941917-ca14-46a3-aead-60d0aa025628"",
                     ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""moveDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ab50dab4-b5b5-49db-ace4-d6915d098741"",
-                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -202,17 +177,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c6afe75f-d8bd-4cad-8bf8-bcfe1f32f3a5"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""moveRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f753ec2b-5288-4b3f-899d-6888630baaf2"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -235,12 +199,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""41d1e299-dd7b-4208-98b1-db0ff17f7e10"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""id"": ""6a8b23c4-f112-45dc-a63d-7a0fd9f1fd27"",
+                    ""path"": ""<Touchscreen>/press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""moveLeft"",
+                    ""groups"": ""Smartphone"",
+                    ""action"": ""TouchPress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -345,7 +309,13 @@ public class @Controls : IInputActionCollection, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Smartphone"",
+            ""bindingGroup"": ""Smartphone"",
+            ""devices"": []
+        }
+    ]
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
@@ -355,6 +325,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_moveDown = m_Player.FindAction("moveDown", throwIfNotFound: true);
         m_Player_moveRight = m_Player.FindAction("moveRight", throwIfNotFound: true);
         m_Player_moveLeft = m_Player.FindAction("moveLeft", throwIfNotFound: true);
+        m_Player_TouchPress = m_Player.FindAction("TouchPress", throwIfNotFound: true);
         // Conversation
         m_Conversation = asset.FindActionMap("Conversation", throwIfNotFound: true);
         m_Conversation_Op1 = m_Conversation.FindAction("Op1", throwIfNotFound: true);
@@ -415,6 +386,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_moveDown;
     private readonly InputAction m_Player_moveRight;
     private readonly InputAction m_Player_moveLeft;
+    private readonly InputAction m_Player_TouchPress;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -425,6 +397,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @moveDown => m_Wrapper.m_Player_moveDown;
         public InputAction @moveRight => m_Wrapper.m_Player_moveRight;
         public InputAction @moveLeft => m_Wrapper.m_Player_moveLeft;
+        public InputAction @TouchPress => m_Wrapper.m_Player_TouchPress;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -452,6 +425,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @moveLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
                 @moveLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
                 @moveLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
+                @TouchPress.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchPress;
+                @TouchPress.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchPress;
+                @TouchPress.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTouchPress;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -474,6 +450,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @moveLeft.started += instance.OnMoveLeft;
                 @moveLeft.performed += instance.OnMoveLeft;
                 @moveLeft.canceled += instance.OnMoveLeft;
+                @TouchPress.started += instance.OnTouchPress;
+                @TouchPress.performed += instance.OnTouchPress;
+                @TouchPress.canceled += instance.OnTouchPress;
             }
         }
     }
@@ -527,6 +506,15 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public ConversationActions @Conversation => new ConversationActions(this);
+    private int m_SmartphoneSchemeIndex = -1;
+    public InputControlScheme SmartphoneScheme
+    {
+        get
+        {
+            if (m_SmartphoneSchemeIndex == -1) m_SmartphoneSchemeIndex = asset.FindControlSchemeIndex("Smartphone");
+            return asset.controlSchemes[m_SmartphoneSchemeIndex];
+        }
+    }
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
@@ -535,6 +523,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMoveDown(InputAction.CallbackContext context);
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
+        void OnTouchPress(InputAction.CallbackContext context);
     }
     public interface IConversationActions
     {

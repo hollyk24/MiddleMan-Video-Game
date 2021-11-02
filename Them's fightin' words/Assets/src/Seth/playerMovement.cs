@@ -20,16 +20,17 @@ public class playerMovement : MonoBehaviour
     Vector3 dir = Vector3.zero;
     //
 
-        // Make it move X meters per second instead of X meters per frame...
-        // dir *= Time.deltaTime;
+    // Make it move X meters per second instead of X meters per frame...
+    // dir *= Time.deltaTime;
 
-        // Move object
-        // transform.Translate(dir * speed);
+    // Move object
+    // transform.Translate(dir * speed);
     //
 
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
-    void Awake(){
+    void Awake()
+    {
         StartCoroutine(motionControls());
     }
     private void Start()
@@ -59,7 +60,8 @@ public class playerMovement : MonoBehaviour
         runToggleInput.Enable();
     }
 
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
         dir.x = Input.acceleration.x;
         dir.y = Input.acceleration.y;
         // Debug.Log(dir.x.ToString());
@@ -69,7 +71,8 @@ public class playerMovement : MonoBehaviour
             dir.Normalize();
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         UpInput.performed -= moveUp;
         DownInput.performed -= moveDown;
         LeftInput.performed -= moveLeft;
@@ -116,8 +119,9 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
-        if(tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0))){
-            animator.SetBool("Walking",true);
+        if (tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0)))
+        {
+            animator.SetBool("Walking", true);
             while (transform.position != end)
             {
                 transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
@@ -164,7 +168,8 @@ public class playerMovement : MonoBehaviour
             autoMoveLock = false;
         }
     }
-    public void autoMoveSetSpeed(float sm){
+    public void autoMoveSetSpeed(float sm)
+    {
         speedMultiplier = sm;
         autoMove();
     }
@@ -174,7 +179,7 @@ public class playerMovement : MonoBehaviour
         if (movementLock == false)
         {
             movementLock = true;
-            animator.SetBool("Walking",true);
+            animator.SetBool("Walking", true);
             AudioManager.Play(AudioLibrary.Library.Move);
             int rand = Random.Range(0, 4);
             // Debug.Log("Actual " + 10*transform.position.x);
@@ -204,26 +209,53 @@ public class playerMovement : MonoBehaviour
             animator.SetBool("Walking", false);
         }
     }
-    
-    public void debugOut(string s){
+
+    public void debugOut(string s)
+    {
         Debug.Log(s);
     }
 
-    IEnumerator motionControls(){
-        while(true){
-            Debug.Log(movementLock == true ? 1 : 0);
-            yield return new WaitForSeconds(0.75f);
-            if(movementLock == false){
+    IEnumerator motionControls()
+    {
+        yield return new WaitForSeconds(0.25f);
+        while (true)
+        {
+            // Debug.Log(movementLock == true ? 1 : 0);
+            if (movementLock == false)
+            {
                 // Debug.Log(dir.x);
                 movementLock = true;
-                if(dir.x > 0){
-                    animator.SetTrigger("right");
-                    Debug.Log("dir.x is greater than 0");
-                    StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
+                // Debug.Log(dir.ToString());
+                if (Mathf.Abs(dir.x) >= 0.125)
+                {
+                    if (dir.x > 0.125)
+                    {
+                        animator.SetTrigger("right");
+                        // Debug.Log("dir.x is greater than 0");
+                        StartCoroutine(movePlayerTowards(transform.position + new Vector3(1, 0, 0)));
+                    }
+                    else if (dir.x < -0.125)
+                    {
+                        animator.SetTrigger("left");
+                        // Debug.Log("dir.x is less than 0");
+                        StartCoroutine(movePlayerTowards(transform.position + new Vector3(-1, 0, 0)));
+                    }
                 }
-                else{
-                    Debug.Log("X is less than 0");
+                else
+                {
+                    if (dir.y > -0.3)
+                    {
+                        animator.SetTrigger("up");
+                        StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, 1, 0)));
+                    }
+                    else if (dir.y < -0.5)
+                    {
+                        animator.SetTrigger("down");
+                        StartCoroutine(movePlayerTowards(transform.position + new Vector3(0, -1, 0)));
+                    }
                 }
+                yield return new WaitForSeconds(0.325f);
+                movementLock = false;
             }
         }
     }
