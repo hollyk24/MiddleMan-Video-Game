@@ -18,6 +18,7 @@ public class playerMovement : MonoBehaviour
     LocTests tileChecks;
 
     Vector3 dir = Vector3.zero;
+    bool motionEnabled = false;
     //
 
     // Make it move X meters per second instead of X meters per frame...
@@ -31,7 +32,9 @@ public class playerMovement : MonoBehaviour
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
     void Awake()
     {
-        StartCoroutine(motionControls());
+        if(motionEnabled == true){
+            StartCoroutine(motionControls());
+        }
     }
     private void Start()
     {
