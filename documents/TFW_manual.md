@@ -10,7 +10,7 @@ Them’s Fightin’ Words is a unique video game that combines an open-world gen
 **1, 2, 3:** Select speech options
 *Minigame controls will vary*
 ## Xbox
-### **Gamepad**
+**Gamepad**
 **D-Pad:** Movement around the map
 **East button:** Interact
 **Left Bumper:** Toggle run
