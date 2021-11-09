@@ -14,7 +14,6 @@ public class playerMovement : MonoBehaviour
 
     private bool movementLock = false;
     private bool autoMoveLock = false;
-    private
 
     Animator animator;
     LocTests tileChecks;
@@ -22,7 +21,7 @@ public class playerMovement : MonoBehaviour
     // movementTracker_singleton movementTracker;
 
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
-    
+
     public static playerMovement Instance
     {
         get
@@ -43,6 +42,7 @@ public class playerMovement : MonoBehaviour
     private void Awake()
     {
 
+        // This section keeps only one playerMovement script in existence at all times
         if (instance == null)
         {
             instance = this as playerMovement;
