@@ -7,7 +7,17 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
-    
+    static MainMenu instance;
+
+    void Awake(){
+        if (instance != null){
+            Destroy(gameObject);
+        }
+        else{
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     public void StartGame(){
         SceneManager.LoadScene("lilyTestScene");
