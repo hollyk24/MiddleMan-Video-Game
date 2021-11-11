@@ -241,7 +241,6 @@ MonoBehaviour:
   speed: 1
   hurtbox: {fileID: 713204611}
   enemy: {fileID: 1667447079}
-  audioSource: {fileID: 0}
 --- !u!50 &713204611
 Rigidbody2D:
   serializedVersion: 4
@@ -558,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 1487042046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.328, y: -4.304, z: 0}
-  m_LocalScale: {x: 31.06128, y: 1.9628555, z: 1}
+  m_LocalScale: {x: 100, y: 1.9628555, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5

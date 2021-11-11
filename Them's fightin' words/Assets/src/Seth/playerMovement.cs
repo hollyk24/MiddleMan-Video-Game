@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
+    private static playerMovement instance;
     public float speed = 1f;
     private float speedMultiplier = 1;
     private Controls controls;
@@ -17,11 +18,47 @@ public class playerMovement : MonoBehaviour
     Animator animator;
     LocTests tileChecks;
 
+    // movementTracker_singleton movementTracker;
+
     InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
+
+    public static playerMovement Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<playerMovement>();
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject();
+                    obj.name = typeof(playerMovement).Name;
+                    instance = obj.AddComponent<playerMovement>();
+                }
+            }
+            return instance;
+        }
+    }
+    private void Awake()
+    {
+
+        // This section keeps only one playerMovement script in existence at all times
+        if (instance == null)
+        {
+            instance = this as playerMovement;
+            // DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();
         tileChecks = GetComponent<LocTests>();
+        // movementTracker = GetComponent<movementTracker_singleton>();
         // walkMap = GetComponent<Walkmap>().Tilemap;
         // Debug.Log("In Start function");
         controls = GameManager.CONTROLS;
@@ -44,7 +81,8 @@ public class playerMovement : MonoBehaviour
         RightInput.Enable();
         runToggleInput.Enable();
     }
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         UpInput.performed -= moveUp;
         DownInput.performed -= moveDown;
         LeftInput.performed -= moveLeft;
@@ -91,8 +129,10 @@ public class playerMovement : MonoBehaviour
     public IEnumerator movePlayerTowards(Vector3 end)
     {
         AudioManager.Play(AudioLibrary.Library.Move);
-        if(tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0))){
-            animator.SetBool("Walking",true);
+        if (tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0)))
+        {
+            animator.SetBool("Walking", true);
+            // movementTracker.UpdatePlayerLocation(end.x, end.y);
             while (transform.position != end)
             {
                 transform.position = Vector3.MoveTowards(transform.position, end, speed * Time.deltaTime * speedMultiplier);
@@ -139,7 +179,8 @@ public class playerMovement : MonoBehaviour
             autoMoveLock = false;
         }
     }
-    public void autoMoveSetSpeed(float sm){
+    public void autoMoveSetSpeed(float sm)
+    {
         speedMultiplier = sm;
         autoMove();
     }
@@ -149,7 +190,7 @@ public class playerMovement : MonoBehaviour
         if (movementLock == false)
         {
             movementLock = true;
-            animator.SetBool("Walking",true);
+            animator.SetBool("Walking", true);
             AudioManager.Play(AudioLibrary.Library.Move);
             int rand = Random.Range(0, 4);
             // Debug.Log("Actual " + 10*transform.position.x);
@@ -176,11 +217,13 @@ public class playerMovement : MonoBehaviour
                 default:
                     break;
             }
+            // movementTracker.playerLocation = new Vector3(0, 0, 0);
             animator.SetBool("Walking", false);
         }
     }
-    
-    public void debugOut(string s){
+
+    public void debugOut(string s)
+    {
         Debug.Log(s);
     }
 }

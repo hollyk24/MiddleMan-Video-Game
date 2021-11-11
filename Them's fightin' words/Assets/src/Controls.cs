@@ -288,6 +288,134 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""minigame_snake"",
+            ""id"": ""343f18c2-84a8-4365-a5ce-c2e261b915b6"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8d2764f-f6c9-4a03-9301-daf5cc419af6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ed259b4-1e44-406a-ab29-b8cf43a83411"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e25c4e3-d4a0-4d0f-a6d1-0f63c99d718b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""14cd53bd-1d2e-4e58-b6f0-02d3e8a6153f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""219c5b74-89bd-4471-a3c6-876b90cf5863"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77af0411-6534-4bbf-a6a0-b2f607cb7bba"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c2d65f9-f579-476b-9f00-3a2287e52bfc"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bccc577-2767-422b-b2ef-b53d3390a939"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6342a4bb-0a16-4f65-8749-3100ad9ef6d6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e8a5720-6edd-4dbe-b956-a3a26f16b5e6"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7a8eb96-18cc-4920-bcaa-1e3f56463a51"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17177f66-db96-46ed-bdcb-743b8e580dcf"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -305,6 +433,12 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Conversation_Op1 = m_Conversation.FindAction("Op1", throwIfNotFound: true);
         m_Conversation_Op2 = m_Conversation.FindAction("Op2", throwIfNotFound: true);
         m_Conversation_Op3 = m_Conversation.FindAction("Op3", throwIfNotFound: true);
+        // minigame_snake
+        m_minigame_snake = asset.FindActionMap("minigame_snake", throwIfNotFound: true);
+        m_minigame_snake_Up = m_minigame_snake.FindAction("Up", throwIfNotFound: true);
+        m_minigame_snake_Down = m_minigame_snake.FindAction("Down", throwIfNotFound: true);
+        m_minigame_snake_Left = m_minigame_snake.FindAction("Left", throwIfNotFound: true);
+        m_minigame_snake_Right = m_minigame_snake.FindAction("Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -472,6 +606,63 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public ConversationActions @Conversation => new ConversationActions(this);
+
+    // minigame_snake
+    private readonly InputActionMap m_minigame_snake;
+    private IMinigame_snakeActions m_Minigame_snakeActionsCallbackInterface;
+    private readonly InputAction m_minigame_snake_Up;
+    private readonly InputAction m_minigame_snake_Down;
+    private readonly InputAction m_minigame_snake_Left;
+    private readonly InputAction m_minigame_snake_Right;
+    public struct Minigame_snakeActions
+    {
+        private @Controls m_Wrapper;
+        public Minigame_snakeActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Up => m_Wrapper.m_minigame_snake_Up;
+        public InputAction @Down => m_Wrapper.m_minigame_snake_Down;
+        public InputAction @Left => m_Wrapper.m_minigame_snake_Left;
+        public InputAction @Right => m_Wrapper.m_minigame_snake_Right;
+        public InputActionMap Get() { return m_Wrapper.m_minigame_snake; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(Minigame_snakeActions set) { return set.Get(); }
+        public void SetCallbacks(IMinigame_snakeActions instance)
+        {
+            if (m_Wrapper.m_Minigame_snakeActionsCallbackInterface != null)
+            {
+                @Up.started -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnDown;
+                @Left.started -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_Minigame_snakeActionsCallbackInterface.OnRight;
+            }
+            m_Wrapper.m_Minigame_snakeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
+            }
+        }
+    }
+    public Minigame_snakeActions @minigame_snake => new Minigame_snakeActions(this);
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
@@ -486,5 +677,12 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnOp1(InputAction.CallbackContext context);
         void OnOp2(InputAction.CallbackContext context);
         void OnOp3(InputAction.CallbackContext context);
+    }
+    public interface IMinigame_snakeActions
+    {
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
 }
