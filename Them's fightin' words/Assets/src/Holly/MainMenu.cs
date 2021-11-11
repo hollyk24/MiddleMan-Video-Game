@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void InstructionsGame(){
-        //SceneManager.LoadScene("InstructionsMenu");
+        SceneManager.LoadScene("InstructionsMenu");
         //Debug.Log("Instructions");
     }
 
