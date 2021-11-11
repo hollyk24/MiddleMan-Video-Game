@@ -15,6 +15,8 @@ public class playerMovement : MonoBehaviour
     private bool movementLock = false;
     private bool autoMoveLock = false;
 
+
+
     Animator animator;
     LocTests tileChecks;
 
@@ -226,4 +228,5 @@ public class playerMovement : MonoBehaviour
     {
         Debug.Log(s);
     }
+
 }

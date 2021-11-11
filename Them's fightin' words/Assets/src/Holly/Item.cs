@@ -1,4 +1,4 @@
-/*
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +6,12 @@ using UnityEngine;
 public class Item 
 {
    public enum ItemType{
-       HealthPosition,
+       HealthPotion,
        Food,
        Medkit,
-       PowerPosition,
+       PowerPotion,
    }
 
    public ItemType itemType;
    public int amount;
 }
-*/

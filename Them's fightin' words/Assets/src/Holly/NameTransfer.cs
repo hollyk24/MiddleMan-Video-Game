@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,39 +10,26 @@ public class NameTransfer : MonoBehaviour
     public GameObject inputField;
     public GameObject textDisplay;
     public InputField example;
-    public string textInInput = "usernameEx";
-    
+    public string textInput = "usernameEx";
 
-    public void StoreName(){
+    public void StoreName() {
         theName = inputField.GetComponent<Text>().text;
 
         string ReceivedString = theName;
-        //Debug.Log(ReceivedString);
-        if(string.IsNullOrEmpty(theName)){
-            Debug.Log("input is empty");
-            theName = textInInput;
+        if (string.IsNullOrEmpty(theName)) {
+            Debug.Log("input is Empty");
+            theName = textInput;
             Debug.Log(theName);
             textDisplay.GetComponent<Text>().text = theName;
         }
 
-        else if(ReceivedString.All(char.IsLetterOrDigit)){
-           //if(string.IsNullOrEmpty(theName)){
+        else if (ReceivedString.All(char.IsLetterOrDigit)) {
             Debug.Log("allowed");
-            textDisplay.GetComponent<Text>().text = "Welcome " + theName + " to the game";
-        } else {
+            textDisplay.GetComponent<Text>().text = "Welcome " + theName + ", to the game";
+        }
+        else {
             Debug.Log("not allowed");
             textDisplay.GetComponent<Text>().text = theName + " is an invalid username";
-           }   
-        
-    }    
-/*
-  //For testing
-  public void autoName(){
-      if(string.IsNullOrEmpty(theName)){
-          example.text = textInInput;
-          Debug.Log("Input is empty");    
-      }
-  }   
-*/
-
+        }
+    }
 }
