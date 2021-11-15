@@ -6,6 +6,9 @@ TagManager:
   tags:
   - NPC
   - Trigger
+  - snake_Fruit
+  - snake_Wall
+  - snake_Body
   layers:
   - Default
   - TransparentFX
