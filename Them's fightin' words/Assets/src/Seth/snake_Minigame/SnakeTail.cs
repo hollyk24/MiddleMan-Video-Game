@@ -4,49 +4,57 @@ using UnityEngine;
 
 public class SnakeTail : MonoBehaviour
 {
-    // [SerializeField] private GameObject snakeHead;
     [SerializeField] private GameObject snakeBodyPrefab;
-    private bool isTail = true;
+    public SnakeManager SM;
+    public bool isTail = false;
     public Vector3 lastPosition;
-    private GameObject snakeChild;
-    // public SnakeTail(Vector2 pos)
-    // {
-    // transform.position = pos;
-    // }
+    [SerializeField] public GameObject prevSegment;
+    [SerializeField] public GameObject nextSegment;
+    [SerializeField] public GameObject Snake;
+    public SnakeTail nextSegmentTailCode;
     void Start()
     {
-        if (transform.parent != null)
+        SM = GetComponentInParent<SnakeManager>();
+
+        if (nextSegment == null)
         {
-            StartCoroutine(snakeBodyMovement());
+            isTail = true;
+            transform.position = prevSegment.GetComponent<SnakeTail>().lastPosition;
         }
-        else { isTail = false; };
+        else
+        {
+            isTail = false;
+            nextSegmentTailCode = nextSegment.GetComponent<SnakeTail>();
+        }
     }
     public void AddSegment()
     {
         if (isTail)
         {
-            // Add new tail here
             isTail = false;
-            snakeChild = Instantiate(snakeBodyPrefab, new Vector3(lastPosition.x,lastPosition.y,0), Quaternion.identity) as GameObject;
-            snakeChild.transform.SetParent(transform);
-            // } else (snakeChild.SnakeTail.AddSegment());
+            nextSegment = Instantiate(snakeBodyPrefab, new Vector3(lastPosition.x, lastPosition.y, -2), Quaternion.identity) as GameObject;
+            nextSegmentTailCode = nextSegment.GetComponent<SnakeTail>();
+            nextSegmentTailCode.prevSegment = prevSegment.GetComponent<SnakeTail>().nextSegment;
+            nextSegment.transform.SetParent(Snake.transform);
+        }
+        else
+        {
+            nextSegmentTailCode.AddSegment();
         }
     }
-    // Update is called once per frame
-    // void Update()
-    // {
-
-    // }
-
-    public IEnumerator snakeBodyMovement()
+    public void moveSegment()
     {
-        yield return new WaitForSeconds(0.3f);
-        while (transform.root.GetComponent<snakeHead>().gameOver == false)
-        {
-            lastPosition = transform.position;
-            // Debug.Log("lastPosition:  " + lastPosition.ToString());
-            transform.position = transform.parent.GetComponent<SnakeTail>().lastPosition;
-            yield return new WaitForSeconds(0.6f);
-        }
+        lastPosition = transform.position;
+        if (prevSegment != null)
+            transform.position = prevSegment.GetComponent<SnakeTail>().lastPosition;
+        if (!isTail)
+            nextSegment.GetComponent<SnakeTail>().moveSegment();
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "snake_Body" || col.gameObject.tag == "snake_Wall"){
+            SM.GAMEOVER();
+        }   
+        // Debug.Log("OnTriggerEnter2D: "+col.gameObject.tag);
     }
 }

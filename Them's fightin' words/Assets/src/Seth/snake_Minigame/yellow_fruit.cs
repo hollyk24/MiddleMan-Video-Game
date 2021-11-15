@@ -6,6 +6,7 @@ public class yellow_fruit : snake_fruit
 {
     public override void fruitSetup()
     {
-        points = 3;
+        points = 300;
+        duration = 3;
     }
 }

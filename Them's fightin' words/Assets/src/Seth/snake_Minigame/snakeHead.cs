@@ -5,16 +5,19 @@ using UnityEngine.InputSystem;
 
 public class snakeHead : MonoBehaviour
 {
+    private SnakeManager SM;
     private Controls controls;
     private SnakeTail tailCode;
-    public bool gameOver = false;
+    private SnakeTail tailCodeNext;
+    public int SnakeTailQueue = 3;
     private int Direction = 0;
     private int PrevDir = 0;
     // 0:Up 1:Down 2:Left 3:Right
-    [SerializeField] private GameObject gameOverPanel;
+
     InputAction UpInput, DownInput, LeftInput, RightInput;
     void Start()
     {
+        SM = transform.parent.GetComponent<SnakeManager>();
         controls = SnakeManager.CONTROLS;
 
         UpInput = controls.minigame_snake.Up;
@@ -32,11 +35,13 @@ public class snakeHead : MonoBehaviour
         LeftInput.Enable();
         RightInput.Enable();
 
-        // gameObject.AddComponent<BoxCollider2D>();
-        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        // Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         tailCode = gameObject.GetComponent<SnakeTail>();
         tailCode.lastPosition = transform.position;
+        // tailCode.isTail = false;
+        tailCodeNext = tailCode.nextSegment.GetComponent<SnakeTail>();
         StartCoroutine(movementListener());
+        // StartCoroutine(addSegmentLoop());
     }
     private void OnDestroy()
     {
@@ -46,20 +51,11 @@ public class snakeHead : MonoBehaviour
         RightInput.performed -= faceRight;
     }
 
-    // void OnTriggerEnter2D(Collider2D col)
-    // // void OnTriggerExit2D(Collider2D col)
-    // {
-    //     Debug.Log("OnTriggerExit2D");
-    //     gameOver = true;
-    //     gameOverPanel.SetActive(true);
-    // }
-
     private void faceUp(InputAction.CallbackContext context)
     {
         if ((Direction == 2 || Direction == 3) && PrevDir != 1)
             Direction = 0;
     }
-
     private void faceDown(InputAction.CallbackContext context)
     {
         if ((Direction == 2 || Direction == 3) && PrevDir != 0)
@@ -79,7 +75,6 @@ public class snakeHead : MonoBehaviour
     private void moveSnake(int Dir)
     {
         Vector3 pos = transform.position;
-        // Debug.Log(pos.ToString());
         switch (Dir)
         {
             case 0:
@@ -101,16 +96,27 @@ public class snakeHead : MonoBehaviour
             default:
                 break;
         }
+        if(SnakeTailQueue > 0){
+            SnakeTailQueue--;
+            SM.LengthenSnake();
+            Debug.Log("Lengthening Snake");
+        }
     }
 
     public IEnumerator movementListener()
     {
-        while (gameOver != true)
+        // yield return new WaitForSeconds(2);
+        while (SM.GameOver != true)
         {
             // Debug.Log("Direction:  " + Direction.ToString());
             tailCode.lastPosition = transform.position;
             moveSnake(Direction);
+            tailCodeNext.moveSegment();
             yield return new WaitForSeconds(0.25f);
         }
+    }
+    public void addSnakeSegment()
+    {
+        tailCodeNext.AddSegment();
     }
 }
