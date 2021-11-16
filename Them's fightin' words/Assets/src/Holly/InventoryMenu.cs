@@ -10,10 +10,12 @@ public class Inventory
     public Inventory(){
         itemList = new List<Item>();
 
+        /*
         AddItem(new Item { itemType = Item.ItemType.Medkit, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Food, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.PowerPotion, amount = 1 });
+        */
         Debug.Log(itemList.Count);
 
         Debug.Log("Inventory");
@@ -21,6 +23,10 @@ public class Inventory
 
     public void AddItem(Item item){
         itemList.Add(item);
+    }
+
+    public void RemoveItem() {
+        itemList.RemoveAt(0);
     }
 
     public List<Item> GetItemList() {

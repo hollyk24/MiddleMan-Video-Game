@@ -64,8 +64,6 @@ public class Interactable : MonoBehaviour{
      * Any child's functionality with interacting will start here
      * 
      * 
-     * In ALL functions that are called by a keypress have an inRange check,
-     * or errors WILL happen as it will call on multiple instances of this, instead of just this one
      */
     public virtual void Interacted(InputAction.CallbackContext obj) {
         popUp.SetActive(false);

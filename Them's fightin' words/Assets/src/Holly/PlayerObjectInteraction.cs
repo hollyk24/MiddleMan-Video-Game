@@ -6,12 +6,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerObjectInteraction : MonoBehaviour
 {
-    [SerializeField] private UI_Inventory uiInventory;
 
     private Inventory inventory;
 
-    private void Awake() {
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+    private void Start() {
+        //GameManager.inventory.AddItem(null);
+
+        Debug.Log(inventory == null);
+        Debug.Log(GameManager.uiInventory == null);
+
+        GameManager.uiInventory.SetInventory(inventory);
     }
 }
