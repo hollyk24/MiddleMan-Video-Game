@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 // using UnityEngine;
@@ -8,6 +8,7 @@ public class PlayerObjectInteraction : MonoBehaviour
 {
 
     private Inventory inventory;
+ 
 
     private void Start() {
         //GameManager.inventory.AddItem(null);
@@ -16,5 +17,8 @@ public class PlayerObjectInteraction : MonoBehaviour
         Debug.Log(GameManager.uiInventory == null);
 
         GameManager.uiInventory.SetInventory(inventory);
+
+   
     }
 }
+*/

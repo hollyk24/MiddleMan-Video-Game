@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     public static GameObject PLAYUI;
     public static Slider AngerBar;
 
-    public static UI_Inventory uiInventory;
-    public static Inventory inventory;
+    //public static UI_Inventory uiInventory;
+    //public static Inventory inventory;
     private void Awake() {
         if (GM != null) GM = this;
         else Destroy(this);
@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
         PLAYUI = FindObjectOfType<Canvas>().transform.Find("PlayerChat").gameObject;
         AngerBar = FindObjectOfType<Canvas>().transform.Find("AngerMeter").GetComponent<Slider>();
 
-        uiInventory = FindObjectOfType<UI_Inventory>();
-        inventory = new Inventory();
+       // uiInventory = FindObjectOfType<UI_Inventory>();
+        //inventory = new Inventory();
     }
 
 

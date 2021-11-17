@@ -65,6 +65,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fe9e567-99f2-49f1-9715-b006c8bf474c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -186,6 +194,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""moveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f093c62-b0ad-4fa1-ad80-397418bfe326"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3d948e8-16dc-45c8-90b0-a8bc98dff76a"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -428,6 +458,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_moveDown = m_Player.FindAction("moveDown", throwIfNotFound: true);
         m_Player_moveRight = m_Player.FindAction("moveRight", throwIfNotFound: true);
         m_Player_moveLeft = m_Player.FindAction("moveLeft", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         // Conversation
         m_Conversation = asset.FindActionMap("Conversation", throwIfNotFound: true);
         m_Conversation_Op1 = m_Conversation.FindAction("Op1", throwIfNotFound: true);
@@ -494,6 +525,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_moveDown;
     private readonly InputAction m_Player_moveRight;
     private readonly InputAction m_Player_moveLeft;
+    private readonly InputAction m_Player_Inventory;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -504,6 +536,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @moveDown => m_Wrapper.m_Player_moveDown;
         public InputAction @moveRight => m_Wrapper.m_Player_moveRight;
         public InputAction @moveLeft => m_Wrapper.m_Player_moveLeft;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -531,6 +564,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @moveLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
                 @moveLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
                 @moveLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
+                @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -553,6 +589,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @moveLeft.started += instance.OnMoveLeft;
                 @moveLeft.performed += instance.OnMoveLeft;
                 @moveLeft.canceled += instance.OnMoveLeft;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
             }
         }
     }
@@ -671,6 +710,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMoveDown(InputAction.CallbackContext context);
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
     public interface IConversationActions
     {
