@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnakeTail : MonoBehaviour
 {
     [SerializeField] private GameObject snakeBodyPrefab;
-    public SnakeManager SM;
+    SnakeManager SM;
     public bool isTail = false;
     public Vector3 lastPosition;
     [SerializeField] public GameObject prevSegment;
@@ -52,7 +52,7 @@ public class SnakeTail : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "snake_Body" || col.gameObject.tag == "snake_Wall"){
+        if(col.gameObject.tag == "snake_Head" || col.gameObject.tag == "snake_Wall"){
             SM.GAMEOVER();
         }   
         // Debug.Log("OnTriggerEnter2D: "+col.gameObject.tag);

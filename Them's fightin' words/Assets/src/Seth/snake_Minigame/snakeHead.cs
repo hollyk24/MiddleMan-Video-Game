@@ -112,7 +112,7 @@ public class snakeHead : MonoBehaviour
             tailCode.lastPosition = transform.position;
             moveSnake(Direction);
             tailCodeNext.moveSegment();
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.12f);
         }
     }
     public void addSnakeSegment()
