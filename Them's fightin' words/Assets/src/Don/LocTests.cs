@@ -12,8 +12,8 @@ public class LocTests : MonoBehaviour
         //Debug.Log(collider);
         if(collider != null)
         {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
