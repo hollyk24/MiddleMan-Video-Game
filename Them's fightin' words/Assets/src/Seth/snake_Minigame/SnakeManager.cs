@@ -46,4 +46,12 @@ public class SnakeManager : MonoBehaviour
             this.GAMEWON();
         }
     }
+    public bool Apple = false;
+    public void AddToInventory(int i){
+        switch(i){
+            case 0:
+                Apple = true;
+                break;
+        }
+    }
 }

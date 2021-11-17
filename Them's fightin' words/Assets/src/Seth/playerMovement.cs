@@ -16,7 +16,7 @@ public class playerMovement : MonoBehaviour
     private bool autoMoveLock = false;
 
 
-
+    
     Animator animator;
     LocTests tileChecks;
 
