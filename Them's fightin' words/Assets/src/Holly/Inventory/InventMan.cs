@@ -40,7 +40,7 @@ public class InventMan : MonoBehaviour {
             InventorySnow
         };
         refreshInventory();
-        // StartCoroutine(autoRefresh());
+        //StartCoroutine(autoRefresh());
     }
 
     public void refreshInventory() {
@@ -55,10 +55,36 @@ public class InventMan : MonoBehaviour {
     }
 
     public IEnumerator autoRefresh() {
+    // For testing inventory methods
         while (true) {
             yield return new WaitForSeconds(3);
+            // removeItem("itemSlotSnow");
+            Debug.Log("Is itemSlotSnow in inventory: " + checkInventory("itemSlotSnow"));
             refreshInventory();
             // Debug.Log("Refreshing Inventory");
         }
     }
+
+    
+
+    public bool checkInventory(string ItemName) {
+        foreach (GameObject item in InventoryList) {
+            Debug.Log(item.gameObject.name);
+            if (item.gameObject.name == ItemName) {
+                if (item.GetComponent<ItemClass>().inInventory) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void removeItem(string ItemName) {
+        foreach (GameObject item in InventoryList) {
+            if (item.gameObject.name == ItemName) {
+                item.GetComponent<ItemClass>().inInventory = false;
+            }
+        }
+    }
 }
+
