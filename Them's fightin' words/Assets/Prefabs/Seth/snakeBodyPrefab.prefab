@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2099114435004161184}
   - component: {fileID: 3303251848899625291}
   m_Layer: 0
-  m_Name: snakeBody
+  m_Name: snakeBodyPrefab
   m_TagString: snake_Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8219244062420394590, guid: c5652bd9c5a134544a8d75ced615a43c,
     type: 3}
   m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
@@ -145,7 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeBodyPrefab: {fileID: 2591628760701377473}
-  SM: {fileID: 0}
   isTail: 0
   lastPosition: {x: 0, y: 0, z: 0}
   prevSegment: {fileID: 0}

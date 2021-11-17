@@ -9,6 +9,7 @@ TagManager:
   - snake_Fruit
   - snake_Wall
   - snake_Body
+  - snake_Head
   layers:
   - Default
   - TransparentFX
