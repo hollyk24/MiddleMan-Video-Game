@@ -14,6 +14,7 @@ public class InventMan : MonoBehaviour {
             InventoryHeart,
             InventorySnow
         };
+        refreshInventory();
         // StartCoroutine(autoRefresh());
     }
 
