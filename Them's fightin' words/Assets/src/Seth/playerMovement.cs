@@ -14,15 +14,13 @@ public class playerMovement : MonoBehaviour
 
     private bool movementLock = false;
     private bool autoMoveLock = false;
-
-
-    
+    [SerializeField] private GameObject IM;
     Animator animator;
     LocTests tileChecks;
 
     // movementTracker_singleton movementTracker;
 
-    InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput;
+    InputAction UpInput, DownInput, LeftInput, RightInput, runToggleInput, InventoryInput;
 
     public static playerMovement Instance
     {
@@ -70,18 +68,21 @@ public class playerMovement : MonoBehaviour
         LeftInput = controls.Player.moveLeft;
         RightInput = controls.Player.moveRight;
         runToggleInput = controls.Player.Run;
+        InventoryInput = controls.Player.Inventory;
 
         UpInput.performed += moveUp;
         DownInput.performed += moveDown;
         LeftInput.performed += moveLeft;
         RightInput.performed += moveRight;
         runToggleInput.performed += runToggle;
+        InventoryInput.performed += inventoryToggle;
 
         UpInput.Enable();
         DownInput.Enable();
         LeftInput.Enable();
         RightInput.Enable();
         runToggleInput.Enable();
+        InventoryInput.Enable();
     }
     private void OnDestroy()
     {
@@ -90,6 +91,8 @@ public class playerMovement : MonoBehaviour
         LeftInput.performed -= moveLeft;
         RightInput.performed -= moveRight;
         runToggleInput.performed -= runToggle;
+        InventoryInput.performed -= inventoryToggle;
+
     }
     public void moveUp(InputAction.CallbackContext context)
     {
@@ -151,10 +154,15 @@ public class playerMovement : MonoBehaviour
             speedMultiplier = 3;
         else
             speedMultiplier = 1;
-        setSpeed(1f);
-        autoMoveLoop();
+        // setSpeed(1f);
+        // autoMoveLoop();
         // Instantiate(this);
     }
+
+    public void inventoryToggle(InputAction.CallbackContext context){
+        IM.SetActive(!IM.activeInHierarchy);
+    }
+
 
     public void cloneThisObject()
     {
