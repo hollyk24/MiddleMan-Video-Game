@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FightStatePattern;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
     #region VARS
 
-    public string combatState;
-    public int health = 50;
+    //list of combat states: Move, Block, Attack, Hit
+    public FightState combatState;
+    public int health;
     public float speed;
+
     public Rigidbody2D hurtbox;
     public Character enemy;
+    public FGManager master;
 
-    #endregion
-    #region UNITY
-    void Start() {
-        speed = 5; 
-        health = 50;
-        combatState = "Move";      
-    }
-
+    public FightMove Attack1;
+    public FightMove Attack2;
     #endregion
     #region METHODS
+
     public Character(int hp, int spd, Character En) {
         speed = spd; 
         health = hp;
@@ -32,28 +31,24 @@ public class Character : MonoBehaviour
 
     public Character(Character En) {
         speed = 5; 
-        health = 50;
+        health = 100;
         combatState = "Move";
         enemy = En;
     }
 
     public Character() {
         speed = 5; 
-        health = 50;
+        health = 100;
         combatState = "Move";
     }
 
+    void Start() {
+        combatState = "Move";      
+    }
+    
     public Character Attack() {
         combatState = "Attack";
-        if(Mathf.Abs((float)enemy.transform.position.x - (float)transform.position.x) < 1.0f) {
-            if(transform.position.x > enemy.transform.position.x) {
-                enemy.transform.position = new Vector3(enemy.transform.position.x -5.0f, enemy.transform.position.y, enemy.transform.position.z);
-            } else {
-                enemy.transform.position = new Vector3(enemy.transform.position.x +5.0f, enemy.transform.position.y, enemy.transform.position.z);
-            }
-            enemy.combatState = "Hit";
-            return enemy;
-        }
+
         return null;
     }
 
@@ -61,24 +56,20 @@ public class Character : MonoBehaviour
         combatState = "Block";
     }
 
-    public void Move(bool forward) {
+    public void Move(int direction) {
         combatState = "Move";
-        if(forward) {
+        if(direction > 0) {
             hurtbox.velocity = new Vector2(speed, 0);
-        } else {
+        } else if(direction < 0) {
             hurtbox.velocity = new Vector2(-speed, 0);
+        } else {
+            hurtbox.velocity = new Vector2(0, 0);
         }
     }
 
     public void OnHit(Character opponent) {
         if(!opponent.combatState.Equals("Block")) {
             opponent.health-=10;
-        } else {
-            if(hurtbox.transform.position.x > enemy.hurtbox.transform.position.x) {
-                enemy.transform.position = new Vector3(enemy.transform.position.x -2.0f, enemy.transform.position.y, enemy.transform.position.z);
-            } else {
-                enemy.transform.position = new Vector3(enemy.transform.position.x +2.0f, enemy.transform.position.y, enemy.transform.position.z);
-            }
         }
     }
     #endregion
