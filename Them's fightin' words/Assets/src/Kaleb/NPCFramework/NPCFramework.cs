@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //use the factory design pattern
-namespace NPCFactoryPattern {
+namespace NPCFactoryPattern  {
 
     public interface NPCFramework {
 
         void selectAvatar(int variation, float red, float green, float blue, GameObject NewNPC);
         
-        Character makeNPC(GameObject Premade);
+        GameObject makeNPC(int variation, float red, float green, float blue, GameObject Premade);
     }
 }
