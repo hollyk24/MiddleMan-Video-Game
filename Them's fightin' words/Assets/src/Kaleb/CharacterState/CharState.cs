@@ -44,8 +44,6 @@ namespace FightStatePattern {
                 SpriteRenderer Avatar = Actor.gameObject.GetComponent<SpriteRenderer>();
                 if(Avatar != null) {
                     Avatar.sprite = punchSprite;
-                } else {
-                    Debug.Log("There is no avatar");
                 }
 
                 CState = new AttackState();
@@ -60,6 +58,7 @@ namespace FightStatePattern {
             if(!(CState is BlockState)) {
                 CState = new HitState();
                 Debug.Log("Switch to Hit");
+                Actor.stuntime = Enemy.Attack1.duration;
             }
         }
 

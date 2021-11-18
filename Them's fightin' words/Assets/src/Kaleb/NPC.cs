@@ -11,7 +11,13 @@ public class NPC : Character
     #region METHODS
 
     void Update() {
-        if(!master.paused) {
+        if(stuntime > 0) {
+            stuntime--;
+            if(stuntime == 0) {
+                combatState.Neutral(this, normalSprite);
+            }
+        }
+        if(!master.paused || stuntime > 0) {
             Plan();
         }
     }

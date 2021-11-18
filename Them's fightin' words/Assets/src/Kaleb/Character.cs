@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     public CharState combatState;
     public int health;
     public float speed;
+    public int stuntime;
 
     public Rigidbody2D hurtbox;
     public Character enemy;

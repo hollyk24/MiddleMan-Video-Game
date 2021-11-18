@@ -243,10 +243,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8aa0252175e5484795a3d469dcd69ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punchSprite: {fileID: 4116246821978084295, guid: 98419046977a96141846e39a6b73bde7,
+    type: 3}
+  normalSprite: {fileID: -184646475832191592, guid: 979a0a79c029a324bbfb8e64ca86211d,
+    type: 3}
   health: 100
-  speed: 1
+  speed: 5
+  stuntime: 0
   hurtbox: {fileID: 3537536341051468168}
   enemy: {fileID: 0}
   master: {fileID: 0}
   Attack1: {fileID: 3537536340261162273}
-  Attack2: {fileID: 0}

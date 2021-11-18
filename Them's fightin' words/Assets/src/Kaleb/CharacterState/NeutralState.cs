@@ -28,9 +28,9 @@ namespace FightStatePattern {
             Debug.Log("Hit out of Neutral.");
             Actor.health -= Damage;
             if(Enemy.hurtbox.position.x > Actor.hurtbox.position.x) {
-                Actor.hurtbox.velocity = new Vector2(-2, 0);
+                Actor.hurtbox.velocity = new Vector2(-5, 0);
             } else {
-                Actor.hurtbox.velocity = new Vector2(2, 0);
+                Actor.hurtbox.velocity = new Vector2(5, 0);
             }
         }
 
