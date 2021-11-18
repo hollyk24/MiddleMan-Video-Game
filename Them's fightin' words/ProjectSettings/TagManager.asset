@@ -10,6 +10,7 @@ TagManager:
   - snake_Wall
   - snake_Body
   - snake_Head
+  - Pool Object
   layers:
   - Default
   - TransparentFX
