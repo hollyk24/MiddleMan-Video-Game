@@ -56,7 +56,7 @@ namespace Tests
             } while (approxFPS > 30); // Loop until FPS is less than 30
 
             // Log the number of tiles it took to lower the FPS below 30
-            tile.GetComponent<WalkableTile>().debugOut(tileCount.ToString());
+            tile.GetComponent<WalkableTile>().DebugOut(tileCount.ToString());
             yield return null;
         }
     }
