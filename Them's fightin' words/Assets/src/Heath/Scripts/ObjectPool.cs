@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool
 {
     private static int PoolSize = 8;
     private static readonly Queue Pool = new Queue(PoolSize);
