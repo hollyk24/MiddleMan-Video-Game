@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TileDecorator : SpecialTiles
 {
-    public override string getQualities()
+    public override string GetQualities()
     {
-        return tileQualities + getSubQualities();
+        return GetSubQualities();
     }
-    public virtual string getSubQualities()
+    public virtual string GetSubQualities()
     {
         return "";
     }

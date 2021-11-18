@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 06aa726dbd89a7147b2156a0b3a0bc4d, type: 3}
-  m_Color: {r: 1, g: 0.43867922, b: 0.43867922, a: 1}
+  m_Color: {r: 1, g: 0.43867922, b: 0.43867922, a: 0}
   m_FlipX: 1
   m_FlipY: 1
   m_DrawMode: 0
@@ -151,8 +151,8 @@ GameObject:
   - component: {fileID: 8585531511431546824}
   - component: {fileID: 8585531511431546825}
   - component: {fileID: 8585531511431546830}
-  - component: {fileID: 1130827174365195006}
   - component: {fileID: 9217041068873503779}
+  - component: {fileID: 1130827174365195006}
   m_Layer: 0
   m_Name: Teleporter
   m_TagString: Untagged
@@ -214,7 +214,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 06aa726dbd89a7147b2156a0b3a0bc4d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -250,20 +250,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &1130827174365195006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8585531511431546831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33042ef301488b841b3a85e2f7c48e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileQualities: 'This tile is a teleporter. '
-  tTarget: {fileID: 2783925435410509643}
 --- !u!114 &9217041068873503779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,4 +262,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f814e63c2699a649bd6b66907f4d673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileQualities: This tile is as bland as it gets.
+  m_tileQualities: This tile is as bland as it gets.
+--- !u!114 &1130827174365195006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8585531511431546831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33042ef301488b841b3a85e2f7c48e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tileQualities: 'This tile is a teleporter. '
+  tTarget: {fileID: 2783925435410509643}
