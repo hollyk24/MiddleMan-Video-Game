@@ -11,9 +11,8 @@ using UnityEngine;
 /*
 * A class for the heart in the world
 */
-public class worldItem_heart : WorldItem
+public class WorldItem_Heart : WorldItem
 {
-    int HealthIncrease = 5; 
     /*
     * The function that overrides the code in the collision code function
     */
@@ -21,6 +20,5 @@ public class worldItem_heart : WorldItem
     {
             Debug.Log("I'm a heart");
     }
-
 }
 

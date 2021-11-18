@@ -262,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 6277701529794837634, guid: 9371c56d86353bf4fb4fa1a333549879,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackButton
+      value: UseBackButton
       objectReference: {fileID: 0}
     - target: {fileID: 6277701529794837635, guid: 9371c56d86353bf4fb4fa1a333549879,
         type: 3}

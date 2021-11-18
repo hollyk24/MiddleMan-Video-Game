@@ -45,17 +45,5 @@ public class WorldItem : MonoBehaviour
             collisionCode();
         }
     }
-
 }
 
-
-/* The superclass of WorldItem contains the fucntion collision code and the collider code
-* It has the dynamic function collision with keyword virtual so it can bind dynamically.
-* Has the static code of how it collides remains the same for all world items.
-* The subclasses of heart, apple, and snow have the override keyword that are specific to that item.
-* Override tells compiler to "check" that no new methods added that we think are overrides.
-*
-* The worldItem_apple, etc are good for dynamic binding as they would allow feautres specific to the items to be added.
-* For example a certain sound bit when that item is picked up, or a trigger for something to happen or add health.
-* Has a fucntion that behaves differently but also contains the same collision function for all items
-*/

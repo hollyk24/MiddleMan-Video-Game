@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 /*
  * 
- * This is what all interactable classes should stem from
  * Unify visual indications for all interactable objects
  * Object must have a child object that has a display of what key
  * 
