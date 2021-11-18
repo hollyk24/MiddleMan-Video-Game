@@ -5,17 +5,24 @@ using UnityEngine;
 //use the state design pattern
 namespace FightStatePattern {
 
-    public class HitState : FightState {
+    public class NeutralState : FightState {
 
         public void Move(Rigidbody2D Actor, int Direction, int Speed) {
-            Debug.Log("Can't move while hit.");
+            if(Direction > 0) {
+                Actor.velocity = new Vector2(Speed, 0);
+            } else if(Direction < 0) {
+                Actor.velocity = new Vector2(-Speed, 0);
+            } else {
+                Actor.velocity = new Vector2(0, 0);
+            }
         }
 
         public void Attack(Character Actor, FightMove Atk) {
-            Debug.Log("Can't attack while hit.");
+            Atk.CallMove();
+            Actor.hurtbox.velocity = new Vector2(0, 0);
         }
 
-        public void Hit(Character Actor, Character Enemy, int Damage) {
+        public void Hit(Character Actor, Character Enemy, int Damage){
             Actor.health -= Damage;
             if(Enemy.hurtbox.position.x > Actor.hurtbox.position.x) {
                 Actor.hurtbox.velocity = new Vector2(-2, 0);
@@ -25,12 +32,11 @@ namespace FightStatePattern {
         }
 
         public void Block(Character Actor) {
-            Debug.Log("Can't block while being hit.");
-        }
-
-        public void Neutral(Character Actor) {
             Actor.hurtbox.velocity = new Vector2(0, 0);
         }
 
+        public void Neutral(Character Actor) {
+            Debug.Log("Neutral is a special state only for Attack and Hit transitions.");
+        }
     }
 }

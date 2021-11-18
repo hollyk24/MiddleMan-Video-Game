@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     #region VARS
 
     //list of combat states: Move, Block, Attack, Hit
-    public FightState combatState;
+    public CharState combatState;
     public int health;
     public float speed;
 
@@ -25,52 +25,41 @@ public class Character : MonoBehaviour
     public Character(int hp, int spd, Character En) {
         speed = spd; 
         health = hp;
-        combatState = "Move";
+        combatState = new CharState();
         enemy = En;
     }
 
     public Character(Character En) {
         speed = 5; 
         health = 100;
-        combatState = "Move";
+        combatState = new CharState();
         enemy = En;
     }
 
     public Character() {
         speed = 5; 
         health = 100;
-        combatState = "Move";
+        combatState = new CharState();
     }
 
     void Start() {
-        combatState = "Move";      
+        combatState = new CharState();
     }
     
     public Character Attack() {
-        combatState = "Attack";
-
-        return null;
+        combatState.Attack(this, Attack1);
     }
 
     public void Block() {
-        combatState = "Block";
+        combatState.Block(this);
     }
 
     public void Move(int direction) {
-        combatState = "Move";
-        if(direction > 0) {
-            hurtbox.velocity = new Vector2(speed, 0);
-        } else if(direction < 0) {
-            hurtbox.velocity = new Vector2(-speed, 0);
-        } else {
-            hurtbox.velocity = new Vector2(0, 0);
-        }
+        combatState.Move(hurtbox, direction, speed);
     }
 
-    public void OnHit(Character opponent) {
-        if(!opponent.combatState.Equals("Block")) {
-            opponent.health-=10;
-        }
+    public void Hit(Character opponent, int damage) {
+        combatState.Hit(this, opponent, damage);
     }
     #endregion
 }
