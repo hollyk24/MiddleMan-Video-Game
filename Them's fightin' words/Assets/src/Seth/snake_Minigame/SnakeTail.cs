@@ -53,7 +53,7 @@ public class SnakeTail : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "snake_Head" || col.gameObject.tag == "snake_Wall"){
-            SM.GAMEOVER();
+            StartCoroutine(SM.GAMEOVER());
         }   
         // Debug.Log("OnTriggerEnter2D: "+col.gameObject.tag); // Tells you what was collided with, for debugging
     }

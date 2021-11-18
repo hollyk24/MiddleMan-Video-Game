@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class yellow_fruit : snake_fruit
 {
-    int points = 500; // "Decorator" part
+    int points = 200; // "Decorator" part
     public override void OnTriggerEnter2D(Collider2D col) // Dynamic Binding
     {
         SM.AddScore(points);

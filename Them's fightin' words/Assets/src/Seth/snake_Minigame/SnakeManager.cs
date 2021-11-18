@@ -25,17 +25,19 @@ public class SnakeManager : MonoBehaviour
     public void LengthenSnake(){
         SNAKEHEAD.addSnakeSegment();
     }
-    public void GAMEOVER(){
+    public IEnumerator GAMEOVER(){
         GameOver = true;
         GAMEOVERPANEL.SetActive(true);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("overWorld");
         // SNAKEHEAD.transform.position = new Vector3(SNAKEHEAD.transform.position.x, SNAKEHEAD.transform.position.y,SNAKEHEAD.transform.position.z - 0.001f);
         // yield return new WaitForSeconds(2);
     }
 
-    public void GAMEWON(){
+    public IEnumerator GAMEWON(){
         GameOver = true;
         GAMEWONPANEL.SetActive(true);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("overWorld");
         // Return to Overworld
     }
@@ -43,8 +45,9 @@ public class SnakeManager : MonoBehaviour
     public void AddScore(int i){
         score = score + i;
         scoreDisplay.text = score.ToString();
-        if(score > 4900){
-            this.GAMEWON();
+        if(score > 900){
+            GameOver = true;
+            StartCoroutine(this.GAMEWON());
         }
     }
 }

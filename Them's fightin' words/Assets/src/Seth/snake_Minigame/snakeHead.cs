@@ -106,7 +106,7 @@ public class snakeHead : MonoBehaviour
 
     public IEnumerator movementListener()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.2f);
         while (SM.GameOver != true)
         {
             // Debug.Log("Direction:  " + Direction.ToString());
