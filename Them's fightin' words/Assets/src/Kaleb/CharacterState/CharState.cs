@@ -35,10 +35,19 @@ namespace FightStatePattern {
             }
         }
 
-        public Character Attack(Character Actor, FightMove Atk) {
+        public Character Attack(Character Actor, FightMove Atk, Sprite punchSprite) {
             Character HitPerson = CState.Attack(Actor, Atk);
+            
 
             if(CState is MoveState || CState is BlockState || CState is NeutralState) {
+                
+                SpriteRenderer Avatar = Actor.gameObject.GetComponent<SpriteRenderer>();
+                if(Avatar != null) {
+                    Avatar.sprite = punchSprite;
+                } else {
+                    Debug.Log("There is no avatar");
+                }
+
                 CState = new AttackState();
                 Debug.Log("Switch to Attack");
             }
@@ -63,10 +72,12 @@ namespace FightStatePattern {
             }
         }
 
-        public void Neutral(Character Actor) {
+        public void Neutral(Character Actor, Sprite normalSprite) {
             CState.Neutral(Actor);
-
+            
             if(CState is HitState || CState is AttackState) {
+                Actor.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
+
                 CState = new NeutralState();
                 Debug.Log("Switch to Neutral");
             }

@@ -57,7 +57,7 @@ public class FightMove : MonoBehaviour {
             cFrame++;
             if(cFrame >= duration){
                 active = false;
-                owner.combatState.Neutral(owner);
+                owner.combatState.Neutral(owner, owner.normalSprite);
             } 
         }
     }
@@ -80,7 +80,7 @@ public class FightMove : MonoBehaviour {
 
     /*
      * This methods checks whether the move comes into contact with another player
-     */
+     *
     void OnTriggerEnter2D(Collider2D HitObj) {
         //check that the move has begun
         if(active == false) {
@@ -96,7 +96,7 @@ public class FightMove : MonoBehaviour {
                 owner.enemy.combatState.Hit(owner.enemy, owner, damage);
             }
         }
-    }
+    }*/
 
     #endregion 
 }

@@ -8,6 +8,9 @@ public class Character : MonoBehaviour
 {
     #region VARS
 
+    public Sprite punchSprite;
+    public Sprite normalSprite;
+
     //list of combat states: Move, Block, Attack, Hit
     public CharState combatState;
     public int health;
@@ -18,7 +21,6 @@ public class Character : MonoBehaviour
     public FGManager master;
 
     public FightMove Attack1;
-    public FightMove Attack2;
     #endregion
     #region METHODS
 
@@ -47,7 +49,7 @@ public class Character : MonoBehaviour
     }
     
     public void Attack() {
-        combatState.Attack(this, Attack1);
+        combatState.Attack(this, Attack1, punchSprite);
     }
 
     public void Block() {

@@ -26,7 +26,7 @@ public class Player : Character {
 
         if (Input.GetKey(KeyCode.E)) {
             Debug.Log("Attacking");
-            Character HitPerson = combatState.Attack(this, Attack1);
+            Character HitPerson = combatState.Attack(this, Attack1, punchSprite);
             if(HitPerson != null) {
                 HitPerson.combatState.Hit(HitPerson, this, Attack1.damage);
             }
