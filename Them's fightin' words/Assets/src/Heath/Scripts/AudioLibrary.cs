@@ -1,25 +1,36 @@
-﻿using System.Collections;
+﻿/*
+ * Filename: AudioLibrary.cs
+ * Developer: Heath Thompson
+ * Purpose: This file stores the audio files used by the Audio Manager in Them's Fightin' Words
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AudioLibrary : MonoBehaviour
 {
-    private static AudioLibrary libraryObject;
-    private static readonly object instanceLock = new object();
+    private static AudioLibrary m_libraryObject;
+    private static readonly object m_instanceLock = new object();
+
+/*
+ * A class to store the audio files used by Them's Fightin' Words.
+ *
+ */
     public static AudioLibrary Library
     {
         get{
-            lock (instanceLock)
+            lock (m_instanceLock)
             {
-                if (libraryObject == null)
+                if (m_libraryObject == null)
                 {
-                    libraryObject = Instantiate(Resources.Load<AudioLibrary>("AudioLibrary"));
+                    m_libraryObject = Instantiate(Resources.Load<AudioLibrary>("AudioLibrary"));
                 }
-                return libraryObject;
+                return m_libraryObject;
             }
         }
     }
-     
 
     //Music Library
     public AudioClip Menu1;
@@ -40,3 +51,5 @@ public class AudioLibrary : MonoBehaviour
     public AudioClip Die;
 
 }
+
+

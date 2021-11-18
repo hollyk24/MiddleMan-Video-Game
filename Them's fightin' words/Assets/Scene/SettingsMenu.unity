@@ -772,6 +772,7 @@ GameObject:
   - component: {fileID: 852800635}
   - component: {fileID: 852800634}
   - component: {fileID: 852800638}
+  - component: {fileID: 852800639}
   m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
@@ -882,6 +883,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 920520930}
   playerName: 
+--- !u!114 &852800639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852800633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c89ae76d02cb0a4b944925a35c40801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871509284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1586769722}
   - component: {fileID: 1586769723}
+  - component: {fileID: 1586769724}
   m_Layer: 8
   m_Name: Slider
   m_TagString: Untagged
@@ -1839,16 +1853,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 408068978}
   m_HandleRect: {fileID: 871509285}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 852800638}
+      - m_Target: {fileID: 1586769724}
         m_MethodName: SetVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1857,6 +1871,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1586769724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586769721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98001c5326b43db48a524958cc218d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slider: {fileID: 1586769723}
 --- !u!1 &1593658425
 GameObject:
   m_ObjectHideFlags: 0
