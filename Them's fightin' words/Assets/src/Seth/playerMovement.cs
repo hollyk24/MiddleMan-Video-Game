@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class playerMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class playerMovement : MonoBehaviour
     private bool movementLock = false;
     private bool autoMoveLock = false;
     [SerializeField] private GameObject IM;
+    [SerializeField] private LocationManager LM;
     Animator animator;
     LocTests tileChecks;
 
@@ -52,12 +54,12 @@ public class playerMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
     private void Start()
     {
         animator = GetComponent<Animator>();
         tileChecks = GetComponent<LocTests>();
+        LM = GameObject.Find("LocationManager").GetComponent<LocationManager>();
         // movementTracker = GetComponent<movementTracker_singleton>();
         // walkMap = GetComponent<Walkmap>().Tilemap;
         // Debug.Log("In Start function");
@@ -83,6 +85,7 @@ public class playerMovement : MonoBehaviour
         RightInput.Enable();
         runToggleInput.Enable();
         InventoryInput.Enable();
+        // SceneManager.sceneLoaded += setupMap;
     }
     private void OnDestroy()
     {
@@ -92,8 +95,15 @@ public class playerMovement : MonoBehaviour
         RightInput.performed -= moveRight;
         runToggleInput.performed -= runToggle;
         InventoryInput.performed -= inventoryToggle;
+        // SceneManager.sceneLoaded -= setupMap;
 
     }
+
+    // public void setupMap(Scene scene, LoadSceneMode mode)
+    // {
+    //     Debug.Log("Scene Loaded");
+    //     transform.position = LM.savedPosition;
+    // }
     public void moveUp(InputAction.CallbackContext context)
     {
         if (context.performed == true && movementLock == false)
@@ -136,6 +146,8 @@ public class playerMovement : MonoBehaviour
         AudioManager.Play(AudioLibrary.Library.Move);
         if (tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0)))
         {
+            LM.setPosition(end);
+            // LM.setDirection()
             animator.SetBool("Walking", true);
             // movementTracker.UpdatePlayerLocation(end.x, end.y);
             while (transform.position != end)
@@ -159,8 +171,20 @@ public class playerMovement : MonoBehaviour
         // Instantiate(this);
     }
 
-    public void inventoryToggle(InputAction.CallbackContext context){
+    public void inventoryToggle(InputAction.CallbackContext context)
+    {
         IM.SetActive(!IM.activeInHierarchy);
+        // Debug.Log("timeScale = " + Time.timeScale);
+        // Debug.Log("timeScale = " + Time.timeScale);
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        // Time.fixedTimeDelta = this.fixedDeltaTime * Time.timeScale;
     }
 
 

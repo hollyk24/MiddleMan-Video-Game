@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TeleporterTile : SpecialTiles
 {
+    TeleporterTile()
+    {
+        tileQualities = "This tile is a teleporter. ";
+    }
     [SerializeField] public Transform tTarget;
     public override void tileEffect(Collider2D coll)
     {

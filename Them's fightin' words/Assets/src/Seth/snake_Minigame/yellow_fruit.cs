@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class yellow_fruit : snake_fruit
 {
-    public override void fruitSetup()
+    int points = 200; // "Decorator" part
+    public override void OnTriggerEnter2D(Collider2D col) // Dynamic Binding
     {
-        points = 300;
-        duration = 3;
+        SM.AddScore(points);
+        FS.fruitNeedsSpawned();
+        gameObject.SetActive(false);
     }
 }

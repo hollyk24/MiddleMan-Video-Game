@@ -1,35 +1,61 @@
-﻿using System.Collections;
+﻿/*
+* Filename: NameTransfer.cs
+* Developer: Holly Keir
+* Purpose: This file controls the input field
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.UI;
 
+
+/*
+* A class used to take the inputted name to be used for the username of the player
+*/
 public class NameTransfer : MonoBehaviour
 {
-    public string theName;
-    public GameObject inputField;
-    public GameObject textDisplay;
-    public InputField example;
-    public string textInput = "usernameEx";
+    public GameObject InputField;
+    public GameObject TextDisplay;
+    public InputField Example;
+    public string TheName;
+    public string TextInput = "usernameEx";
 
-    public void StoreName() {
-        theName = inputField.GetComponent<Text>().text;
+    /* 
+    * Function that takes the value inputed from the text field on the settings menu
+    * Checks the length and if the inputed value is allowed.
+    */
+    public void StoreName() 
+    {
+        TheName = InputField.GetComponent<Text>().text;
+        string ReceivedString = TheName;
 
-        string ReceivedString = theName;
-        if (string.IsNullOrEmpty(theName)) {
+        // If the input field is empty, it adds the usernameEx string
+        // Sets TheName to the TextInput before setting textDisplay to TheName
+        if (string.IsNullOrEmpty(TheName)) 
+        {
             Debug.Log("input is Empty");
-            theName = textInput;
-            Debug.Log(theName);
-            textDisplay.GetComponent<Text>().text = theName;
+            TheName = TextInput;
+            Debug.Log(TheName);
+            TextDisplay.GetComponent<Text>().text = TheName;
         }
 
-        else if (ReceivedString.All(char.IsLetterOrDigit)) {
+        // Takes the received string and checks that all digits are letters or numbers.
+        // Allows for the TextDisplay to be used. Welcomes the player
+        else if (ReceivedString.All(char.IsLetterOrDigit)) 
+        {
             Debug.Log("allowed");
-            textDisplay.GetComponent<Text>().text = "Welcome " + theName + ", to the game";
+            TextDisplay.GetComponent<Text>().text = "Welcome " + TheName + ", to the game";
         }
-        else {
+        
+        // If the field contains more than digits or letters, then the display says not a valid username.
+        else 
+        {
             Debug.Log("not allowed");
-            textDisplay.GetComponent<Text>().text = theName + " is an invalid username";
+            TextDisplay.GetComponent<Text>().text = TheName + " is an invalid username";
         }
+
     }
+
 }
+

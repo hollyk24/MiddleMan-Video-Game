@@ -1,13 +1,25 @@
 {
   "dialog": [
+
     {
-      "text": "",
+      "text": "on days like these, kids like you... Should be burning in hell.",
       "emotion": 0,
       "playerDialog": {
-        "text": "",
-        "emotion": 0,
+        "text": "[1] Wait!\n[2] I have'nt even said anything yet...",
+        "emotion": 2,
         "deltaJump": [ 0, 0, 0 ],
         "angerDelta": [ 0, 0, 0 ]
       }
+    },
+    {
+      "text": "it's a beautiful day outside. birds are singing, flowers are blooming...",
+      "emotion": 0,
+      "playerDialog": {
+        "text": "[1] sure is",
+        "emotion": 0,
+        "deltaJump": [ 1, 1, 1 ],
+        "angerDelta": [ 99, 99, 99 ]
+      }
     }
-}
+  ]
+} 

@@ -1,9 +1,23 @@
-﻿using System.Collections;
+﻿/*
+* Filename: WorldItem_Apple.cs
+* Developer: Holly Keir
+* Purpose: Unique code for each item
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class worldItem_apple : worldItem {
+
+/*
+* A class for the apple in the world
+*/
+public class WorldItem_Apple : WorldItem 
+{
+    /*
+    * The function that overrides the code in the collision code function
+    */
     public override void collisionCode() {
         Debug.Log("I'm an apple");
     }
 }
+

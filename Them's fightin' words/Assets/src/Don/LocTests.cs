@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LocTests : MonoBehaviour
 {
+
     public bool checkWalkable(Vector2 tilePos)
     {
         Collider2D collider;
