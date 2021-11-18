@@ -1,69 +1,91 @@
-﻿using System.Collections;
+﻿/*
+* FileName: PauseMenu.cs
+* Developer: Holly Keir
+* Purpose: This file is the pause menu
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+/*
+* A class to control the pause menu and determine when it is active
+*/
+public class PauseMenu : MonoBehaviour 
 {
 
-    [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private bool isPaused;
+    [SerializeField] private bool IsPaused;
+    [SerializeField] private GameObject PauseMenuUI;
 
-    //public MainMenu mainMenu;
-    //public GameObject mainMenu;
-    //private MainMenu script;
-
-    private void Update()
+    /* 
+    * The update function is called every frame and this function checks if
+    * the escape key has been selected and calls the other functions based off the pause state.
+    */
+    private void Update() 
     {
-
         //Debug.Log(mainMenu.gamerunning);
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            isPaused = !isPaused;
-            if (isPaused)
+            IsPaused = !IsPaused;
+        
+            if (IsPaused) 
             {
                 ActivateMenu();
             }
-            else
+            else 
             {
                 DeactivateMenu();
-            }
-        }
-
+            } 
+        }     
     }
 
-    /* private void Start() {
-         script = mainMenu.GetComponent<MainMenu>();
-         Debug.Log(script.gamerunning);
-     }
- */
-    public void ActivateMenu()
+    /*
+    * Function used when we want the menu to be active. 
+    * Pauses the game in the background using TimeScale and calls the setactive function passing it true.
+    */
+    public void ActivateMenu() 
     {
         Time.timeScale = 0;
-        pauseMenuUI.SetActive(true);
+        PauseMenuUI.SetActive(true);
     }
 
-    public void DeactivateMenu()
+    /*
+    * Function used when we want the menu to be inactive. 
+    * Returns the game to be playing using TimeScale and calls the setactive function passing it false.
+    */
+    public void DeactivateMenu() 
     {
         Time.timeScale = 1;
-        pauseMenuUI.SetActive(false);
+        PauseMenuUI.SetActive(false);
     }
 
-    public void QuitGame()
+    /*
+    * Function used when quit button is selected. 
+    * Stops the audio
+    */
+    public void QuitGame() 
     {
         Debug.Log("QUIT!");
         AudioManager.Play(AudioLibrary.Library.Select);
     }
 
-    public void SettingGame()
+    /*
+    * Function used when the settings button is selected. 
+    * The audio is changed to correspond to the scene change.
+    */
+    public void SettingGame() 
     {
         SceneManager.LoadScene("SettingsMenu");
         AudioManager.Play(AudioLibrary.Library.Select);
     }
 
+    /*
+    * Fucntion used the when the Instructions button is selected.
+    */
     public void InstructionsGame()
     {
         SceneManager.LoadScene("InstructionsMenu");
     }
+
 }
+

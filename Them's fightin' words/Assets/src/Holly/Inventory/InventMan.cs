@@ -17,11 +17,14 @@ public class InventMan : MonoBehaviour
     [SerializeField] public GameObject InventoryHeart;
     [SerializeField] public GameObject InventorySnow;
 
+    //constructor is declared private 
     private static InventMan instance;
 
+    //Instance methods provides way to instantiate the class and return instance of it.
     public static InventMan Instance 
     {
         get {
+            //checks if the instance is null, and then sets it to obj of InventMan
             if (instance == null) {
                 instance = FindObjectOfType<InventMan>();
                 if(instance == null) {
@@ -145,3 +148,5 @@ public class InventMan : MonoBehaviour
 
 }
 
+
+// Singleton pattern used in this code to ensure only one instance of the object "inventory menu" is instantiated.
