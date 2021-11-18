@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class WalkableTile: MonoBehaviour
 {
     public bool walkable = true;
@@ -10,7 +9,7 @@ public class WalkableTile: MonoBehaviour
     {
         Instantiate(this);
     }
-    public void DebugOut(string s)
+    public void debugOut(string s)
     {
         Debug.Log(s);
     }
