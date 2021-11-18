@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 /*
- * lily Mason
  * THIS CLASS IS A MONSTER ITS REALLLY LARGE AND DOES A LOT
  * HERE BE DRAGONS
  * This class is to be added to any NPC that one has a conversation with
@@ -60,7 +59,7 @@ public class Conversation : Interactable {
     }
     #endregion
     #region METHODS
-    //Player spoke to NPC Start conversation
+
     public override void Interacted(InputAction.CallbackContext obj) {
         base.Interacted(obj);
         //if (!inRange) return;
@@ -98,7 +97,7 @@ public class Conversation : Interactable {
     public void Fight(InputAction.CallbackContext obj) {
         DisableUI();
         OnTriggerExit2D(null);
-        SceneManager.LoadScene("fight");
+        SceneManager.LoadScene("minigame_Snake");
     }
     //Make NPC angerLevel change called on every conversation press. Changes the text
     public void GetAngrier(InputAction.CallbackContext obj) {
