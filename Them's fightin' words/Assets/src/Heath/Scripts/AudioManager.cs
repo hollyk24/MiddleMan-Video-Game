@@ -48,30 +48,44 @@ public class AudioManager : MonoBehaviour
         }
         else if(m_Manager != null && m_Manager != this)
         {
+            Debug.Log("here");
             Destroy(gameObject);
-
         }
     }
 
 
     public static void Play(AudioClip audioclip)
     {
-        GameObject audio = Pool.GetObject();
+        GameObject audio = new GameObject();
+        AudioSource Source = audio.AddComponent<AudioSource>();
+        Source.clip = audioclip;
+        Source.Play();
+        Destroy(audio, Source.clip.length);
+
+        /*GameObject audio = Pool.GetObject();
         AudioSource Source = audio.GetComponent<AudioSource>();
         //Source.volume = Volume.Vol;
         Source.clip = audioclip;
         Source.PlayOneShot(Source.clip);
-        Pool.RecycleObject(audio);
+        Pool.RecycleObject(audio);*/
     }
 
     public static void Loop(AudioClip audioclip)
     {
-        GameObject audio = Pool.GetObject();
-        AudioSource Source = audio.GetComponent<AudioSource>();
-        //Source.volume = Volume.Vol;
+        GameObject audio = new GameObject();
+        AudioSource Source = audio.AddComponent<AudioSource>();
         Source.clip = audioclip;
         Source.loop = true;
         Source.Play();
+
+        /*GameObject audio = Pool.GetObject();
+        Debug.Log("check");
+        AudioSource Source = audio.GetComponent<AudioSource>();
+        Debug.Log("check1");
+        //Source.volume = Volume.Vol;
+        Source.clip = audioclip;
+        Source.loop = true;
+        Source.Play();*/
     }
 
     public static void Pause(GameObject Obj)
