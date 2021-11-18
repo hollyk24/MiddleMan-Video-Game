@@ -31,5 +31,8 @@ namespace Tests
             Assert.IsTrue(true);
             yield return null;
         }
+        
+
+        T
     }
 }
