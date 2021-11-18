@@ -12,7 +12,21 @@ namespace FightStatePattern {
             CState = new BlockState();
         }
 
-        public void Move(Rigidbody2D Actor, int direction, int speed) {
+        public bool CanMove() {
+            if(CState is MoveState || CState is BlockState || CState is NeutralState) {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CanAttack() {
+            if(CState is MoveState || CState is BlockState || CState is NeutralState) {
+                return true;
+            }
+            return false;
+        }
+
+        public void Move(Rigidbody2D Actor, int direction, float speed) {
             CState.Move(Actor, direction, speed);
 
             if(CState is BlockState || CState is NeutralState) {
@@ -21,13 +35,14 @@ namespace FightStatePattern {
             }
         }
 
-        public void Attack(Character Actor, FightMove Atk) {
-            CState.Attack(Actor, Atk);
+        public Character Attack(Character Actor, FightMove Atk) {
+            Character HitPerson = CState.Attack(Actor, Atk);
 
             if(CState is MoveState || CState is BlockState || CState is NeutralState) {
                 CState = new AttackState();
                 Debug.Log("Switch to Attack");
             }
+            return HitPerson;
         }
 
         public void Hit(Character Actor, Character Enemy, int Damage) {

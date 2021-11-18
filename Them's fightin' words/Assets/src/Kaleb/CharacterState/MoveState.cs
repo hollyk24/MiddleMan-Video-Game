@@ -7,7 +7,7 @@ namespace FightStatePattern {
 
     public class MoveState : FightState {
 
-        public void Move(Rigidbody2D Actor, int Direction, int Speed) {
+        public void Move(Rigidbody2D Actor, int Direction, float Speed) {
             if(Direction > 0) {
                 Actor.velocity = new Vector2(Speed, 0);
             } else if(Direction < 0) {
@@ -18,10 +18,10 @@ namespace FightStatePattern {
 
         }
 
-        public void Attack(Character Actor, FightMove Atk) {
+        public Character Attack(Character Actor, FightMove Atk) {
             Debug.Log("Attack out of Move.");
-            Atk.CallMove();
             Actor.hurtbox.velocity = new Vector2(0, 0);
+            return Atk.CallMove();
         }
 
         public void Hit(Character Actor, Character Enemy, int Damage) {
@@ -35,6 +35,7 @@ namespace FightStatePattern {
         }
 
         public void Block(Character Actor) {
+            Debug.Log("Block out of Move.");
             Actor.hurtbox.velocity = new Vector2(0, 0);
         }
 

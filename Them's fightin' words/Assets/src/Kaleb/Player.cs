@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : Character {
 
     void Update() {
-        if(!master.paused && combatState != "Hit" && combatState != "Attack") {
+        if(!master.paused) {
             getInput();
         }
     }
@@ -21,21 +21,16 @@ public class Player : Character {
         }
 
         if(!Input.anyKey) {
-            Move(0);
+            Block();
         }
 
         if (Input.GetKey(KeyCode.E)) {
             Debug.Log("Attacking");
-            combatState = "Attack";
-            Attack1.CallMove();
-            if (enemy.combatState == "Hit") {
-
-                
+            Character HitPerson = combatState.Attack(this, Attack1);
+            if(HitPerson != null) {
+                HitPerson.combatState.Hit(HitPerson, this, Attack1.damage);
             }
         }
-
-        if (Input.GetKey(KeyCode.Q)) {
-            Block();
-        }
+        
     }
 }

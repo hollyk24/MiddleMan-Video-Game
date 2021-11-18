@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
         combatState = new CharState();
     }
     
-    public Character Attack() {
+    public void Attack() {
         combatState.Attack(this, Attack1);
     }
 

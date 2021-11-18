@@ -7,9 +7,9 @@ namespace FightStatePattern {
 
     public interface FightState {
 
-        void Move(Rigidbody2D Actor, int Direction, int Speed);
+        void Move(Rigidbody2D Actor, int Direction, float Speed);
 
-        void Attack(Character Actor, FightMove Atk);
+        Character Attack(Character Actor, FightMove Atk);
 
         void Hit(Character Actor, Character Enemy, int Damage);
 

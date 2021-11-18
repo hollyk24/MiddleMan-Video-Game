@@ -7,12 +7,13 @@ namespace FightStatePattern {
 
     public class HitState : FightState {
 
-        public void Move(Rigidbody2D Actor, int Direction, int Speed) {
+        public void Move(Rigidbody2D Actor, int Direction, float Speed) {
             Debug.Log("Can't move while hit.");
         }
 
-        public void Attack(Character Actor, FightMove Atk) {
+        public Character Attack(Character Actor, FightMove Atk) {
             Debug.Log("Can't attack while hit.");
+            return null;
         }
 
         public void Hit(Character Actor, Character Enemy, int Damage) {

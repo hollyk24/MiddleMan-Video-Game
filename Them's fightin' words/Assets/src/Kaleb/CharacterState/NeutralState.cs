@@ -7,7 +7,8 @@ namespace FightStatePattern {
 
     public class NeutralState : FightState {
 
-        public void Move(Rigidbody2D Actor, int Direction, int Speed) {
+        public void Move(Rigidbody2D Actor, int Direction, float Speed) {
+            Debug.Log("Move out of Neutral.");
             if(Direction > 0) {
                 Actor.velocity = new Vector2(Speed, 0);
             } else if(Direction < 0) {
@@ -17,12 +18,14 @@ namespace FightStatePattern {
             }
         }
 
-        public void Attack(Character Actor, FightMove Atk) {
-            Atk.CallMove();
+        public Character Attack(Character Actor, FightMove Atk) {
+            Debug.Log("Attack out of Neutral.");
             Actor.hurtbox.velocity = new Vector2(0, 0);
+            return Atk.CallMove();
         }
 
         public void Hit(Character Actor, Character Enemy, int Damage){
+            Debug.Log("Hit out of Neutral.");
             Actor.health -= Damage;
             if(Enemy.hurtbox.position.x > Actor.hurtbox.position.x) {
                 Actor.hurtbox.velocity = new Vector2(-2, 0);

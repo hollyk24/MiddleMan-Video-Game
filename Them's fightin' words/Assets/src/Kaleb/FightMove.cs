@@ -9,10 +9,8 @@ The class for the attacks used in the classic Fighting Game
 public class FightMove : MonoBehaviour {
     #region VARS
 
-    public int startup; //length of startup in frames
-    public int duration; //length of active hitbox in frames
-    public int endlag; //length of endlag after move ends in frames
-    
+    public int duration; //length of the move
+
     public int cFrame; //tracks where in the animation the move currently is
 
     public int damage; //Amount of damage the move does
@@ -29,9 +27,7 @@ public class FightMove : MonoBehaviour {
      * Constructor for a default move, passing only the collision box. 
      */
     public FightMove(Collider2D boxx) {
-        startup = 0;
         duration = 10;
-        endlag = 5;
         damage = 10;
         hitbox = boxx;
         active = false;
@@ -41,10 +37,8 @@ public class FightMove : MonoBehaviour {
     /*
      * Constructor for a fully customized move.
      */
-    public FightMove (int s, int d, int e, int dmg, Collider2D boxx) {
-        startup = s;
+    public FightMove (int d, int dmg, Collider2D boxx) {
         duration = d;
-        endlag = e;
         damage = dmg;
         hitbox = boxx;
         active = false;
@@ -61,9 +55,9 @@ public class FightMove : MonoBehaviour {
     void Update() {
         if(active) {
             cFrame++;
-            if(cFrame >= startup + duration + endlag){
+            if(cFrame >= duration){
                 active = false;
-                owner.combatState = "Move";
+                owner.combatState.Neutral(owner);
             } 
         }
     }
@@ -71,12 +65,17 @@ public class FightMove : MonoBehaviour {
     /*
      * CallMove() 
      */
-    public void CallMove() {
-        if(!active) {
+    public Character CallMove() {
+        if(owner.combatState.CanAttack()) {
             active = true;
             cFrame = 0;
+        } else {
+            return null;
         }
-        
+        if(hitbox.IsTouching(owner.enemy.GetComponent<Collider2D>())) {
+            return owner.enemy;
+        }
+        return null;
     }
 
     /*
@@ -92,9 +91,9 @@ public class FightMove : MonoBehaviour {
             return;
         }
         //check that the move is active
-        if(cFrame > startup && cFrame <= startup+duration) {
+        if(cFrame > 0 && cFrame <= duration) {
             if(HitObj.GetComponent<Collider>().gameObject == owner.enemy.gameObject) {
-                owner.enemy.combatState = "Hit";
+                owner.enemy.combatState.Hit(owner.enemy, owner, damage);
             }
         }
     }
