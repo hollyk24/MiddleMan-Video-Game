@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class SnakeManager : MonoBehaviour
 {
     [SerializeField] public GameObject GAMEOVERPANEL;
@@ -27,6 +28,7 @@ public class SnakeManager : MonoBehaviour
     public void GAMEOVER(){
         GameOver = true;
         GAMEOVERPANEL.SetActive(true);
+        SceneManager.LoadScene("overWorld");
         // SNAKEHEAD.transform.position = new Vector3(SNAKEHEAD.transform.position.x, SNAKEHEAD.transform.position.y,SNAKEHEAD.transform.position.z - 0.001f);
         // yield return new WaitForSeconds(2);
     }
@@ -34,8 +36,7 @@ public class SnakeManager : MonoBehaviour
     public void GAMEWON(){
         GameOver = true;
         GAMEWONPANEL.SetActive(true);
-        // SNAKEHEAD.transform.position = new Vector3(SNAKEHEAD.transform.position.x, SNAKEHEAD.transform.position.y,SNAKEHEAD.transform.position.z - 0.001f);
-        // yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("overWorld");
         // Return to Overworld
     }
 

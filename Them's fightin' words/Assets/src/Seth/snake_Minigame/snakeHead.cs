@@ -74,6 +74,7 @@ public class snakeHead : MonoBehaviour
 
     private void moveSnake(int Dir)
     {
+        
         Vector3 pos = transform.position;
         switch (Dir)
         {
@@ -105,7 +106,7 @@ public class snakeHead : MonoBehaviour
 
     public IEnumerator movementListener()
     {
-        // yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2);
         while (SM.GameOver != true)
         {
             // Debug.Log("Direction:  " + Direction.ToString());
