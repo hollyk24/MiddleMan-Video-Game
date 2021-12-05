@@ -11,7 +11,7 @@ using UnityEngine;
 /*
 * A class for the apple in the world
 */
-public class WorldItem_Apple : WorldItem 
+public class worldItem_apple : worldItem 
 {
     /*
     * The function that overrides the code in the collision code function

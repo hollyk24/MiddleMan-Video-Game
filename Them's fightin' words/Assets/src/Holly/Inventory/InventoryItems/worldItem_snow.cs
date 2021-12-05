@@ -11,7 +11,7 @@ using UnityEngine;
 /*
 * A class for the heart in the world
 */
-public class WorldItem_Snow : WorldItem 
+public class worldItem_snow : worldItem 
 {
     /*
     * The function that overrides the code in the collision code function

@@ -11,7 +11,7 @@ using UnityEngine;
 /*
 * A class used to determine collision with possible pickup items
 */
-public class WorldItem : MonoBehaviour
+public class worldItem : MonoBehaviour
 {
     [SerializeField] public InventMan IM;
     [SerializeField] public GameObject InventoryItem;
