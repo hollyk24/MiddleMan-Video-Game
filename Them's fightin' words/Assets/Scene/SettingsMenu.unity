@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -588,11 +588,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09899c576f7090b47afadbc9faf4ba0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theName: 
-  inputField: {fileID: 1397774420}
-  textDisplay: {fileID: 1775076563}
-  example: {fileID: 0}
-  textInput: usernameEx
+  InputField: {fileID: 0}
+  TextDisplay: {fileID: 0}
+  Example: {fileID: 0}
+  TheName: 
+  TextInput: usernameEx
 --- !u!1 &712961582
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +643,7 @@ GameObject:
   - component: {fileID: 852800634}
   - component: {fileID: 852800638}
   - component: {fileID: 852800639}
+  - component: {fileID: 852800640}
   m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
@@ -750,9 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0058a90548f3a4c5fa3af877a76f4c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  mainInputField: {fileID: 920520930}
-  playerName: 
+  MainInputField: {fileID: 0}
+  PlayerName: 
 --- !u!114 &852800639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,10 +765,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89ae76d02cb0a4b944925a35c40801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
-  MainInputField: {fileID: 0}
-  PlayerName: 
->>>>>>> Stashed changes
+--- !u!114 &852800640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852800633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab90955f882e0747858fab1f7064614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871509284
 GameObject:
   m_ObjectHideFlags: 0

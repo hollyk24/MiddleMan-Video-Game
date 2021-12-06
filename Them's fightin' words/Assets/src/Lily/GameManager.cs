@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
     public static Controls CONTROLS;
     public static FileManager FM;
+    public static SaveManager SM;
 
     //Objects
     public static GameObject PLAYER;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
 
         CONTROLS = new Controls();
         FM = FindObjectOfType<FileManager>();
+        SM = FindObjectOfType<SaveManager>();
 
         PLAYER = FindObjectOfType<playerMovement>().gameObject;
         NPCUI = FindObjectOfType<Canvas>().transform.Find("NPCChat").gameObject;

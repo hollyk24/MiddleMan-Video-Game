@@ -712,6 +712,7 @@ MonoBehaviour:
   scoreDisplay: {fileID: 1281799093}
   SNAKEHEAD: {fileID: 1734524795}
   GameOver: 0
+  WT: {fileID: 0}
 --- !u!114 &592678089
 MonoBehaviour:
   m_ObjectHideFlags: 0

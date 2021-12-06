@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Them's fightin' words/Assets/src/Kaleb/NPCAI/AbstractAI.cs.meta
 fileFormatVersion: 2
 guid: e8b85f5078e204945b9946a772cf0263
 MonoImporter:
@@ -9,3 +10,16 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+fileFormatVersion: 2
+guid: 4a3cc24836a389546a8d46ce40528a04
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> 3cfdf465c3ae4c46e43bfb0c4fe0a5bd66381e66:Them's fightin' words/Assets/src/Kaleb/FightAI.cs.meta

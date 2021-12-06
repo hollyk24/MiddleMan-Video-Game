@@ -14,5 +14,11 @@ using UnityEngine;
 public class ItemClass : MonoBehaviour
 {
     public bool inInventory = false;
+    public InventoryTracker IT;
+
+    public virtual void Start(){
+        IT = GameObject.Find("SaveManager").GetComponent<InventoryTracker>();
+        // inInventory = IT.this.name;
+    }
 }
 
