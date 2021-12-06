@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using FightCharacter;
 
+/*
+
+*/
 public class FGManager : MonoBehaviour
 {
     #region VARS
@@ -63,7 +68,7 @@ public class FGManager : MonoBehaviour
     void CheckLoss() {
         if(User.health <= 0 || Enemy.health <= 0  || timer <= 0.0f) {
             Debug.Log("Game Over");
-            //EndGame
+            SceneManager.LoadScene("overWorld");
         }
     }
     #endregion

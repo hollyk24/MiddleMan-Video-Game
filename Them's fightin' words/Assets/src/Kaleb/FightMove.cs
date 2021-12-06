@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FightCharacter;
 
 /*
 The class for the attacks used in the classic Fighting Game
