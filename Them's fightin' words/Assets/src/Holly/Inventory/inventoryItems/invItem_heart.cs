@@ -11,14 +11,12 @@ using UnityEngine;
 /*
 * A class used to set a boolean for if an item in in the inventory
 */
-public class ItemClass : MonoBehaviour
+public class invItem_heart : ItemClass
 {
-    public bool inInventory = false;
-    public InventoryTracker IT;
-
-    public virtual void Start(){
+    public override void Start()
+    {
         IT = GameObject.Find("SaveManager").GetComponent<InventoryTracker>();
-        // inInventory = IT.this.name;
+        inInventory = IT.heart;
     }
 }
 

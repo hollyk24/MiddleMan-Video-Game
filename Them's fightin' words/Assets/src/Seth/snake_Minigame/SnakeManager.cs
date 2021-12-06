@@ -14,12 +14,20 @@ public class SnakeManager : MonoBehaviour
     public snakeHead SNAKEHEAD;
     public bool GameOver = false;
     private int score = 0;
+    private int targetScore = 1;
+
+
+    // [SerializeField] public SaveManager SM;
+    public WinTracker WT;
+
     private void Awake() {
         // if(SM != null) SM = this;
         // else Destroy(this);
 
         CONTROLS = new Controls();
         SNAKEHEAD = FindObjectOfType<snakeHead>().gameObject.GetComponent<snakeHead>();
+        // SM = gameObject.Find("SaveManager");
+        WT = FindObjectOfType<SaveManager>().gameObject.GetComponent<WinTracker>();
     }
 
     public void LengthenSnake(){
@@ -28,6 +36,7 @@ public class SnakeManager : MonoBehaviour
     public IEnumerator GAMEOVER(){
         GameOver = true;
         GAMEOVERPANEL.SetActive(true);
+        WT.setWin(false);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("overWorld");
         // SNAKEHEAD.transform.position = new Vector3(SNAKEHEAD.transform.position.x, SNAKEHEAD.transform.position.y,SNAKEHEAD.transform.position.z - 0.001f);
@@ -37,6 +46,7 @@ public class SnakeManager : MonoBehaviour
     public IEnumerator GAMEWON(){
         GameOver = true;
         GAMEWONPANEL.SetActive(true);
+        WT.setWin(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("overWorld");
         // Return to Overworld
@@ -45,7 +55,7 @@ public class SnakeManager : MonoBehaviour
     public void AddScore(int i){
         score = score + i;
         scoreDisplay.text = score.ToString();
-        if(score > 900){
+        if(score > targetScore){
             GameOver = true;
             StartCoroutine(this.GAMEWON());
         }

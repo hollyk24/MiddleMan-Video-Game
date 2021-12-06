@@ -16,7 +16,7 @@ public class playerMovement : MonoBehaviour
     private bool movementLock = false;
     private bool autoMoveLock = false;
     [SerializeField] private GameObject IM;
-    [SerializeField] private LocationManager LM;
+    [SerializeField] private SaveManager SM;
     Animator animator;
     LocTests tileChecks;
 
@@ -59,7 +59,7 @@ public class playerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         tileChecks = GetComponent<LocTests>();
-        LM = GameObject.Find("LocationManager").GetComponent<LocationManager>();
+        SM = GameObject.Find("SaveManager").GetComponent<SaveManager>();
         // movementTracker = GetComponent<movementTracker_singleton>();
         // walkMap = GetComponent<Walkmap>().Tilemap;
         // Debug.Log("In Start function");
@@ -102,7 +102,7 @@ public class playerMovement : MonoBehaviour
     // public void setupMap(Scene scene, LoadSceneMode mode)
     // {
     //     Debug.Log("Scene Loaded");
-    //     transform.position = LM.savedPosition;
+    //     transform.position = SM.savedPosition;
     // }
     public void moveUp(InputAction.CallbackContext context)
     {
@@ -146,8 +146,8 @@ public class playerMovement : MonoBehaviour
         AudioManager.Play(AudioLibrary.Library.Move);
         if (tileChecks.checkWalkable(end + new Vector3(0, -0.5f, 0)))
         {
-            LM.setPosition(end);
-            // LM.setDirection()
+            SM.setPosition(end);
+            // SM.setDirection()
             animator.SetBool("Walking", true);
             // movementTracker.UpdatePlayerLocation(end.x, end.y);
             while (transform.position != end)

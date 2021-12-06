@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private bool isPaused;
+    [SerializeField] private GameObject SM;
 
     //public MainMenu mainMenu;
     //public GameObject mainMenu;
@@ -33,32 +34,41 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    /* private void Start() {
-         script = mainMenu.GetComponent<MainMenu>();
-         Debug.Log(script.gamerunning);
-     }
- */
+    // private void Start() {
+        //  script = mainMenu.GetComponent<MainMenu>();
+        //  Debug.Log(script.gamerunning);
+        // SM 
+    // }
     public void ActivateMenu()
     {
-        Time.timeScale = 0;
+        Debug.Log("Freezing game via ActivateMenu");
+        // Time.timeScale = 0;
         pauseMenuUI.SetActive(true);
     }
 
     public void DeactivateMenu()
     {
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
     }
 
     public void QuitGame()
     {
         Debug.Log("QUIT!");
+        Destroy(SM);
+        SceneManager.LoadScene("MainMenu");
         AudioManager.Play(AudioLibrary.Library.Select);
     }
 
     public void SettingGame()
     {
         SceneManager.LoadScene("SettingsMenu");
+        AudioManager.Play(AudioLibrary.Library.Select);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
         AudioManager.Play(AudioLibrary.Library.Select);
     }
 

@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LocationManager : MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
-    private static LocationManager instance;
+    private static SaveManager instance;
+    public GameObject gameWonUI;
     [SerializeField] public Vector3 savedPosition;
+    private WinTracker WT;
     private Transform playerTransform;
+
+    public void setupReferences()
+    {
+        WT = GetComponent<WinTracker>();
+        gameWonUI = GameObject.FindGameObjectWithTag("GameWonUI");
+        gameWonUI.SetActive(false);
+    }
     public void setPosition(Vector3 v)
     {
         savedPosition = v;
@@ -17,18 +26,18 @@ public class LocationManager : MonoBehaviour
         return savedPosition;
     }
 
-    public static LocationManager Instance
+    public static SaveManager Instance
     {
         get
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<LocationManager>();
+                instance = FindObjectOfType<SaveManager>();
                 if (instance == null)
                 {
                     GameObject obj = new GameObject();
-                    obj.name = typeof(LocationManager).Name;
-                    instance = obj.AddComponent<LocationManager>();
+                    obj.name = typeof(SaveManager).Name;
+                    instance = obj.AddComponent<SaveManager>();
                 }
             }
             return instance;
@@ -39,7 +48,7 @@ public class LocationManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this as LocationManager;
+            instance = this as SaveManager;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -52,15 +61,24 @@ public class LocationManager : MonoBehaviour
         SceneManager.sceneLoaded += setupMap;
     }
 
-    void OnDisable(){
+    void OnDisable()
+    {
         SceneManager.sceneLoaded -= setupMap;
     }
 
-    public void setupMap(Scene scene, LoadSceneMode mode){
-        if(scene.name == "overWorld"){
+    public void setupMap(Scene scene, LoadSceneMode mode)
+    {
+        setupReferences();
+        if (scene.name == "overWorld")
+        {
             playerTransform = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
-            if(playerTransform == null) Debug.Log("Could not find player");
+            if (playerTransform == null) Debug.Log("Could not find player");
             playerTransform.position = savedPosition;
+            if (WT.checkWins())
+            {
+                // Time.timeScale = 0;
+                gameWonUI.SetActive(true);
+            }
         }
     }
 }

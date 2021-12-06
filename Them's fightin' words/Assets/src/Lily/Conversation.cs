@@ -24,11 +24,14 @@ public class Conversation : Interactable {
     PlayerDialog playerDialog;
     Portaits npcPortaits, playPortaits;
 
+    WinTracker WT;
+
     [Header("Vars")]
     public NPCDialog[] dialogs;
     public int angerLevel;
 
     private int dialogIndex = 1;
+    [SerializeField] public string fightName;
 
     InputAction[] ops;
 
@@ -43,6 +46,7 @@ public class Conversation : Interactable {
         NPCUI = GameManager.NPCUI;
         PLAYUI = GameManager.PLAYUI;
         ANGER = GameManager.AngerBar;
+        WT = GameManager.SM.GetComponent<WinTracker>();
         NPCTEXT = NPCUI.transform.GetComponentInChildren<Text>();
         PLAYTEXT = PLAYUI.transform.GetComponentInChildren<Text>();
         playPortaits = GameManager.PLAYER.GetComponent<Portaits>();
@@ -95,6 +99,9 @@ public class Conversation : Interactable {
     }
     //Load fight once NPC angry enough
     public void Fight(InputAction.CallbackContext obj) {
+        // Debug.Log(WT.WinList.); 
+        WT.startFight(fightName);
+        // WT.printList();
         DisableUI();
         OnTriggerExit2D(null);
         SceneManager.LoadScene("minigame_Snake");
