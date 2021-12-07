@@ -15,8 +15,7 @@ namespace FightCharacter {
             if(stuntime > 0) {
                 stuntime--;
                 if(stuntime == 0) {
-                    this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
-                    combatState.Neutral(this, normalSprite);
+                    combatState.Neutral(this);
                 }
             }
             if(stuntime > 0) {

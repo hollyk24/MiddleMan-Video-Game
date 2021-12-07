@@ -11,6 +11,7 @@ TagManager:
   - snake_Body
   - snake_Head
   - Pool Object
+  - MainAttack
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Top
+    uniqueID: 2419352813
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

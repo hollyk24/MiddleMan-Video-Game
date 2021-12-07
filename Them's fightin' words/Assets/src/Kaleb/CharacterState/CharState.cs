@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -68,7 +67,7 @@ Handles the transitions between all states and return methods for information on
             }
         }
 
-        public Character Attack(Character Actor, FightMove Atk, Sprite punchSprite) {
+        public Character Attack(Character Actor, FightMove Atk) {
             Character HitPerson = CState.Attack(Actor, Atk);
             
 
@@ -102,14 +101,11 @@ Handles the transitions between all states and return methods for information on
 
             if(CState is MoveState || CState is NeutralState) {
                 if(Actor.gameObject.GetComponent<Animator>()!=null) {
-                    if(CState is MoveState) { 
-                        Debug.Log("Enter Block from Move");
+                    if(Actor is NPC) {
+                        Actor.gameObject.GetComponent<Animator>().Play("NPC_Idle");
+                    } else {
+                        Actor.gameObject.GetComponent<Animator>().Play("Player_Idle");
                     }
-                    if(CState is NeutralState) { 
-                        Debug.Log("Enter Block from Neutral");
-                    }
-                    Debug.Log("Enter Idle via Block");
-                    Actor.gameObject.GetComponent<Animator>().Play("Player_Idle");
                 }
 
                 CState = new BlockState();
@@ -117,13 +113,17 @@ Handles the transitions between all states and return methods for information on
             }
         }
 
-        public void Neutral(Character Actor, Sprite normalSprite) {
+        public void Neutral(Character Actor) {
             CState.Neutral(Actor);
             
             if(CState is HitState || CState is AttackState) {
                 if(Actor.gameObject.GetComponent<Animator>()!=null) {
-                    Debug.Log("Enter Idle via Neutral");
-                    Actor.gameObject.GetComponent<Animator>().Play("Player_Idle");
+                    //Debug.Log("Enter Idle via Neutral");
+                    if(Actor is NPC) {
+                        Actor.gameObject.GetComponent<Animator>().Play("NPC_Idle");
+                    } else {
+                        Actor.gameObject.GetComponent<Animator>().Play("Player_Idle");
+                    }
                 }
                 CState = new NeutralState();
                 //Debug.Log("Switch to Neutral");
@@ -131,91 +131,4 @@ Handles the transitions between all states and return methods for information on
         }
 
     }
-=======
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-//use the state design pattern
-namespace FightStatePattern {
-    public class CharState {
-
-        public FightState CState {get; set;}
-
-        public CharState() {
-            CState = new BlockState();
-        }
-
-        public bool CanMove() {
-            if(CState is MoveState || CState is BlockState || CState is NeutralState) {
-                return true;
-            }
-            return false;
-        }
-
-        public bool CanAttack() {
-            if(CState is MoveState || CState is BlockState || CState is NeutralState) {
-                return true;
-            }
-            return false;
-        }
-
-        public void Move(Rigidbody2D Actor, int direction, float speed) {
-            CState.Move(Actor, direction, speed);
-
-            if(CState is BlockState || CState is NeutralState) {
-                CState = new MoveState();
-                Debug.Log("Switch to Move");
-            }
-        }
-
-        public Character Attack(Character Actor, FightMove Atk, Sprite punchSprite) {
-            Character HitPerson = CState.Attack(Actor, Atk);
-            
-
-            if(CState is MoveState || CState is BlockState || CState is NeutralState) {
-                
-                SpriteRenderer Avatar = Actor.gameObject.GetComponent<SpriteRenderer>();
-                if(Avatar != null) {
-                    Avatar.sprite = punchSprite;
-                }
-
-                CState = new AttackState();
-                Debug.Log("Switch to Attack");
-            }
-            return HitPerson;
-        }
-
-        public void Hit(Character Actor, Character Enemy, int Damage) {
-            CState.Hit(Actor, Enemy, Damage);
-
-            if(!(CState is BlockState)) {
-                CState = new HitState();
-                Debug.Log("Switch to Hit");
-                Actor.stuntime = Enemy.Attack1.duration;
-            }
-        }
-
-        public void Block(Character Actor) {
-            CState.Block(Actor);
-
-            if(CState is MoveState || CState is NeutralState) {
-                CState = new BlockState();
-                Debug.Log("Switch to Block");
-            }
-        }
-
-        public void Neutral(Character Actor, Sprite normalSprite) {
-            CState.Neutral(Actor);
-            
-            if(CState is HitState || CState is AttackState) {
-                Actor.gameObject.GetComponent<SpriteRenderer>().sprite = normalSprite;
-
-                CState = new NeutralState();
-                Debug.Log("Switch to Neutral");
-            }
-        }
-
-    }
->>>>>>> 3cfdf465c3ae4c46e43bfb0c4fe0a5bd66381e66
 }

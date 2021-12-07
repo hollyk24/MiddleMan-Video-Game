@@ -10,7 +10,7 @@ namespace FightCharacter {
             if(stuntime > 0) {
                 stuntime--;
                 if(stuntime == 0) {
-                    combatState.Neutral(this, normalSprite);
+                    combatState.Neutral(this);
                 }
             }
             if(!master.paused || stuntime > 0) {
@@ -37,7 +37,7 @@ namespace FightCharacter {
             //
             if (Input.GetKey(KeyCode.E)) {
                 Debug.Log("Attacking");
-                Character HitPerson = combatState.Attack(this, Attack1, punchSprite);
+                Character HitPerson = combatState.Attack(this, Attack1);
                 if(HitPerson != null) {
                     HitPerson.combatState.Hit(HitPerson, this, Attack1.damage);
                 }

@@ -12,7 +12,7 @@ Entities:
 	Dr BC Mode
 
 Player:
-The player is one of the two fighters. The player can move their character left and right, jump, and use three different attacks, each with different speeds and damage values.
+The player is one of the two fighters. The player can move their character left and right and use three different attacks, each with different speeds and damage values.
 
 NPC:
 The NPC moves like the player, but depending on the character can have one to three attack moves.

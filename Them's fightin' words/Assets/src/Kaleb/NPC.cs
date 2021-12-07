@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,7 @@ namespace FightCharacter {
                 stuntime--;
                 if(stuntime == 0) {
                     Debug.Log("NPC Stun Done: " + stuntime);
-                    combatState.Neutral(this, normalSprite);
+                    combatState.Neutral(this);
                 }
             }
             //stops the npc if they are stunned or the match is paused
@@ -42,7 +41,6 @@ namespace FightCharacter {
         The planning loop for the AI Enemies
         */
         void Plan() {
-            Debug.Log("Planning");
             if(enemy.hurtbox.transform.position.x > hurtbox.transform.position.x + 2.5) {
                 Move(1);
             } else if(enemy.hurtbox.transform.position.x < hurtbox.transform.position.x -2.5) {
@@ -54,47 +52,10 @@ namespace FightCharacter {
 
         //A custom Hit method to make the AI turn red
         public override void Hit(Character opponent, int damage) {
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f);
             Debug.Log("NPC Hit");
             combatState.Hit(this, opponent, damage);
         }
 
         #endregion
     }
-=======
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class NPC : Character
-{
-    #region VARS
-    
-    #endregion
-
-    #region METHODS
-
-    void Update() {
-        if(stuntime > 0) {
-            stuntime--;
-            if(stuntime == 0) {
-                combatState.Neutral(this, normalSprite);
-            }
-        }
-        if(!master.paused || stuntime > 0) {
-            Plan();
-        }
-    }
-
-    void Plan() {
-      if(enemy.hurtbox.transform.position.x > hurtbox.transform.position.x + 1) {
-            Move(1);
-        }
-        if(enemy.hurtbox.transform.position.x < hurtbox.transform.position.x - 1) {
-            Move(-1);
-        }
-    }
-
-    #endregion
->>>>>>> 3cfdf465c3ae4c46e43bfb0c4fe0a5bd66381e66
 }

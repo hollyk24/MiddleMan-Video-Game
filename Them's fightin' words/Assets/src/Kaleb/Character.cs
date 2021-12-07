@@ -9,10 +9,6 @@ namespace FightCharacter {
     {
         #region VARS
 
-        //a list of sprites for different actions. Will be replaced with an animation system later.
-        public Sprite punchSprite;
-        public Sprite normalSprite;
-
         //list of combat states: Move, Block, Attack, Hit
         public CharState combatState;
 
@@ -55,7 +51,7 @@ namespace FightCharacter {
         }
         
         public void Attack() {
-            combatState.Attack(this, Attack1, punchSprite);
+            combatState.Attack(this, Attack1);
         }
 
         public void Block() {
