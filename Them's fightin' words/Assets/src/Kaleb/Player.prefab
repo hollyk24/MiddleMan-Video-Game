@@ -222,7 +222,7 @@ MonoBehaviour:
   damage: 10
   hitbox: {fileID: 4837258382175319477}
   active: 0
-  owner: {fileID: 4369041042787582097, guid: a8c0bd209a7667b46a2a031e86ff82a0, type: 3}
+  owner: {fileID: 9187509750059907604}
 --- !u!50 &4837258382175319476
 Rigidbody2D:
   serializedVersion: 4
