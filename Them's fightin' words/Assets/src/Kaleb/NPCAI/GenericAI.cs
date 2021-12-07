@@ -13,24 +13,44 @@ namespace FightAI {
 
         public GenericAI(NPC avatar) {
             ActionRecord = new List<int>();
+            //The maximum number of previous stored inputs: It's low here since the AI is very simple
             MaxRecord = 1;
             QueueLength = 0;
             User = avatar;
-            User.InternalTimer = 0;
         }
 
         public override void Decide(){
             float RANGE = 2.5f;//the range of the default attack. I might pull the range of the attack from the move itself if I implement that later.
+
             if(Math.Abs(Distance)>RANGE) {
+                
                 UpdateRecord(2);
                 if(Distance > 0) {
                     User.Move(1);
                 } else {
                     User.Move(-1);
                 }
+
             } else {
-                User.Attack();
+                
+                //if the previous action wasn't an attack
+                if(ActionRecord[0] != 1) {
+                    //attack
+                    UpdateRecord(1);
+                    User.Attack();
+                } else {
+                    //othewise move backwards
+                    UpdateRecord(3);
+                    if(Distance > 0) {
+                        User.Move(-1);
+                    } else {
+                        User.Move(1);
+                    }
+                }
+
             }
         }
+
     }
+
 }
