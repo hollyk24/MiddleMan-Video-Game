@@ -74,7 +74,7 @@ public class snakeHead : MonoBehaviour
 
     private void moveSnake(int Dir)
     {
-        
+
         Vector3 pos = transform.position;
         switch (Dir)
         {
@@ -97,7 +97,8 @@ public class snakeHead : MonoBehaviour
             default:
                 break;
         }
-        if(SnakeTailQueue > 0){
+        if (SnakeTailQueue > 0)
+        {
             SnakeTailQueue--;
             SM.LengthenSnake();
             Debug.Log("Lengthening Snake");
@@ -120,4 +121,12 @@ public class snakeHead : MonoBehaviour
     {
         tailCodeNext.AddSegment();
     }
+    // void OnTriggerEnter2D(Collider2D col)
+    // {
+    //     if (/*col.gameObject.tag == "snake_Body" || */col.gameObject.tag == "snake_Wall")
+    //     {
+    //         StartCoroutine(SM.GAMEOVER());
+    //     }
+    //     Debug.Log("OnTriggerEnter2D: " + col.gameObject.tag); // Tells you what was collided with, for debugging
+    // }
 }

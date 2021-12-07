@@ -7,6 +7,7 @@ public class SnakeTail : MonoBehaviour
     [SerializeField] private GameObject snakeBodyPrefab;
     SnakeManager SM;
     public bool isTail = false;
+    public bool gameStarted = false;
     public Vector3 lastPosition;
     [SerializeField] public GameObject prevSegment;
     [SerializeField] public GameObject nextSegment;
@@ -26,6 +27,7 @@ public class SnakeTail : MonoBehaviour
             isTail = false;
             nextSegmentTailCode = nextSegment.GetComponent<SnakeTail>();
         }
+        StartCoroutine(gameStartTimer());
     }
     public void AddSegment()
     {
@@ -52,9 +54,14 @@ public class SnakeTail : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "snake_Head" || col.gameObject.tag == "snake_Wall"){
+        if((col.gameObject.tag == "snake_Body" || col.gameObject.tag == "snake_Wall")&&(gameStarted == true)){
             StartCoroutine(SM.GAMEOVER());
         }   
-        // Debug.Log("OnTriggerEnter2D: "+col.gameObject.tag); // Tells you what was collided with, for debugging
+        Debug.Log("OnTriggerEnter2D: " + col.gameObject.tag); // Tells you what was collided with, for debugging
+    }
+    public IEnumerator gameStartTimer(){
+        // Fixes an issue with the game during runtime where the OnTriggerEnter would immediately trigger a gameOver
+        yield return new WaitForSeconds(1);
+        gameStarted = true;
     }
 }
