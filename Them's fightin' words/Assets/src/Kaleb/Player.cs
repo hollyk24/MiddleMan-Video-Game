@@ -7,7 +7,7 @@ namespace FightCharacter {
     public class Player : Character {
 
         void Update() {
-            if(stuntime > 0) {
+            if(!master.paused && stuntime > 0) {
                 stuntime--;
                 if(stuntime == 0) {
                     combatState.Neutral(this);
