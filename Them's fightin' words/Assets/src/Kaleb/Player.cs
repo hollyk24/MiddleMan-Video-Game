@@ -5,15 +5,25 @@ using UnityEngine;
 //needs the buttons to be named
 namespace FightCharacter {
     public class Player : Character {
+        
+        void Start() {
+            BlockTimer = 0;
+        }
 
         void Update() {
             if(!master.paused && stuntime > 0) {
-                stuntime--;
+                stuntime-=1;
                 if(stuntime == 0) {
                     combatState.Neutral(this);
                 }
             }
             if(!master.paused || stuntime > 0) {
+                if(BlockTimer > 0) {
+                    BlockTimer--;
+                    if(BlockTimer == 0) {
+                        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                    }
+                }
                 getInput();
             }
         }
@@ -37,7 +47,7 @@ namespace FightCharacter {
             //
             if (Input.GetKey(KeyCode.E)) {
                 Debug.Log("Attacking");
-                Character HitPerson = combatState.Attack(this, Attack1);
+                Character HitPerson = Attack(Attack1);
                 if(HitPerson != null) {
                     HitPerson.combatState.Hit(HitPerson, this, Attack1.damage);
                 }

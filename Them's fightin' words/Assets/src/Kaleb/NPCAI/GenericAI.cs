@@ -6,7 +6,7 @@ using System;
 
 namespace FightAI {
 
-    //This version of the AI just moves towards the opponents, waits, then attacks. It cycles through the last two options while in range.
+    //This version of the AI just moves towards the opponents, attacks, then moves back. It cycles between the last two options while in range.
     public class GenericAI : AbstractAI {
         //ActionRecord: 0 corresponds to a block (of user's attack), 1 is an attack, 2 is a move forward, 3 is a move backward.
         
@@ -20,10 +20,10 @@ namespace FightAI {
         }
 
         public override void Decide(){
-            float RANGE = 2.5f;//the range of the default attack. I might pull the range of the attack from the move itself if I implement that later.
+            float RANGE = 3.5f;//the range of the default attack. I might pull the range of the attack from the move itself if I implement that later.
 
             if(Math.Abs(Distance)>RANGE) {
-                
+
                 UpdateRecord(2);
                 if(Distance > 0) {
                     User.Move(1);
@@ -37,7 +37,10 @@ namespace FightAI {
                 if(ActionRecord[0] != 1) {
                     //attack
                     UpdateRecord(1);
-                    User.Attack();
+                    Character HitPerson = User.Attack(User.Attack1);
+                    if(HitPerson != null) {
+                        HitPerson.combatState.Hit(HitPerson, User, User.Attack1.damage);
+                    }
                 } else {
                     //othewise move backwards
                     UpdateRecord(3);

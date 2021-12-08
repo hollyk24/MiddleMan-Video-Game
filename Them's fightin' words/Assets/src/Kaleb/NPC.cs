@@ -7,16 +7,20 @@ namespace FightCharacter {
     public class NPC : Character
     {
         #region VARS
-        public AbstractAI AI;
         public int InternalTimer;
+        public bool Dummy;
+        public AbstractAI AI;
         #endregion
 
         #region METHODS
 
         void Start() {
-            InternalTimer = 0;
             //This is a temporary solution. Eventually NPC generation should be handled by the factory.
-            AI = new GenericAI(this);
+            if(Dummy) {
+                AI = new DummyAI(this);
+            } else {
+                AI = new GenericAI(this);
+            }
         }
 
         void Update() {
@@ -30,15 +34,15 @@ namespace FightCharacter {
             }
             //stops the npc if they are stunned or the match is paused
             if(!master.paused || stuntime > 0) {
-                UpdateAI();
+                if(BlockTimer > 0) {
+                    BlockTimer--;
+                    if(BlockTimer == 0) {
+                        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                    }
+                }
+                AI.UpdateDistance(enemy.hurtbox.transform.position.x  - hurtbox.transform.position.x);
                 Plan();
             }
-        }
-
-        void UpdateAI() {
-            AI.UpdateDistance(enemy.hurtbox.transform.position.x  - hurtbox.transform.position.x);
-            //Record (of user actions): 0 is no action, 1 is a hit attack, 2 is a whiffed attack, 3 is a move forward, 4 is a move backward. Update at x intervals
-            
         }
 
         /*
@@ -53,7 +57,7 @@ namespace FightCharacter {
 
         //A custom Hit method for testing
         public override void Hit(Character opponent, int damage) {
-            Debug.Log("NPC Hit");
+            //Debug.Log("NPC Hit");
             combatState.Hit(this, opponent, damage);
         }
 
