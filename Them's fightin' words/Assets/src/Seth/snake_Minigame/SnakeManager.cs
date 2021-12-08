@@ -14,7 +14,7 @@ public class SnakeManager : MonoBehaviour
     public snakeHead SNAKEHEAD;
     public bool GameOver = false;
     private int score = 0;
-    private int targetScore = 1;
+    private int targetScore = 999;
 
 
     // [SerializeField] public SaveManager SM;
@@ -56,7 +56,7 @@ public class SnakeManager : MonoBehaviour
         score = score + i;
         scoreDisplay.text = score.ToString();
         if(score > targetScore){
-            GameOver = true;
+            // GameOver = true;
             StartCoroutine(this.GAMEWON());
         }
     }

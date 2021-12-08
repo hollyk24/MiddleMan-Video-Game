@@ -12,6 +12,8 @@ TagManager:
   - snake_Head
   - Pool Object
   - MainAttack
+  - GameWonUI
+  - SM
   layers:
   - Default
   - TransparentFX

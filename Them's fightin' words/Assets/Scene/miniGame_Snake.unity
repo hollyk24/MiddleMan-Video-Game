@@ -2721,7 +2721,7 @@ MonoBehaviour:
   snakeBodyPrefab: {fileID: 2591628760701377473, guid: 3b3700560eb08dc4bab95271f5b9dc0f,
     type: 3}
   isTail: 1
-  lastPosition: {x: 0, y: 0, z: 0}
+  lastPosition: {x: -2, y: -4, z: 0}
   prevSegment: {fileID: 0}
   nextSegment: {fileID: 351512108}
   Snake: {fileID: 540127426}
