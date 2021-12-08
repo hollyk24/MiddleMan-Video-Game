@@ -58,6 +58,7 @@ public class FightMove : MonoBehaviour {
             cFrame++;
             if(cFrame >= duration){
                 active = false;
+                Debug.Log("Attack Done");
                 owner.combatState.Neutral(owner);
             } 
         }

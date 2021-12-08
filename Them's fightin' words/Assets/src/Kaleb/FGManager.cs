@@ -39,6 +39,7 @@ public class FGManager : MonoBehaviour
     {
         timer = 50.0f;
         DrBC = false;
+        DiplayTut = false;
     }
 
     // Update is called once per frame
@@ -50,7 +51,7 @@ public class FGManager : MonoBehaviour
             CheckLoss();
             CharacterPosition();
             if(Input.GetKeyDown("p")){
-                PMenu.transform.Translate(-1000, 0, 0); 
+                PMenu.transform.Translate(-2000, 0, 0); 
                 paused = true;
                 Time.timeScale = 0;
             }
@@ -102,20 +103,28 @@ public class FGManager : MonoBehaviour
     }
 
     public void SwitchPause() {
-        PMenu.transform.Translate(1000, 0, 0); 
+        PMenu.transform.Translate(2000, 0, 0); 
         Time.timeScale = 1;
         paused = false;
     }
 
-    public void ExitLoss() {
-
-    }
-
     public void ShowTutorial() {
-
+        if(DiplayTut) {
+            DiplayTut = false;
+            PMenu.transform.Translate(-2000, 0, 0);
+            Tutorial.transform.Translate(-2000, 0, 0);
+            User.gameObject.transform.Translate(0, 0, -10);
+            Enemy.gameObject.transform.Translate(0, 0, -10);
+        } else {
+            DiplayTut = true;
+            PMenu.transform.Translate(2000, 0, 0);
+            Tutorial.transform.Translate(2000, 0, 0);
+            User.gameObject.transform.Translate(0, 0, 10);
+            Enemy.gameObject.transform.Translate(0, 0, 10);
+        }
     }
 
-    /*Checks that */
+    /*Updates the timer using Unity's deltaTime*/
     public void UpdateTimer() {
         if(timer > 0) {
             timer -= Time.deltaTime;
@@ -124,6 +133,7 @@ public class FGManager : MonoBehaviour
         TimeDisplay.text = "Time \n\n" + b.ToString();
     }
 
+    //updates the health sliders
     public void UpdateHealth(){
         if(!DrBC) {
             PHealth.value = User.health;
@@ -131,22 +141,31 @@ public class FGManager : MonoBehaviour
         EHealth.value = Enemy.health;
     }
 
+    //checks for a loss or win condition
     public void CheckLoss() {
         if(DrBC) {
             if(Enemy.health <= 0  || timer <= 0.0f) {
-                Debug.Log("You Win!");
-                SceneManager.LoadScene("overWorld");
+                ExitWin();
             }
         } else {
             if(User.health <= 0  || timer <= 0.0f) {
-                Debug.Log("Game Over");
-                SceneManager.LoadScene("overWorld");
+                ExitLoss();
             }
             if(Enemy.health <= 0 ) {
-                Debug.Log("You Win!");
-                SceneManager.LoadScene("overWorld");
+                ExitWin();
             }
         }
+    }
+
+    public void ExitLoss() {
+        Debug.Log("Game Over");
+        SceneManager.LoadScene("overWorld");
+    }
+
+    //Communicate that the player won the fight to the overworld
+    public void ExitWin() {
+        Debug.Log("You Win!");
+        SceneManager.LoadScene("overWorld");
     }
     #endregion
 }

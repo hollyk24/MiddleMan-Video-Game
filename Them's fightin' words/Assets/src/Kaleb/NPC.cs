@@ -24,7 +24,6 @@ namespace FightCharacter {
         }
 
         void Update() {
-            InternalTimer++;
             //decreases stuntime each loop
             if(!master.paused && stuntime > 0) {
                 stuntime--;
@@ -34,6 +33,7 @@ namespace FightCharacter {
             }
             //stops the npc if they are stunned or the match is paused
             if(!master.paused || stuntime > 0) {
+                InternalTimer++;
                 if(BlockTimer > 0) {
                     BlockTimer--;
                     if(BlockTimer == 0) {
