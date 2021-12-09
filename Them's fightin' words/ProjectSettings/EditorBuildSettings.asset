@@ -36,12 +36,12 @@ EditorBuildSettings:
     path: Assets/Scene/miniGame_Snake.unity
     guid: d93b5d0a3874c124d916fb7276ff4b3c
   - enabled: 0
-    path: Assets/Scene/fight.unity
-    guid: 52848fe4ce4fd264e8c6a6bba80b7eaf
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scene/Fighting.unity
     guid: 2c49e417e88b8434f901031a6c3699a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene/FGTestScene.unity
     guid: e8a1438b389c991459a0336e79275f4a
   - enabled: 1

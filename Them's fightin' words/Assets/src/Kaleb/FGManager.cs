@@ -28,7 +28,7 @@ public class FGManager : MonoBehaviour
     public bool paused;
     public bool DrBC;
 
-    public bool DiplayTut;//If the tutorial is being displayed
+    public bool DisplayTut;//If the tutorial is being displayed
     public GameObject Tutorial;
 
     public GameObject WT;
@@ -42,7 +42,7 @@ public class FGManager : MonoBehaviour
         WT = GameObject.FindWithTag("SM");
         timer = 50.0f;
         DrBC = false;
-        DiplayTut = false;
+        DisplayTut = false;
     }
 
     // Update is called once per frame
@@ -66,6 +66,9 @@ public class FGManager : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.T)){
                 ShowTutorial();
+            }
+            if(Input.GetKeyDown(KeyCode.A) && DisplayTut == false){
+                SceneManager.LoadScene("AutoPlayFight");
             }
             PauseMenu();
             UpdatePauseButtons();
@@ -118,14 +121,14 @@ public class FGManager : MonoBehaviour
     }
 
     public void ShowTutorial() {
-        if(DiplayTut) {
-            DiplayTut = false;
+        if(DisplayTut) {
+            DisplayTut = false;
             PMenu.transform.Translate(-2000, 0, 0);
             Tutorial.transform.Translate(-2000, 0, 0);
             User.gameObject.transform.Translate(0, 0, -10);
             Enemy.gameObject.transform.Translate(0, 0, -10);
         } else {
-            DiplayTut = true;
+            DisplayTut = true;
             PMenu.transform.Translate(2000, 0, 0);
             Tutorial.transform.Translate(2000, 0, 0);
             User.gameObject.transform.Translate(0, 0, 10);
