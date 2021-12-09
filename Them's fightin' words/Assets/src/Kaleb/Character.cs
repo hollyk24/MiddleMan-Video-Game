@@ -56,6 +56,13 @@ namespace FightCharacter {
             return combatState.Attack(this, Atk);
         }
 
+        public void DefaultAttack() {
+            Character HitPerson = combatState.Attack(this, Attack1);
+            if(HitPerson != null) {
+                HitPerson.Hit(this, Attack1.damage);
+            }
+        }
+
         public void Block() {
             combatState.Block(this);
         }
