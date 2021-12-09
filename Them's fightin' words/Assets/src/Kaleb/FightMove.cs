@@ -58,6 +58,7 @@ public class FightMove : MonoBehaviour {
             cFrame++;
             if(cFrame >= duration){
                 active = false;
+                Debug.Log("Attack Done");
                 owner.combatState.Neutral(owner);
             } 
         }
@@ -68,12 +69,18 @@ public class FightMove : MonoBehaviour {
      */
     public Character CallMove() {
         if(owner.combatState.CanAttack()) {
+            if(owner is NPC) {
+                Debug.Log("NPC move called");
+            }
             active = true;
             cFrame = 0;
         } else {
             return null;
         }
         if(hitbox.IsTouching(owner.enemy.GetComponent<Collider2D>())) {
+            if(owner is NPC) {
+                Debug.Log("NPC move hit");
+            }
             return owner.enemy;
         }
         return null;

@@ -6,7 +6,7 @@ using FightCharacter;
 namespace FightAI {
 
     public abstract class AbstractAI {
-        public NPC User;
+        public Character User;
         public float Distance;//The distance between the NPC and their enemy
 
         //Record of past actions

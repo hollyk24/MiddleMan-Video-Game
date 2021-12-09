@@ -30,7 +30,7 @@ Handles actions taken during the transitions from the Block State
         
         */
         public Character Attack(Character Actor, FightMove Atk) {
-            Debug.Log("Attack out of Block.");
+            //Debug.Log("Attack out of Block.");
             Actor.hurtbox.velocity = new Vector2(0, 0);
             return Atk.CallMove();
         }

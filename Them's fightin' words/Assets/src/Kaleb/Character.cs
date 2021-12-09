@@ -15,6 +15,7 @@ namespace FightCharacter {
         public int health;//Stores the character health. If it goes to zero they lose.
         public float speed;//The speed that the character moves
         public int stuntime;//Stores the length of the hitstun inflicted by an enemy move
+        public int BlockTimer;
 
         //The attached rigidbody
         public Rigidbody2D hurtbox;
@@ -47,11 +48,12 @@ namespace FightCharacter {
         }
 
         void Start() {
+            BlockTimer = 0;
             combatState = new CharState();
         }
         
-        public void Attack() {
-            combatState.Attack(this, Attack1);
+        public Character Attack(FightMove Atk) {
+            return combatState.Attack(this, Atk);
         }
 
         public void Block() {

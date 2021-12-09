@@ -5,7 +5,8 @@
         "Unity.InputSystem",
         "Unity.InputSystem.TestFramework",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "FGScripts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
