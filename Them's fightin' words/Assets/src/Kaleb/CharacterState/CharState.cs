@@ -60,7 +60,7 @@ Handles the transitions between all states and return methods for information on
             if(CState is BlockState || CState is NeutralState) {
                 CState = new MoveState();
                 if(Actor.gameObject.GetComponent<Animator>()!=null) {
-                    if(Actor is NPC) {
+                    if(Actor.gameObject.GetComponent<Character>() is NPC) {
                         Actor.gameObject.GetComponent<Animator>().Play("Player_Walk");
                     } else {
                         Actor.gameObject.GetComponent<Animator>().Play("Player_Walk");
