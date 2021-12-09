@@ -48,7 +48,7 @@ namespace FightCharacter {
         /*
         The planning loop for the AI Enemies
         */
-        void Plan() {
+        public void Plan() {
             if(InternalTimer > 60) {
                 AI.Decide();
                 InternalTimer = 0;

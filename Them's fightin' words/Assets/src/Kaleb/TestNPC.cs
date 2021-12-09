@@ -4,7 +4,7 @@ using UnityEngine;
 using FightAI;
 
 namespace FightCharacter {
-    public class TestNPC : Character
+    public class TestNPC : NPC
     {
         #region VARS
         public int InternalTimer;
@@ -42,7 +42,7 @@ namespace FightCharacter {
         /*
         The planning loop for the AI Enemies
         */
-        void Plan() {
+        public void Plan() {
             if(InternalTimer > 60) {
                 AI.Decide();
                 InternalTimer = 0;
