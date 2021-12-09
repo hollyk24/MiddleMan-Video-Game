@@ -8,7 +8,10 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private bool isPaused;
-    [SerializeField] private GameObject SM;
+    public GameObject SM;
+    private void Awake(){
+        SM = GameObject.FindGameObjectWithTag("SM");
+    }
 
     //public MainMenu mainMenu;
     //public GameObject mainMenu;

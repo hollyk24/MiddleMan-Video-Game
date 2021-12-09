@@ -27,7 +27,6 @@ public class WinTracker : MonoBehaviour
     // public (string fightName, int WinStatus) smallHouseWin = ("smallHouseWin", 0);
     void Start()
     {
-
         WinList = new List<fightEntry>() {
             new fightEntry("sansWin",0),
             new fightEntry("cliffWin", 0),

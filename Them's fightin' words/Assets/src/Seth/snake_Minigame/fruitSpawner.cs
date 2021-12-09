@@ -24,7 +24,7 @@ public class fruitSpawner : MonoBehaviour
             {
                 spawnFruit = false;
                 float randNum = Mathf.Round(Random.Range(0, 10));
-                if (randNum < 7)
+                if (randNum < 8)
                 {
                     Instantiate(snake_fruitPrefab, new Vector3(Mathf.Round(Random.Range(-8, 7)), Mathf.Round(Random.Range(-5, 4)), -4), Quaternion.identity, this.transform);
 

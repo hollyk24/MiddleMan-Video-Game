@@ -10,6 +10,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] public Vector3 savedPosition;
     private WinTracker WT;
     private Transform playerTransform;
+    public bool DRBC; // DR. BC Mode
 
     public void setupReferences()
     {
@@ -55,6 +56,7 @@ public class SaveManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DRBC = false;
     }
     void OnEnable()
     {
@@ -68,9 +70,9 @@ public class SaveManager : MonoBehaviour
 
     public void setupMap(Scene scene, LoadSceneMode mode)
     {
-        setupReferences();
         if (scene.name == "overWorld")
         {
+            setupReferences();
             playerTransform = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
             if (playerTransform == null) Debug.Log("Could not find player");
             playerTransform.position = savedPosition;
