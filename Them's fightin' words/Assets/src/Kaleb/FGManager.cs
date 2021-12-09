@@ -61,6 +61,12 @@ public class FGManager : MonoBehaviour
         } else {
             int b = Mathf.RoundToInt(timer*2);
             TimeDisplay.text = "Paused\n\n" + b.ToString();
+            if(Input.GetKeyDown(KeyCode.B)){
+                DrBC = !DrBC;
+            }
+            if(Input.GetKeyDown(KeyCode.T)){
+                ShowTutorial();
+            }
             PauseMenu();
             UpdatePauseButtons();
         }
@@ -95,7 +101,7 @@ public class FGManager : MonoBehaviour
     
     public void PauseMenu(){
         if(Input.GetKeyDown("p")){
-            PMenu.transform.Translate(1000, 0, 0); 
+            PMenu.transform.Translate(2000, 0, 0); 
             Time.timeScale = 1;
             paused = false;
         }
