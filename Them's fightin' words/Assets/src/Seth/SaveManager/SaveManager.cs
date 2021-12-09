@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class SaveManager : MonoBehaviour
 {
     private static SaveManager instance;
@@ -73,6 +74,7 @@ public class SaveManager : MonoBehaviour
         if (scene.name == "overWorld")
         {
             setupReferences();
+            checkWin();
             playerTransform = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Transform>();
             if (playerTransform == null) Debug.Log("Could not find player");
             playerTransform.position = savedPosition;
@@ -82,5 +84,16 @@ public class SaveManager : MonoBehaviour
                 gameWonUI.SetActive(true);
             }
         }
+    }
+
+    public void checkWin(){
+        if(this.transform.position == new Vector3(1.0f,0f, 0f)) {
+            WT.setWin(true);
+        } else if(this.transform.position == new Vector3(-1.0f,0f, 0f)) {
+            WT.setWin(false);
+        } else {
+            WT.setWin(false);
+        }
+        this.transform.position = new Vector3(0f,0f,0f);
     }
 }

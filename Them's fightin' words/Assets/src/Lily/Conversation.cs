@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+
 /*
  * THIS CLASS IS A MONSTER ITS REALLLY LARGE AND DOES A LOT
  * HERE BE DRAGONS
@@ -32,6 +34,7 @@ public class Conversation : Interactable {
 
     private int dialogIndex = 1;
     [SerializeField] public string fightName;
+    [SerializeField] public string fightType;
 
     InputAction[] ops;
 
@@ -104,7 +107,7 @@ public class Conversation : Interactable {
         // WT.printList();
         DisableUI();
         OnTriggerExit2D(null);
-        SceneManager.LoadScene("minigame_Snake");
+        SceneManager.LoadScene(fightType);
     }
     //Make NPC angerLevel change called on every conversation press. Changes the text
     public void GetAngrier(InputAction.CallbackContext obj) {

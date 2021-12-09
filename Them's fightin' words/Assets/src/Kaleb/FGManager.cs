@@ -31,12 +31,15 @@ public class FGManager : MonoBehaviour
     public bool DiplayTut;//If the tutorial is being displayed
     public GameObject Tutorial;
 
+    public GameObject WT;
+
     #endregion
 
     #region METHODS
     //Set some variables on load
     void Start()
     {
+        WT = GameObject.FindWithTag("SM");
         timer = 50.0f;
         DrBC = false;
         DiplayTut = false;
@@ -158,14 +161,15 @@ public class FGManager : MonoBehaviour
     }
 
     public void ExitLoss() {
-        Debug.Log("Game Over");
+        WT.transform.position = new Vector3(-1.0f, 0.0f, 0.0f);
         SceneManager.LoadScene("overWorld");
     }
 
     //Communicate that the player won the fight to the overworld
     public void ExitWin() {
-        Debug.Log("You Win!");
+        WT.transform.position = new Vector3(1.0f, 0.0f, 0.0f);
         SceneManager.LoadScene("overWorld");
     }
+
     #endregion
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+
 public class SnakeManager : MonoBehaviour
 {
     [SerializeField] public GameObject GAMEOVERPANEL;
@@ -27,7 +28,7 @@ public class SnakeManager : MonoBehaviour
         CONTROLS = new Controls();
         SNAKEHEAD = FindObjectOfType<snakeHead>().gameObject.GetComponent<snakeHead>();
         // SM = gameObject.Find("SaveManager");
-        WT = FindObjectOfType<SaveManager>().gameObject.GetComponent<WinTracker>();
+        WT = GameObject.FindGameObjectWithTag("SM").GetComponent<WinTracker>();
     }
 
     public void LengthenSnake(){
@@ -36,7 +37,8 @@ public class SnakeManager : MonoBehaviour
     public IEnumerator GAMEOVER(){
         GameOver = true;
         GAMEOVERPANEL.SetActive(true);
-        WT.setWin(false);
+        WT.gameObject.transform.position = new Vector3(-1.0f,0f,0f);
+        // WT.setWin(false);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("overWorld");
         // SNAKEHEAD.transform.position = new Vector3(SNAKEHEAD.transform.position.x, SNAKEHEAD.transform.position.y,SNAKEHEAD.transform.position.z - 0.001f);
@@ -46,7 +48,7 @@ public class SnakeManager : MonoBehaviour
     public IEnumerator GAMEWON(){
         GameOver = true;
         GAMEWONPANEL.SetActive(true);
-        WT.setWin(true);
+        WT.gameObject.transform.position = new Vector3(1.0f,0f,0f);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("overWorld");
         // Return to Overworld

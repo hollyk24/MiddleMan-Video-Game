@@ -4,7 +4,7 @@ using UnityEngine;
 using FightAI;
 
 namespace FightCharacter {
-    public class TestNPC : NPC
+    public class TestNPC : Character
     {
         #region VARS
         public int InternalTimer;

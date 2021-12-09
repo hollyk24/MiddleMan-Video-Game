@@ -894,6 +894,7 @@ MonoBehaviour:
   dialogs: []
   angerLevel: 0
   fightName: cliffWin
+  fightType: Fighting
 --- !u!61 &240033023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3752,6 +3753,7 @@ MonoBehaviour:
   dialogs: []
   angerLevel: 0
   fightName: sansWin
+  fightType: Fighting
 --- !u!61 &717200726
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14793,6 +14795,7 @@ MonoBehaviour:
   dialogs: []
   angerLevel: 0
   fightName: bigHouseWin
+  fightType: minigame_Snake
 --- !u!61 &1541417018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41440,6 +41443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameWonUI: {fileID: 0}
   savedPosition: {x: 1.5, y: 2, z: 0}
+  DRBC: 0
 --- !u!4 &1934610310
 Transform:
   m_ObjectHideFlags: 0
@@ -41555,6 +41559,7 @@ MonoBehaviour:
   dialogs: []
   angerLevel: 0
   fightName: riverWin
+  fightType: minigame_Snake
 --- !u!61 &1943813814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42064,6 +42069,7 @@ MonoBehaviour:
   dialogs: []
   angerLevel: 0
   fightName: beachWin
+  fightType: Fighting
 --- !u!61 &2084184399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42300,6 +42306,7 @@ MonoBehaviour:
   dialogs: []
   angerLevel: 0
   fightName: smallHouseWin
+  fightType: minigame_Snake
 --- !u!61 &2105341843
 BoxCollider2D:
   m_ObjectHideFlags: 0
